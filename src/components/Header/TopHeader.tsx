@@ -3,7 +3,7 @@ import React from "react";
 function TopHeader() {
   return (
     <div className="w-full bg-white ">
-      <div className="container flex  justify-between items-center h-28 mx-auto">
+      <div className="container flex  justify-between items-center h-32 mx-auto">
         <div className="flex-shrink-0 flex items-center">
           <img
             className="block lg:hidden h-8 w-auto"
@@ -18,13 +18,20 @@ function TopHeader() {
         </div>
         <div className=" flex  items-center pr-2  sm:ml-6 sm:pr-0">
           <div className="p-2 flex justify-start">
-            <div className="bg-gray-200 flex items-center rounded-xl w-auto shadow-xl">
+            <div className="bg-gray-200 flex items-center rounded-xl w-full shadow-lg">
               <input
                 className="rounded-r-xl border-l border-gray-400 bg-gray-200  w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none"
                 id="search"
                 type="text"
                 placeholder="جستجو"
               />
+
+              <select
+                name="category"
+                id="category"
+                aria-label="انتخاب دسته بندی"
+                className="w-96 py-4 bg-gray-200 border-l border-gray-400 outline text-gray-700 "
+              ></select>
 
               <div className="py-4 px-10">
                 <svg

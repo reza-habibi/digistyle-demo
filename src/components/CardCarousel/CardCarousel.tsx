@@ -10,10 +10,11 @@ import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
 
 // import Swiper core and required modules
-import SwiperCore, { Pagination, Navigation } from "swiper/core";
+import SwiperCore, {  Navigation , Autoplay} from "swiper/core";
+
 import { Link } from "react-router-dom";
 // install Swiper modules
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([ Navigation , Autoplay]);
 
 export default function CardCarousel() {
   return (
@@ -22,12 +23,10 @@ export default function CardCarousel() {
         id="main"
         slidesPerView={1}
         spaceBetween={30}
-        slidesPerGroup={3}
+        slidesPerGroup={1}
         loop={true}
         loopFillGroupWithBlank={true}
-        pagination={{
-          clickable: true,
-        }}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
         navigation={true}
         breakpoints={{
           640: {
@@ -47,22 +46,22 @@ export default function CardCarousel() {
         className="mySwiper my-8"
       >
         {data.products.map((product: TProducts) => (
-          <SwiperSlide className="bg-white rounded-lg m-h-70 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3">
+          <SwiperSlide className="bg-white rounded-lg h-96 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3">
             <div key={product._id} className="w-full ">
-              <div className="bg-white rounded-lg m-h-70 p-2  mb-3">
+              <div className="bg-white rounded-lg h-96 p-2  mb-3">
                 <figure className="mb-2">
                   <Link to={`/product/${product._id}`}>
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="h-96 ml-auto mr-auto"
+                      className="h-60 ml-auto mr-auto"
                     />
                   </Link>
                 </figure>
-                <div className="rounded-lg p-4 bg-white flex flex-col mb-3">
+                <div className="rounded-lg p-2 bg-white flex flex-col mb-3">
                   <div>
                     <Link to={`/product/${product._id}`}>
-                      <h5 className="text-gray-700 text-2xl font-bold leading-none">
+                      <h5 className="text-gray-700 text-xl font-bold leading-none">
                         {product.name}
                       </h5>
                     </Link>
@@ -70,8 +69,8 @@ export default function CardCarousel() {
                       {product.description}
                     </span>
                   </div>
-                  <div className="flex items-center my-10">
-                    <div className="lg:text-3xl md:text-2xl text-gray-700 font-light">
+                  <div className="flex items-center mt-3">
+                    <div className="lg:text-2xl md:text-xl text-gray-700 font-light">
                       {" "}
                       {Humanize.intComma(product.price)} تومان
                     </div>

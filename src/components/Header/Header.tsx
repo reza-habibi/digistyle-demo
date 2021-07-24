@@ -14,7 +14,7 @@ function classNames(...classes: string[]) {
 
 export default function Header() {
   return (
-    <Disclosure as="nav" className="fixed w-full z-index bg-white py-5 px-8">
+    <Disclosure as="nav" className="sticky w-full z-10 bg-white py-5 px-8">
       {({ open }) => (
         <>
           <div className=" container mx-auto px-2 sm:px-6 lg:px-8">

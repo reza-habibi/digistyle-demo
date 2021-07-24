@@ -93,35 +93,37 @@ body {
 }
 
 #main .swiper-slide{
-  width: 300px;
+  width: 250px !important;
 }
 
 @media screen and (max-width: 480px) {
   #main.swiper-container {
-    width: 480px;
+    width: 400px;
   }
 }
 
 @media screen and (min-width: 640px) {
   #main.swiper-container {
-    width: 640px;
+    width: 580px;
   }
 }
 
 @media screen and (min-width: 768px) {
   #main.swiper-container {
-    width: 768px;
+    width: 840px;
   }
 }
 
 @media screen and (min-width: 1000px) {
   #main.swiper-container {
-    min-width: 1300px;
+    min-width: 1200px;
   }
 }
 
-.headline-border{
-  width: 0;
+
+
+.headline:hover .headline-border{
+  width: 100%;
   border-bottom: 2px solid black;
   animation: headline 2s ease-in forwards;
 }
@@ -133,7 +135,10 @@ body {
     width: 25%;
   }50%{
     width: 50%;
-  }100%{
+  }75%{
+    width: 75%;
+  }
+  100%{
     width: 100%;
   }
 }
