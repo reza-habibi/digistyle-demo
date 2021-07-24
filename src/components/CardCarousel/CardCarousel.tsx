@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import data from "../../data";
 import { TProducts } from "../../type.ds";
-import Humanize from 'humanize-plus'
+import Humanize from "humanize-plus";
 // Import Swiper styles
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -19,7 +19,8 @@ export default function CardCarousel() {
   return (
     <>
       <Swiper
-        slidesPerView={3}
+        id="main"
+        slidesPerView={1}
         spaceBetween={30}
         slidesPerGroup={3}
         loop={true}
@@ -28,14 +29,26 @@ export default function CardCarousel() {
           clickable: true,
         }}
         navigation={true}
+        breakpoints={{
+          640: {
+            width: 640,
+            slidesPerView: 2,
+          },
+          768: {
+            width: 768,
+            slidesPerView: 3,
+          },
+          1000: {
+            width: 1300,
+            slidesPerView: 4,
+          },
+        }}
+        width={400}
         className="mySwiper my-8"
       >
         {data.products.map((product: TProducts) => (
           <SwiperSlide className="bg-white rounded-lg m-h-70 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3">
-            <div
-              key={product._id}
-              className="w-full "
-            >
+            <div key={product._id} className="w-full ">
               <div className="bg-white rounded-lg m-h-70 p-2  mb-3">
                 <figure className="mb-2">
                   <Link to={`/product/${product._id}`}>

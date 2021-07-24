@@ -1767,6 +1767,11 @@
   resolved "https://registry.npmjs.org/@types/html-minifier-terser/-/html-minifier-terser-5.1.1.tgz"
   integrity sha512-giAlZwstKbmvMk1OO7WXSj4OZ0keXAcl2TQq4LWHiiPH2ByaH7WeUzng+Qej8UPxxv+8lRTuouo0iaNDBuzIBA==
 
+"@types/humanize-plus@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@types/humanize-plus/-/humanize-plus-1.8.0.tgz#ab6bfdb143ca719604dc031449a497fc11f54eb4"
+  integrity sha512-c7QNInYzgvbrNZvbwI/iYvHDTik/GqONxAvRUqwYF0AjgycoiyELrRR3RrILGXdZcaLt6Y+ds0+gSRQFzc71IQ==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.3"
   resolved "https://registry.npmjs.org/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz"

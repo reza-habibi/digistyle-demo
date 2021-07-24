@@ -7,6 +7,7 @@ html {
   box-sizing: border-box;
 }
 body {
+  background-color: #F5F5F5;
   margin: 0;
   height: 100vh;
   font-size: 1.6rem;
@@ -84,4 +85,55 @@ body {
 .swiper-slide img {
   display: block;
   object-fit: cover;
+}
+
+
+#main.swiper-container {
+  width: 480px;
+}
+
+#main .swiper-slide{
+  width: 300px;
+}
+
+@media screen and (max-width: 480px) {
+  #main.swiper-container {
+    width: 480px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  #main.swiper-container {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #main.swiper-container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #main.swiper-container {
+    min-width: 1300px;
+  }
+}
+
+.headline-border{
+  width: 0;
+  border-bottom: 2px solid black;
+  animation: headline 2s ease-in forwards;
+}
+
+@keyframes headline{
+  0%{
+    width: 0;
+  }25%{
+    width: 25%;
+  }50%{
+    width: 50%;
+  }100%{
+    width: 100%;
+  }
 }
