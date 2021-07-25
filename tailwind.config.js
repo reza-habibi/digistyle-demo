@@ -1,4 +1,3 @@
-
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
@@ -13,7 +12,8 @@ module.exports = {
           height: "1",
           transform: "translateY(0)",
         },
-      },"fade-in-right": {
+      },
+      "fade-in-right": {
         "0%": {
           opacity: "0",
           transform: "translateX(-10px)",
@@ -231,7 +231,7 @@ module.exports = {
     ringWidth: ["responsive", "focus-within", "focus"],
     rotate: ["responsive", "hover", "focus"],
     saturate: ["responsive"],
-    scale: ["responsive", "hover", "focus"],
+    scale: ["responsive", "hover", "focus", "active", "group-hover"],
     sepia: ["responsive"],
     skew: ["responsive", "hover", "focus"],
     space: ["responsive"],
