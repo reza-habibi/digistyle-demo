@@ -3,6 +3,7 @@ const data = {
     {
       _id: '1',
       name: 'پیراهن مردانه نایک',
+      mainCategory:'Mens',
       category: 'Shirts',
       image: '/images/p1.jpg',
       price: 540000,
@@ -15,6 +16,7 @@ const data = {
     {
       _id: '2',
       name: 'پیراهن مردانه آدیداس',
+      mainCategory:'Mens',
       category: 'Shirts',
       image: '/images/p2.jpg',
       price: 580000,
@@ -27,6 +29,7 @@ const data = {
     {
       _id: '3',
       name: 'پیراهن مردانه لاکوست',
+      mainCategory:'Mens',
       category: 'Shirts',
       image: '/images/p3.jpg',
       price: 800000,
@@ -39,6 +42,7 @@ const data = {
     {
       _id: '4',
       name: 'شلوار مردانه نایک',
+      mainCategory:'Mens',
       category: 'Pants',
       image: '/images/p4.jpg',
       price: 490000,
@@ -51,6 +55,7 @@ const data = {
     {
       _id: '5',
       name: 'شلوار مردانه پوما',
+      mainCategory:'Mens',
       category: 'Pants',
       image: '/images/p5.jpg',
       price: 630000,
@@ -63,6 +68,7 @@ const data = {
     {
       _id: '6',
       name: 'شلوار مردانه آدیداس',
+      mainCategory:'Mens',
       category: 'Pants',
       image: '/images/p6.jpg',
       price: 850000,

@@ -7,7 +7,7 @@ html {
   box-sizing: border-box;
 }
 body {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   margin: 0;
   height: 100vh;
   font-size: 1.6rem;
@@ -61,6 +61,15 @@ body {
   color: #ffb317; /*Set to match the Tailwind colour you want the active one to be */
 }
 
+#main>.swiper-button-next,
+#main>.swiper-button-prev {
+  width: 49px !important;
+  height: 90px !important;
+  border-radius: 0px 5px 5px 0px;
+  background-color: #fff;
+  box-shadow: 1px 1px 9px rgb(0 0 0 / 15%);
+  top: 40% !important;
+}
 
 .swiper-slide {
   text-align: center;
@@ -87,18 +96,21 @@ body {
   object-fit: cover;
 }
 
-
-#main.swiper-container {
-  width: 480px;
+#main {
+  padding-right: 10px;
 }
 
-#main .swiper-slide{
+#main.swiper-container {
+  width: 250px;
+}
+
+#main .swiper-slide {
   width: 250px !important;
 }
 
 @media screen and (max-width: 480px) {
   #main.swiper-container {
-    width: 400px;
+    width: 100%;
   }
 }
 
@@ -108,37 +120,90 @@ body {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   #main.swiper-container {
-    width: 840px;
+    width: 850px;
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
   #main.swiper-container {
-    min-width: 1200px;
+    width: 1120px;
   }
 }
 
+@media screen and (min-width: 1450px) {
+  #main.swiper-container {
+    width: 1430px;
+  }
+}
 
+.container {
+  width: 85%;
+  margin: auto;
+}
 
-.headline:hover .headline-border{
+.product-card:hover .card-actions{
+  display: flex;
+}
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
   width: 100%;
-  border-bottom: 2px solid black;
-  animation: headline 2s ease-in forwards;
 }
 
-@keyframes headline{
-  0%{
-    width: 0;
-  }25%{
-    width: 25%;
-  }50%{
-    width: 50%;
-  }75%{
-    width: 75%;
-  }
-  100%{
-    width: 100%;
-  }
+.react-tabs__tab-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid #aaa;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 6rem;
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #aaa;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
 }

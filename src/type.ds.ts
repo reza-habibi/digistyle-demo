@@ -5,6 +5,7 @@ export type TData={
 export type TProducts = {
   _id: string;
   name: string;
+  mainCategory:string
   category: string;
   image: string;
   price: number;
