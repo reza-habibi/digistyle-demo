@@ -43,7 +43,7 @@ export default function Header() {
           <div className="relative flex items-center justify-between h-auto">
             <div className="absolute inset-y-0 right-0 w-full flex justify-between items-center sm:hidden">
               {/* Mobile menu button*/}
-                <DrawerPage />
+              <DrawerPage />
               <div className="flex-shrink-0 flex items-center">
                 <img
                   className="block lg:hidden h-8 w-auto"

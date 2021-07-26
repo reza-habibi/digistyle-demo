@@ -55,8 +55,8 @@ module.exports = {
       // if you are using the animate variant of the modal
       modal: "modal 0.3s",
       // if you are using drawer variant right
-      "drawer-right": "drawer-right 2s ease-in",
-      "drawer-right-close": "drawer-right 2s ease-in",
+      "drawer-right": "drawer-right 1s ease-in",
+      "drawer-right-close": "drawer-right-close 2s ease-in",
 
       // if you are using drawer variant left
       "drawer-left": "drawer-left 0.3s",

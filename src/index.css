@@ -204,3 +204,8 @@ body {
 .react-tabs__tab-panel--selected {
   display: block;
 }
+
+
+.drawer-scrollbar::-webkit-scrollbar{
+  display: none;
+}
