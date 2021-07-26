@@ -164,11 +164,10 @@ body {
 .react-tabs__tab {
   display: inline-block;
   border: none;
-  border: none;
   bottom: -3px;
   position: relative;
   list-style: none;
-  padding: 6px 6rem;
+  padding: 6px 3rem;
   cursor: pointer;
 }
 

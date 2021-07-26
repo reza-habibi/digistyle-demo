@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import data from "../../data";
+import {data} from "../../data";
 import { TProducts } from "../../type.ds";
 import Humanize from "humanize-plus";
 
@@ -24,9 +24,9 @@ export default function CardCarousel() {
         navigation={true}
         className="mySwiper my-4"
       >
-        {data.products.map((product: TProducts) => (
-          <SwiperSlide className="bg-white shadow-lg rounded-lg h-96 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3">
-            <div key={parseInt(product._id)} className="w-full product-card">
+        {data.products.map((product: TProducts , index:number) => (
+          <SwiperSlide key={product._id} className="bg-white shadow-lg rounded-lg h-96 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3">
+            <div  className="w-full product-card">
               <div className="bg-white rounded-lg h-96 p-2  mb-3">
                 <figure className="mb-2">
                   <Link to={`/product/${product._id}`}>

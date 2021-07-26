@@ -22,3 +22,8 @@ export type TNavigation={
   href: string;
   current: boolean;
 }[]
+
+export type TSub={
+  name:string
+  url:string
+}

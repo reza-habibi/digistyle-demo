@@ -9,7 +9,7 @@ module.exports = {
           transform: "translateY(-10px)",
         },
         "100%": {
-          height: "1",
+          opacity: "1",
           transform: "translateY(0)",
         },
       },
@@ -23,10 +23,60 @@ module.exports = {
           transform: "translateX(0)",
         },
       },
+      "drawer-right": {
+        "0%, 100%": { right: "-500px" },
+        "100%": { right: "0" },
+      },
+      "drawer-right-close": {
+        "0%, 100%": { right: "0" },
+        "100%": { right: "-500px" },
+      },
+      // if you are using drawer variant left
+      "drawer-left": {
+        "0%, 100%": { left: "-500px" },
+        "100%": { left: "0" },
+      },
+      // if you are using drawer variant top
+      "drawer-top": {
+        "0%, 100%": { top: "-500px" },
+        "100%": { top: "0" },
+      },
+      // if you are using drawer variant bottom
+      "drawer-bottom": {
+        "0%, 100%": { bottom: "-500px" },
+        "100%": { bottom: "0" },
+      },
     },
     animation: {
       "fade-in-down": "fade-in-down 0.5s ease-out",
       "fade-in-right": "fade-in-right 0.5s ease-out",
+      left: "left 0.3s",
+      right: "right 0.3s",
+      // if you are using the animate variant of the modal
+      modal: "modal 0.3s",
+      // if you are using drawer variant right
+      "drawer-right": "drawer-right 2s ease-in",
+      "drawer-right-close": "drawer-right 2s ease-in",
+
+      // if you are using drawer variant left
+      "drawer-left": "drawer-left 0.3s",
+      // if you are using drawer variant top
+      "drawer-top": "drawer-top 0.3s",
+      // if you are using drawer variant bottom
+      "drawer-bottom": "drawer-bottom 0.3s",
+    },
+    modal: {
+      "0%, 100%": { top: "-500px" },
+      "100%": { top: "0" },
+    },
+    /* If you are using Toast component*/
+    left: {
+      "0%, 100%": { transform: "translateX(-100%)" },
+      "100%": { transform: "translateX(0)" },
+    },
+    right: {
+      "0%, 100%": { transform: "translateX(100%)" },
+      "100%": { transform: "translateX(0)" },
     },
     container: {
       center: true,
@@ -45,7 +95,71 @@ module.exports = {
       4: "4",
     },
     extend: {
+      width: {
+        "mb-cat": "166px",
+      },
+      height: {
+        "mb-cat": "96px",
+      },
+      backgroundImage: (theme) => ({
+        women: "url('../src/assets/images/mobile/category-women.png')",
+        men: "url('../src/assets/images/mobile/category-men.png')",
+        kids: "url('../src/assets/images/mobile/category-kids.png')",
+        beauty: "url('../src/assets/images/mobile/category-beauty.png')",
+      }),
       colors: {
+        "vanilla-ice": {
+          DEFAULT: "#F7E2E7",
+          50: "#FFFFFF",
+          100: "#FFFFFF",
+          200: "#FFFFFF",
+          300: "#FFFFFF",
+          400: "#FFFFFF",
+          500: "#F7E2E7",
+          600: "#ECBAC6",
+          700: "#E192A5",
+          800: "#D66A84",
+          900: "#CB4263",
+        },
+        "we-kids": {
+          DEFAULT: "#F7DFDD",
+          50: "#FFFFFF",
+          100: "#FFFFFF",
+          200: "#FFFFFF",
+          300: "#FFFFFF",
+          400: "#FFFFFF",
+          500: "#F7DFDD",
+          600: "#EDB8B4",
+          700: "#E4918A",
+          800: "#DA6A61",
+          900: "#D04438",
+        },
+        "beauty-bush": {
+          DEFAULT: "#F1C9C2",
+          50: "#FFFFFF",
+          100: "#FFFFFF",
+          200: "#FFFFFF",
+          300: "#FFFFFF",
+          400: "#FBEEEB",
+          500: "#F1C9C2",
+          600: "#E7A499",
+          700: "#DE806F",
+          800: "#D45B46",
+          900: "#BC412B",
+        },
+        "we-peep": {
+          DEFAULT: "#F5D7D9",
+          50: "#FFFFFF",
+          100: "#FFFFFF",
+          200: "#FFFFFF",
+          300: "#FFFFFF",
+          400: "#FFFFFF",
+          500: "#F5D7D9",
+          600: "#EBAEB2",
+          700: "#E1858B",
+          800: "#D65D65",
+          900: "#CC343E",
+        },
         violet: {
           50: "#f7fafb",
           100: "#e3f0fd",
@@ -82,6 +196,12 @@ module.exports = {
           800: "#352c32",
           900: "#221c20",
         },
+      },
+    },
+    variants: {
+      /* If you are using Collapse or Accordion component*/
+      transitionProperty: {
+        height: "height",
       },
     },
   },
@@ -128,7 +248,14 @@ module.exports = {
     backgroundSize: ["responsive"],
     backgroundOrigin: ["responsive"],
     blur: ["responsive"],
-    borderCollapse: ["responsive"],
+    borderCollapse: [
+      "responsive",
+      "dark",
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+    ],
     borderColor: [
       "responsive",
       "dark",
@@ -145,9 +272,30 @@ module.exports = {
       "hover",
       "focus",
     ],
-    borderRadius: ["responsive"],
-    borderStyle: ["responsive"],
-    borderWidth: ["responsive"],
+    borderRadius: [
+      "responsive",
+      "dark",
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+    ],
+    borderStyle: [
+      "responsive",
+      "dark",
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+    ],
+    borderWidth: [
+      "responsive",
+      "dark",
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+    ],
     boxDecorationBreak: ["responsive"],
     boxShadow: ["responsive", "group-hover", "focus-within", "hover", "focus"],
     boxSizing: ["responsive"],
@@ -281,6 +429,10 @@ module.exports = {
     extend: {
       divideWidth: ["hover", "focus"],
       borderWidth: ["hover", "focus"],
+      backgroundColor: ["active", "checked"],
+      inset: ["checked"],
+      opacity: ["disabled"],
+      textColor: ["active"],
     },
   },
   plugins: [
