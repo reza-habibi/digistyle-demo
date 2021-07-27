@@ -2,6 +2,8 @@ import { Disclosure } from "@headlessui/react";
 import { TNavigation } from "../../type.ds";
 import { useEffect, useState } from "react";
 import { DrawerPage } from "./Drawer";
+import { SearchDrawer } from "../SearchDrawer/SearchDrawer";
+
 const navigation: TNavigation = [
   { name: "خانه", href: "/", current: true },
   { name: "محصولات", href: "/Products", current: false },
@@ -73,7 +75,7 @@ export default function Header() {
                     />
                   </svg>
                 </span>
-                <span className="text-blue-500 mr-5 cursor-pointer">ورود</span>
+                <SearchDrawer/>
               </div>
             </div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">

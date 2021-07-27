@@ -1,34 +1,9 @@
 import { Link } from 'react-router-dom';
-import {Categories} from '../../data'
 
 function Footer() {
   return (
     <footer className="py-6 bg-white text-coolGray-900">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
-        <div className="grid grid-cols-12">
-          {Categories.map((category: any, index: number) => (
-            <div
-              key={index}
-              className="col-span-6 mt-5 text-center md:text-right md:col-span-3"
-            >
-              <Link to={category.URL} className="mb-2 text-3xl text-gray-800 font-bold">
-                {category.name}
-              </Link>
-              <ul className="flex flex-col">
-                {category.subCategory.map((sub: any, index: number) => (
-                  <li key={index} className="my-1 group ">
-                    <Link
-                      to={sub.url}
-                      className="text-gray-600 pb-1 hover:border-b border-gray-900"
-                    >
-                      {sub.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
         <div className="grid justify-center pt-6 lg:justify-between">
           <div className="flex flex-col self-center text-lg text-white text-center md:block lg:col-start-1 md:space-x-6">
             <span className="ml-3">

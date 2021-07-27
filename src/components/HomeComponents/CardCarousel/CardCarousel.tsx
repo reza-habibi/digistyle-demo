@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import {data} from "../../data";
-import { TProducts } from "../../type.ds";
+import { data } from "../../../data";
+import { TProducts } from "../../../type.ds";
 import Humanize from "humanize-plus";
 
 // Import Swiper styles
@@ -22,11 +22,15 @@ export default function CardCarousel() {
         id="main"
         spaceBetween={40}
         navigation={true}
+        slidesPerView={"auto"}
         className="mySwiper my-4"
       >
-        {data.products.map((product: TProducts , index:number) => (
-          <SwiperSlide key={product._id} className="bg-white shadow-lg rounded-lg h-96 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3">
-            <div  className="w-full product-card">
+        {data.products.map((product: TProducts) => (
+          <SwiperSlide
+            key={product._id}
+            className="bg-white shadow-lg rounded-lg h-96 py-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3"
+          >
+            <div className="w-full relative product-card">
               <div className="bg-white rounded-lg h-96 p-2  mb-3">
                 <figure className="mb-2">
                   <Link to={`/product/${product._id}`}>
@@ -37,10 +41,11 @@ export default function CardCarousel() {
                     />
                   </Link>
                 </figure>
+                <span className="brands absolute top-0 bg-white right-0 text-gray-500 bg-gray-200 px-5 py-2 text-lg rounded-tr-lg">{product.brandFa}</span>
                 <div className="rounded-lg p-2 bg-white flex flex-col mb-3">
                   <div>
                     <Link to={`/product/${product._id}`}>
-                      <h5 className="text-gray-700 text-xl font-bold leading-none">
+                      <h5 className="text-gray-700 text-xl font-bold leading-6 ">
                         {product.name}
                       </h5>
                     </Link>

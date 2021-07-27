@@ -11,6 +11,7 @@ export type TProducts = {
   price: number;
   countInStock: number;
   brand: string;
+  brandFa: string;
   rating: number;
   numReviews: number;
   description: string;

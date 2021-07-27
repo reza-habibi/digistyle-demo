@@ -108,6 +108,19 @@ module.exports = {
         beauty: "url('../src/assets/images/mobile/category-beauty.png')",
       }),
       colors: {
+        pelorous: {
+          DEFAULT: "#41C1C6",
+          50: "#F2FBFB",
+          100: "#DEF4F5",
+          200: "#B7E7E9",
+          300: "#8FDBDE",
+          400: "#68CED2",
+          500: "#41C1C6",
+          600: "#319FA3",
+          700: "#25797C",
+          800: "#195255",
+          900: "#0E2C2D",
+        },
         "vanilla-ice": {
           DEFAULT: "#F7E2E7",
           50: "#FFFFFF",

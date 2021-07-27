@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
-import { Categories } from "../../data";
+import { Categories } from "../../../data";
 function ProductCategoryCard() {
   return (
     <Tabs className="hidden sm:block">

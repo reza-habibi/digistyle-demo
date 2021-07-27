@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import Portal from "@reach/portal";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, SearchCircleIcon, SearchIcon, XIcon } from "@heroicons/react/outline";
 import { mobileCategory } from "../../data";
 import { Link } from "react-router-dom";
 
-export const DrawerPage = () => {
+export const SearchDrawer = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
   return (
     <div className="m-8">
-      <MenuIcon
+      <SearchIcon
         onClick={toggle}
         className="block h-10 w-10"
         aria-hidden="true"
@@ -26,13 +26,10 @@ export const DrawerPage = () => {
               aria-hidden="true"
             />
           </h4>
-          <button className="bg-transparent text-gray-700 font-semibold py-2 px-4 border border-gray-500  rounded">
-            ورود و ثبت نام
-          </button>
         </DrawerHeader>
         <DrawerBody>
           <div className="w-full border-b border-black mb-5">
-            <div className=" flex items-center" >
+            <div className=" flex items-center">
               <input
                 className="rounded-l-full w-full text-lg py-4 px-6 text-gray-700 leading-tight focus:outline-none"
                 id="search"
@@ -58,28 +55,6 @@ export const DrawerPage = () => {
               </div>
             </div>
           </div>
-          <div className=" w-full flex flex-col">
-            {mobileCategory.map((cat: any, index: number) => (
-              <Link key={index} to={cat.url} className="mb-5" onClick={toggle}>
-                <div
-                  className={`${cat.color} flex justify-center items-center relative min-h-mb-cat`}
-                >
-                  <span className="text-black text-xl text-bold absolute right-0 top-1/2 transform -translate-y-1/2 mr-6">
-                    {cat.name}
-                  </span>
-                  <div
-                    className={`${cat.bg} bg-contain h-mb-cat w-mb-cat mr-auto`}
-                  ></div>
-                </div>
-              </Link>
-            ))}
-            <div className="w-full border-t border-b py-8 text-xl">
-              <Link to="/sale">فروش ویژه</Link>
-            </div>
-            <div className="w-full border-t border-b py-8 text-xl">
-              <Link to="/brands">برند ها</Link>
-            </div>
-          </div>
         </DrawerBody>
       </Drawer>
     </div>
@@ -91,7 +66,7 @@ const style = {
     right: "animate-drawer-right",
   },
   orientation: {
-    right: `flex drawer-scrollbar overflow-y-scroll h-full w-10/12 md:w-80 lg:w-96 h-full right-0 mx-0 my-0 absolute focus:outline-none `,
+    right: `flex drawer-scrollbar overflow-y-scroll h-full w-full md:w-80 lg:w-96 h-full right-0 mx-0 my-0 absolute focus:outline-none `,
   },
   body: `flex-shrink flex-grow p-4 bg-white`,
   content: `relative w-full h-full flex flex-col bg-white pointer-events-auto`,
