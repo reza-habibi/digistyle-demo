@@ -3,7 +3,6 @@ import Portal from "@reach/portal";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { mobileCategory } from "../../data";
 import { Link } from "react-router-dom";
-
 export const DrawerPage = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
   const toggle = () => {
@@ -32,7 +31,7 @@ export const DrawerPage = () => {
         </DrawerHeader>
         <DrawerBody>
           <div className="w-full border-b border-black mb-5">
-            <div className=" flex items-center" >
+            <div className=" flex items-center">
               <input
                 className="rounded-l-full w-full text-lg py-4 px-6 text-gray-700 leading-tight focus:outline-none"
                 id="search"
@@ -81,6 +80,7 @@ export const DrawerPage = () => {
             </div>
           </div>
         </DrawerBody>
+        
       </Drawer>
     </div>
   );

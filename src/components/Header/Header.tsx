@@ -36,8 +36,8 @@ export default function Header() {
   return (
     <Disclosure
       as="nav"
-      className={`w-full bg-white py-10 transition-all duration-500 ${
-        scrolled ? "fixed top-0 z-10 motion-safe:animate-fade-in-down" : ""
+      className={`w-full absolute top-0 z-10 bg-transparent py-10 transition-all duration-500 ${
+        scrolled ? "fixed top-0 motion-safe:animate-fade-in-down" : ""
       }`}
     >
       <>

@@ -10,7 +10,7 @@ function classNames(...classes: string[]) {
 
 function TopHeader() {
   return (
-    <div className="w-full bg-white hidden md:block ">
+    <div className="w-full bg-transparent hidden md:block ">
       <div className="container flex  justify-between items-center h-32 mx-auto">
         <div className="flex-shrink-0 flex items-center">
           <img

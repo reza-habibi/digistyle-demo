@@ -9,7 +9,6 @@ import TopHeader from "./components/Header/TopHeader";
 function App() {
   return (
     <Router>
-      <TopHeader/>      
       <Header />
       <main className="bg-gray-200 ">
         <Route path="/product/:id" component={ProductScreen}></Route>

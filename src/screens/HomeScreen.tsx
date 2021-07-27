@@ -1,4 +1,4 @@
-import Carousel from "../components/HomeComponents/Carousel/MobileBannerCarousel";
+import Carousel from "../components/HomeComponents/MobileCarousel/MobileBannerCarousel";
 import CardCarousel from "../components/HomeComponents/CardCarousel/CardCarousel";
 import ProductCategoryCard from "../components/HomeComponents/ProductCategoryCard/ProductCategoryCard";
 import MobileCategoryHomeSection from "../components/HomeComponents/ProductCategoryCard/MobileCategoryHomeSection";
@@ -7,12 +7,12 @@ import Advantage from "../components/HomeComponents/Advantage/Advantage";
 import Brands from "../components/HomeComponents/Brands/Brands";
 import { Link } from "react-router-dom";
 import { Categories } from "../data";
-
+import DesktopCarousel from "../components/HomeComponents/DesktopMainCarousel/DesktopCarousel";
 export default function HomeScreen() {
   return (
     <div className=" mx-auto flex flex-col	 items-center min-h-screen">
       <Carousel />
-
+      <DesktopCarousel/>
       <div className="w-full lg:w-11/12 bg-white rounded-lg px-10 flex flex-wrap items-start my-5">
         <figure>
           <img src="" alt="" />

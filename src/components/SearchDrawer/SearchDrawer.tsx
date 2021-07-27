@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Portal from "@reach/portal";
-import { MenuIcon, SearchCircleIcon, SearchIcon, XIcon } from "@heroicons/react/outline";
-import { mobileCategory } from "../../data";
-import { Link } from "react-router-dom";
+import { SearchIcon, XIcon } from "@heroicons/react/outline";
 
 export const SearchDrawer = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);

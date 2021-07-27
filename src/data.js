@@ -302,3 +302,33 @@ export const brands = [
   { name:"zi",url: "/brands/zi", img: "/images/brands/zi.png" },
 
 ];
+
+
+export const DesktopBannerSlider = [
+  {
+    url: "/category/men/accessories",
+    img: "/images/desktop/main-slider.jpg",
+  },
+  {
+    url: "/category/men/clothing",
+    img: "/images/desktop/main-slider2.jpg",
+  },
+  {
+    url: "/category/men/accessories",
+    img: "/images/desktop/main-slider3.jpg",
+  },
+  {
+    url: "/category/men/accessories",
+    img: "/images/desktop/main-slider4.jpg",
+  },
+  {
+    url: "/category/men/accessories",
+    img: "/images/desktop/main-slider5.jpg",
+  },{
+    url: "/category/men/accessories",
+    img: "/images/desktop/main-slider6.jpg",
+  },{
+    url: "/category/men/accessories",
+    img: "/images/desktop/main-slider7.jpg",
+  },
+];
