@@ -1,7 +1,6 @@
 import { DrawerPage } from "./Drawer";
 import { SearchDrawer } from "../SearchDrawer/SearchDrawer";
-import { ShoppingBagIcon } from "@heroicons/react/outline";
-
+import { BasketDrawer } from "../BasketDrawer/BasketDrawer";
 function MobileHeader() {
   return (
     <div className=" w-full bg-white h-auto flex justify-between items-center lg:hidden">
@@ -16,10 +15,7 @@ function MobileHeader() {
       </div>
       <div className=" flex  items-center pl-5  sm:ml-6 sm:pr-0">
         <SearchDrawer />
-        <ShoppingBagIcon
-          className="block text-gray-500 h-10 w-10"
-          aria-hidden="true"
-        />
+        <BasketDrawer/>
       </div>
     </div>
   );

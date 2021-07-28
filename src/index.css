@@ -71,22 +71,20 @@ body {
   top: 40% !important;
 }
 
-
 #desktopCarousel > .swiper-button-prev {
   color: black;
   right: 8%;
   top: 80% !important;
 }
 
-#desktopCarousel > .swiper-button-next{
+#desktopCarousel > .swiper-button-next {
   color: black;
   right: 11%;
   top: 80% !important;
-
 }
 
-#desktopCarousel > .swiper-pagination{
-  text-align:right;
+#desktopCarousel > .swiper-pagination {
+  text-align: right;
   right: 7%;
   top: 70% !important;
 }
@@ -168,7 +166,6 @@ body {
   margin: auto;
 }
 
-
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
   width: 100%;
@@ -227,4 +224,21 @@ body {
 
 .drawer-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.collapse-arrow .collapse-title:after {
+  display: block;
+  height: 1.5rem;
+  position: absolute;
+  width: 1.5rem;
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  top: 80% !important;
+  right: 50%;
+  content: "";
+  transform-origin: 75% 75%;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px;
 }
