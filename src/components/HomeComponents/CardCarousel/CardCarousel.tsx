@@ -20,7 +20,7 @@ export default function CardCarousel() {
     <>
       <Swiper
         id="main"
-        spaceBetween={40}
+        spaceBetween={30}
         navigation={true}
         slidesPerView={"auto"}
         className="mySwiper my-4"
@@ -28,10 +28,10 @@ export default function CardCarousel() {
         {data.products.map((product: TProducts) => (
           <SwiperSlide
             key={product._id}
-            className="bg-white shadow-lg rounded-lg h-96 py-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3"
+            className="bg-white shadow-lg rounded-lg h-100 py-2 transform lg:hover:translate-y-2 lg:hover:shadow-xl transition duration-300 mb-3"
           >
-            <div className="w-full relative product-card">
-              <div className="bg-white rounded-lg h-96 p-2  mb-3">
+            <div className="w-full relative product-card group">
+              <div className="bg-white rounded-lg h-100 p-2  mb-3">
                 <figure className="mb-2">
                   <Link to={`/product/${product._id}`}>
                     <img
@@ -58,7 +58,7 @@ export default function CardCarousel() {
                       {" "}
                       {Humanize.intComma(product.price)} تومان
                     </div>
-                    <div className="card-actions flex-col bg-white rounded-lg  items-center justify-center shadow-xl absolute left-20 hidden top-28 animate-fade-in-right">
+                    <div className="card-actions group-hover:flex flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-20 left-5 lg:hidden lg:top-28 top-5 animate-fade-in-right">
                       <button className="flex justify-center items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-gray-200">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ export default function CardCarousel() {
                           />
                         </svg>
                       </button>
-                      <button className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300">
+                      <button className="rounded-full hidden md:flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8"

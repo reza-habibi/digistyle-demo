@@ -3,8 +3,9 @@ export const data = {
     {
       _id: "1",
       name: "پیراهن مردانه نایک",
-      mainCategory: "Mens",
-      category: "Shirts",
+      mainCategory: "مردانه",
+      category: "لباس مردانه",
+      subCategory: "پیراهن مردانه",
       image: "/images/products/p1.jpg",
       price: 540000,
       countInStock: 10,
@@ -17,8 +18,9 @@ export const data = {
     {
       _id: "2",
       name: "پیراهن مردانه آدیداس",
-      mainCategory: "Mens",
-      category: "Shirts",
+      mainCategory: "مردانه",
+      category: "لباس مردانه",
+      subCategory: "پیراهن مردانه",
       image: "/images/products/p2.jpg",
       price: 580000,
       countInStock: 20,
@@ -31,13 +33,14 @@ export const data = {
     {
       _id: "3",
       name: "پیراهن مردانه لاکوست",
-      mainCategory: "Mens",
-      category: "Shirts",
+      mainCategory: "مردانه",
+      category: "لباس مردانه",
+      subCategory: "پیراهن مردانه",
       image: "/images/products/p3.jpg",
       price: 800000,
       countInStock: 0,
       brand: "Lacoste",
-      brandFa:"لاکوست",
+      brandFa: "لاکوست",
       rating: 4.8,
       numReviews: 17,
       description: "اورجینال با بهترین کیفیت",
@@ -45,8 +48,9 @@ export const data = {
     {
       _id: "4",
       name: "شلوار مردانه نایک",
-      mainCategory: "Mens",
-      category: "Pants",
+      mainCategory: "مردانه",
+      category: "لباس مردانه",
+      subCategory: "شلوار مردانه",
       image: "/images/products/p4.jpg",
       price: 490000,
       countInStock: 15,
@@ -59,8 +63,9 @@ export const data = {
     {
       _id: "5",
       name: "شلوار مردانه پوما",
-      mainCategory: "Mens",
-      category: "Pants",
+      mainCategory: "مردانه",
+      category: "لباس مردانه",
+      subCategory: "شلوار مردانه",
       image: "/images/products/p5.jpg",
       price: 630000,
       countInStock: 5,
@@ -73,8 +78,9 @@ export const data = {
     {
       _id: "6",
       name: "شلوار مردانه آدیداس",
-      mainCategory: "men",
-      category: "Pants",
+      mainCategory: "مردانه",
+      category: "لباس مردانه",
+      subCategory: "شلوار مردانه",
       image: "/images/products/p6.jpg",
       price: 850000,
       countInStock: 12,
@@ -83,11 +89,13 @@ export const data = {
       rating: 4.5,
       numReviews: 15,
       description: "اورجینال با بهترین کیفیت",
-    },{
+    },
+    {
       _id: "7",
       name: "لگینگ ورزشی مردانه تکنیک پلاس 07 مدل SH-126-ME",
-      mainCategory: "men",
-      category: "men-legging",
+      mainCategory: "مردانه",
+      category: "ورزشی مردانه",
+      subCategory: "لباس ورزشی مردانه",
       image: "/images/products/men-leg-techniqueplus7.jpg",
       price: 850000,
       countInStock: 12,
@@ -96,11 +104,13 @@ export const data = {
       rating: 4,
       numReviews: 15,
       description: "اورجینال با بهترین کیفیت",
-    },{
+    },
+    {
       _id: "8",
       name: "پولوشرت ورزشی مردانه تکنیک پلاس 07 مدل TS-145-SO",
-      mainCategory: "mens",
-      category: "t-shirt",
+      mainCategory: "مردانه",
+      category: "ورزشی مردانه",
+      subCategory: "لباس ورزشی مردانه",
       image: "/images/products/men-polo-techniqueplus7.jpg",
       price: 850000,
       countInStock: 12,
@@ -109,11 +119,13 @@ export const data = {
       rating: 5,
       numReviews: 5,
       description: "اورجینال با بهترین کیفیت",
-    },{
+    },
+    {
       _id: "9",
       name: "لگینگ ورزشی مردانه تکنیک پلاس 07 مدل SH-115-KA",
-      mainCategory: "men",
-      category: "men-legging",
+      mainCategory: "مردانه",
+      category: "ورزشی مردانه",
+      subCategory: "لباس ورزشی مردانه",
       image: "/images/products/men-leg-techniqueplus7-115.jpg",
       price: 850000,
       countInStock: 12,
@@ -134,12 +146,48 @@ export const Categories = [
     subCategory: [
       {
         name: "لباس مردانه",
+        subSubCategories: [
+          {
+            name: "پیراهن",
+            url: "/category/men/men-clothing/men-shirts",
+          },
+          {
+            name: "شلوار",
+            url: "/category/men/men-clothing/men-pants",
+          },
+          {
+            name: "کت و شلوار ",
+            url: "/category/men/men-clothing/men-suits",
+          },
+          {
+            name: "هودی و سویشرت",
+            url: "/category/men/men-clothing/men-hoodies",
+          },
+          {
+            name: "تی شرت",
+            url: "/category/men/men-clothing/men-t-shirts",
+          },
+        ],
         url: "/category/men/men-clothing",
         image: "./images/product-category/category-men-clothes.jpg",
         colSpan: 3,
       },
       {
         name: "کفش مردانه",
+        subSubCategories: [
+          {
+            name: "کفش ورزشی مردانه",
+            url: "/category/men/men-shoes/men-sport-shoes",
+          },
+          {
+            name: "کفش رسمی مردانه",
+            url: "/category/men/men-shoes/men-formal-shoes",
+          },
+          {
+            name: "کفش روزمره مردانه",
+            url: "/category/men/men-shoes/men-casual-shoes",
+          },
+        ],
         url: "/category/men/men-shoes",
         image: "./images/product-category/category-men-shoes.jpg",
       },
@@ -150,7 +198,17 @@ export const Categories = [
       },
       {
         name: "ورزشی مردانه",
-        url: "/category/men/men-sport",
+        subSubCategories: [
+          {
+            name: "پوشاک ورزشی مردانه",
+            url: "/category/men/men-sports/men-sport-clothing",
+          },
+          {
+            name: "گرمکن و ست ورزشی مردانه",
+            url: "/category/men/men-sports/men-tracksuits-sets",
+          },
+        ],
+        url: "/category/men/men-sports",
         image: "./images/product-category/category-men-sports.jpg",
       },
     ],
@@ -162,12 +220,48 @@ export const Categories = [
     subCategory: [
       {
         name: "لباس زنانه",
+        subSubCategories: [
+          {
+            name: "پیراهن و لباس مجلسی زنانه",
+            url: "/category/women/women-clothing/women-dresses",
+          },
+          {
+            name: "شلوار زنانه",
+            url: "/category/women/women-clothing/women-pants",
+          },
+          {
+            name: "بلوز و شومیز زنانه",
+            url: "/category/women/women-clothing/women-shirts",
+          },
+          {
+            name: "تاپ و تونیک زنانه",
+            url: "/category/women/women-clothing/women-tops",
+          },
+          {
+            name: "تی شرت زنانه",
+            url: "/category/women/women-clothing/women-t-shirts",
+          },
+        ],
         url: "/category/women/women-clothing",
         image: "./images/product-category/category-women-clothes.jpg",
         colSpan: 3,
       },
       {
         name: "کفش زنانه",
+        subSubCategories: [
+          {
+            name: "کفش ورزشی زنانه",
+            url: "/category/women/women-shoes/women-sport-shoes",
+          },
+          {
+            name: "کفش پاشنه بلند زنانه",
+            url: "/category/men/men-shoes/women-heeled-shoes",
+          },
+          {
+            name: "کفش روزمره زنانه",
+            url: "/category/wo/wo-shoes/wo-casual-shoes",
+          },
+        ],
         url: "/category/women/women-shoes",
         image: "./images/product-category/category-women-shoes.jpg",
       },
@@ -179,7 +273,17 @@ export const Categories = [
       },
       {
         name: "ورزشی زنانه",
-        url: "/category/women/women-sport",
+        subSubCategories: [
+          {
+            name: "پوشاک ورزشی زنانه",
+            url: "/category/women/women-sports/women-sport-clothing",
+          },
+          {
+            name: "گرمکن و ست ورزشی زنانه",
+            url: "/category/women/women-sports/women-tracksuits-sets",
+          },
+        ],
+        url: "/category/women/women-sports",
         image: "./images/product-category/category-women-sports.jpg",
       },
     ],
@@ -294,15 +398,21 @@ export const MobileBannerSlider = [
 ];
 
 export const brands = [
-  { name:"mango",url: "/brands/mango", img: "/images/brands/mango.png" },
-  { name:"geox",url: "/brands/geox", img: "/images/brands/geox.png" },
-  { name:"adidas",url: "/brands/adidas", img: "/images/brands/adidas.png" },
-  { name:"reebook",url: "/brands/reebook", img: "/images/brands/reebook.png" },
-  { name:"superdry",url: "/brands/superdry", img: "/images/brands/superdry.png" },
-  { name:"zi",url: "/brands/zi", img: "/images/brands/zi.png" },
-
+  { name: "mango", url: "/brands/mango", img: "/images/brands/mango.png" },
+  { name: "geox", url: "/brands/geox", img: "/images/brands/geox.png" },
+  { name: "adidas", url: "/brands/adidas", img: "/images/brands/adidas.png" },
+  {
+    name: "reebook",
+    url: "/brands/reebook",
+    img: "/images/brands/reebook.png",
+  },
+  {
+    name: "superdry",
+    url: "/brands/superdry",
+    img: "/images/brands/superdry.png",
+  },
+  { name: "zi", url: "/brands/zi", img: "/images/brands/zi.png" },
 ];
-
 
 export const DesktopBannerSlider = [
   {
@@ -324,11 +434,176 @@ export const DesktopBannerSlider = [
   {
     url: "/category/men/accessories",
     img: "/images/desktop/main-slider5.jpg",
-  },{
+  },
+  {
     url: "/category/men/accessories",
     img: "/images/desktop/main-slider6.jpg",
-  },{
+  },
+  {
     url: "/category/men/accessories",
     img: "/images/desktop/main-slider7.jpg",
+  },
+];
+
+export const AllCategories = [
+  {
+    name: "پیراهن مردانه",
+    url: "/category/men/men-clothing/men-shirts",
+  },
+  {
+    name: "شلوار مردانه",
+    url: "/category/men/men-clothing/men-pants",
+  },
+  {
+    name: "کت و شلوار مردانه",
+    url: "/category/men/men-clothing/men-suits",
+  },
+  {
+    name: "هودی و سویشرت مردانه",
+    url: "/category/men/men-clothing/men-hoodies",
+  },
+  {
+    name: "تی شرت مردانه",
+    url: "/category/men/men-clothing/men-t-shirts",
+  },
+  {
+    name: "کفش ورزشی مردانه",
+    url: "/category/men/men-shoes/men-sport-shoes",
+  },
+  {
+    name: "کفش رسمی مردانه",
+    url: "/category/men/men-shoes/men-formal-shoes",
+  },
+  {
+    name: "کفش روزمره مردانه",
+    url: "/category/men/men-shoes/men-casual-shoes",
+  },
+  {
+    name: "پوشاک ورزشی مردانه",
+    url: "/category/men/men-sports/men-sport-clothing",
+  },
+  {
+    name: "گرمکن و ست ورزشی مردانه",
+    url: "/category/men/men-sports/men-tracksuits-sets",
+  },
+  {
+    name: "پیراهن و لباس مجلسی زنانه",
+    url: "/category/women/women-clothing/women-dresses",
+  },
+  {
+    name: "شلوار زنانه",
+    url: "/category/women/women-clothing/women-pants",
+  },
+  {
+    name: "بلوز و شومیز زنانه",
+    url: "/category/women/women-clothing/women-shirts",
+  },
+  {
+    name: "تاپ و تونیک زنانه",
+    url: "/category/women/women-clothing/women-tops",
+  },
+  {
+    name: "تی شرت زنانه",
+    url: "/category/women/women-clothing/women-t-shirts",
+  },
+  {
+    name: "کفش ورزشی زنانه",
+    url: "/category/women/women-shoes/women-sport-shoes",
+  },
+  {
+    name: "کفش پاشنه بلند زنانه",
+    url: "/category/men/men-shoes/women-heeled-shoes",
+  },
+  {
+    name: "کفش روزمره زنانه",
+    url: "/category/wo/wo-shoes/wo-casual-shoes",
+  },
+  {
+    name: "مردانه",
+    url: "/category/men",
+  },
+  {
+    name: "لباس مردانه",
+    url: "/category/men/men-clothing",
+  },
+  {
+    name: "کفش مردانه",
+    url: "/category/men/men-shoes",
+  },
+  {
+    name: "اکسسوری مردانه",
+    url: "/category/men/men-accessories",
+  },
+  {
+    name: "ورزشی مردانه",
+    url: "/category/men/men-sport",
+  },
+  {
+    name: "زنانه",
+    url: "/category/women",
+  },
+  {
+    name: "لباس زنانه",
+    url: "/category/women/women-clothing",
+  },
+  {
+    name: "کفش زنانه",
+    url: "/category/women/women-shoes",
+  },
+  {
+    name: "اکسسوری زنانه",
+    url: "/category/women/women-accessories",
+  },
+  {
+    name: "ورزشی زنانه",
+    url: "/category/women/women-sport",
+  },
+  {
+    name: "پوشاک ورزشی زنانه",
+    url: "/category/women/women-sports/women-sport-clothing",
+  },
+  {
+    name: "گرمکن و ست ورزشی زنانه",
+    url: "/category/women/women-sports/women-tracksuits-sets",
+  },
+  {
+    name: "بچگانه",
+    url: "/category/kids",
+  },
+  {
+    name: "لباس نوزاد",
+    url: "/category/kids/baby-clothing",
+  },
+  {
+    name: "لباس دخترانه",
+    url: "/category/kids/girl-clothing",
+  },
+  {
+    name: "لباس پسرانه",
+    url: "/category/kids/boy-clothing",
+  },
+  {
+    name: "زیبایی و سلامت ",
+    url: "/category/personal-appliance-shop",
+  },
+  {
+    name: "لوازم آرایشی",
+    url: "/category/personal-appliance-shop/category-beauty",
+  },
+  {
+    name: "لوازم بهداشتی",
+    url: "/category/personal-appliance-shop/personal-care",
+  },
+  {
+    name: "لوازم شخصی برقی",
+    url: "/category/personal-appliance-shop/personal-electrical-care",
+  },
+  {
+    name: "عطر",
+    url: "/category/personal-appliance-shop/perfume-all",
+  },
+  {
+    name: "ابزار سلامت",
+    url: "/category/personal-appliance-shop/boy-clothing",
   },
 ];

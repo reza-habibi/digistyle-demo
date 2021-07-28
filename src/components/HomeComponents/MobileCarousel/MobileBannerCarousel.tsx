@@ -15,7 +15,6 @@ export default function Carousel() {
     <>
       <Swiper
         autoplay={{ delay: 8000 }}
-        spaceBetween={40}
         slidesPerView={"auto"}
         className="mySwiper sm:hidden w-full mt-5 bg-white"
       >

@@ -168,9 +168,6 @@ body {
   margin: auto;
 }
 
-.product-card:hover .card-actions {
-  display: flex;
-}
 
 .react-tabs {
   -webkit-tap-highlight-color: transparent;

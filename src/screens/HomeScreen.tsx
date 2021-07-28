@@ -64,7 +64,7 @@ export default function HomeScreen() {
         <Advantage />
       </div>
 
-      <div className=" w-full bg-white mt-10">
+      <div className=" w-full bg-white mt-10 hidden lg:block">
         <div className="container grid grid-cols-12">
           {Categories.map((category: any, index: number) => (
             <div

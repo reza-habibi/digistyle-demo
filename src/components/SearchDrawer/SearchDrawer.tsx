@@ -1,17 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Portal from "@reach/portal";
 import { SearchIcon, XIcon } from "@heroicons/react/outline";
+import { AllCategories } from "../../data";
+import { Link } from "react-router-dom";
+import { TAllCat } from "../../type.ds";
 
 export const SearchDrawer = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
+  const [filter, setFilter] = useState("");
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setFilter(e.currentTarget.value);
+  };
+
+  let searchText = AllCategories.filter((item: any) =>
+    item.name.includes(filter)
+  );
   return (
     <div className="m-8">
       <SearchIcon
         onClick={toggle}
-        className="block h-10 w-10"
+        className="block h-10 w-10 text-gray-500"
         aria-hidden="true"
       />
 
@@ -29,29 +42,50 @@ export const SearchDrawer = () => {
           <div className="w-full border-b border-black mb-5">
             <div className=" flex items-center">
               <input
-                className="rounded-l-full w-full text-lg py-4 px-6 text-gray-700 leading-tight focus:outline-none"
+                className=" w-full text-lg py-4 px-6 text-gray-700 leading-tight focus:outline-none focus:bg-gray-200"
                 id="search"
                 type="text"
                 placeholder="جستجو در همه دسته بندی ها"
+                value={filter}
+                onChange={handleSearch}
               />
 
               <div className="p-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-700"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
+                <SearchIcon
+                  className="block h-8 w-8 text-gray-500"
+                  aria-hidden="true"
+                />
               </div>
             </div>
+          </div>
+          <div className="flex flex-col justify-center items-start ">
+            {searchText.length === 0 ? (
+              <div
+                className="bg-red-100 w-full border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                role="alert"
+              >
+                <span className="block sm:inline">
+                  دسته بندی مورد نظر شما یافت نشد{" "}
+                </span>
+              </div>
+            ) : (
+              searchText.map((item: any, index: number) => {
+                if (filter !== "") {
+                  return (
+                    <Link
+                      key={index}
+                      to={item.url}
+                      className="w-full border-b mb-4 pb-5"
+                      onClick={toggle}
+                    >
+                      <span className="text-xl">{item.name}</span>
+                    </Link>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            )}
           </div>
         </DrawerBody>
       </Drawer>
@@ -140,4 +174,7 @@ function DrawerHeader({ children }: any) {
 }
 function DrawerBody({ children }: any) {
   return <div className={style.body}>{children}</div>;
+}
+function e(e: any): void {
+  throw new Error("Function not implemented.");
 }

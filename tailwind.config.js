@@ -100,6 +100,7 @@ module.exports = {
       },
       height: {
         "mb-cat": "96px",
+        100: "28rem",
       },
       backgroundImage: (theme) => ({
         women: "url('../src/assets/images/mobile/category-women.png')",
