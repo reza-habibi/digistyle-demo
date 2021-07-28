@@ -5,6 +5,7 @@ import ProductScreen from "./screens/ProductScreen";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/MobileFooter";
 import MobileHeader from "./components/Header/MobileHeader";
+import DesktopFooter from "./components/Footer/DesktopFooter";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
       <Footer />
+      <DesktopFooter/>
     </Router>
   );
 }

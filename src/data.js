@@ -319,7 +319,7 @@ export const Categories = [
       {
         name: "لوازم آرایشی",
         url: "/category/personal-appliance-shop/category-beauty",
-        image: "./images/product-category/beauty.jpg",
+        image: "./images/product-category/category-beauty.jpg",
         colSpan: 4,
       },
       {

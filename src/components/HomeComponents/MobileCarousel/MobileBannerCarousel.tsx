@@ -16,12 +16,12 @@ export default function Carousel() {
       <Swiper
         autoplay={{ delay: 8000 }}
         slidesPerView={"auto"}
-        className="mySwiper sm:hidden w-full mt-5 bg-white"
+        className="mySwiper lg:hidden w-full mt-5 bg-white"
       >
         {MobileBannerSlider.map((category: any, index: number) => (
           <SwiperSlide
             key={index}
-            className=" rounded-lg h-96 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 mb-3"
+            className=" rounded-lg h-auto p-2 transition duration-300 mb-3"
           >
             <figure className="">
               <Link to={category.url}>

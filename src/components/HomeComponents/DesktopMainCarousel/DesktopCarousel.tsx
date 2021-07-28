@@ -19,7 +19,7 @@ export default function DesktopCarousel() {
         navigation={true}
         pagination={true}
         loop={true}
-        className="mySwiper hidden sm:block h-full w-full "
+        className="mySwiper hidden lg:block h-full w-full "
       >
         {DesktopBannerSlider.map((category: any, index: number) => (
           <SwiperSlide key={index} className=" rounded-lg h-auto">

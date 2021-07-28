@@ -12,7 +12,7 @@ export default function HomeScreen() {
   return (
     <div className=" mx-auto flex flex-col	 items-center min-h-screen">
       <Carousel />
-      <DesktopCarousel/>
+      <DesktopCarousel />
       <div className="w-full lg:w-11/12 bg-white rounded-lg px-10 flex flex-wrap items-start my-5">
         <figure>
           <img src="" alt="" />
@@ -50,18 +50,16 @@ export default function HomeScreen() {
         <CardCarousel />
       </div>
 
-      <div className="w-full md:hidden bg-white md:rounded-lg flex flex-wrap my-5">
+      <div className="w-full lg:hidden bg-white md:rounded-lg flex flex-wrap my-5">
         <div className=" w-full flex justify-between items-center px-10  my-5">
-          <span className="text-lg text-gray-700">برندهای برتر</span>
-          <Link to="/brands" className="text-xl text-pelorous">
+          <span className="text-xl sm:text-2xl md:text-3xl text-gray-700">
+            برندهای برتر
+          </span>
+          <Link to="/brands" className="text-2xl  md:text-3xl text-pelorous">
             مشاهده همه
           </Link>
         </div>
         <Brands />
-      </div>
-
-      <div className="w-full  hidden md:block bg-white rounded-lg sm:px-10 flex flex-wrap items-start pt-6 my-5">
-        <Advantage />
       </div>
 
       <div className=" w-full bg-white mt-10 hidden lg:block">
@@ -91,6 +89,10 @@ export default function HomeScreen() {
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="w-full  hidden md:block bg-white rounded-lg sm:px-10 flex flex-wrap items-start pt-6 my-5">
+          <Advantage />
         </div>
       </div>
     </div>

@@ -91,7 +91,7 @@ const style = {
     right: "animate-drawer-right",
   },
   orientation: {
-    right: `flex drawer-scrollbar overflow-y-scroll h-full w-10/12 md:w-80 lg:w-96 h-full right-0 mx-0 my-0 absolute focus:outline-none `,
+    right: `flex drawer-scrollbar overflow-y-scroll h-full w-10/12 md:w-8/12  h-full right-0 mx-0 my-0 absolute focus:outline-none `,
   },
   body: `flex-shrink flex-grow p-4 bg-white`,
   content: `relative w-full h-full flex flex-col bg-white pointer-events-auto`,
