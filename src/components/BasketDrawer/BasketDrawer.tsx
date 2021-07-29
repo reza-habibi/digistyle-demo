@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Portal from "@reach/portal";
 import { ShoppingBagIcon, XIcon } from "@heroicons/react/outline";
-import { Link } from "react-router-dom";
 import Advantage from "../HomeComponents/Advantage/Advantage";
 
 export const BasketDrawer = () => {
@@ -57,7 +56,7 @@ const style = {
     right: "animate-drawer-right",
   },
   orientation: {
-    right: `flex drawer-scrollbar overflow-y-scroll h-full w-full md:w-80 lg:w-96 h-full right-0 mx-0 my-0 absolute focus:outline-none `,
+    right: `flex drawer-scrollbar overflow-y-scroll h-full w-full md:w-1/3 lg:w-1/3 h-full right-0 mx-0 my-0 absolute focus:outline-none `,
   },
   body: `flex-shrink flex-grow p-4 bg-white`,
   content: `relative w-full h-full flex flex-col bg-white pointer-events-auto`,
@@ -133,7 +132,4 @@ function DrawerHeader({ children }: any) {
 }
 function DrawerBody({ children }: any) {
   return <div className={style.body}>{children}</div>;
-}
-function e(e: any): void {
-  throw new Error("Function not implemented.");
 }

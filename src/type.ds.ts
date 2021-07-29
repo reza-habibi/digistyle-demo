@@ -20,12 +20,9 @@ export type TProducts = {
 export type TNavigation = {
   name: string;
   href: string;
-  current: boolean;
 }[];
 
 export type TSub = {
   name: string;
   url: string;
 };
-
-export type TAllCat = { name: string; url: string };

@@ -1,12 +1,13 @@
 import { Disclosure } from "@headlessui/react";
 import { TNavigation } from "../../type.ds";
 import { useEffect, useState } from "react";
-
-
+import { ShoppingBagIcon, SearchIcon } from "@heroicons/react/outline";
+import { DesktopSearchDrawer } from "../SearchDrawer/DesktopSearchDrawer";
 const navigation: TNavigation = [
-  { name: "خانه", href: "/", current: true },
-  { name: "محصولات", href: "/Products", current: false },
-  { name: "تماس با ما", href: "#", current: false },
+  { name: "زنانه", href: "/category/women" },
+  { name: "مردانه", href: "/category/men" },
+  { name: "بچگانه", href: "/category/kids" },
+  { name: "زیبایی و سلامت", href: "/category/beauty" },
 ];
 
 function classNames(...classes: string[]) {
@@ -42,24 +43,45 @@ export default function Header() {
       <>
         <div className=" mx-auto container">
           <div className="relative flex items-center justify-between h-auto">
-            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-              <div className="hidden sm:block sm:ml-6">
-                <div className="flex space-x-4">
+            <div className="w-full flex flex-col items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="top w-full grid grid-cols-3">
+                <div className="w-full basket flex justify-start items-center">
+                  <ShoppingBagIcon
+                    className="block h-10 w-10 text-black"
+                    aria-hidden="true"
+                  />
+                  <span className="text-black mr-5 text-xl">وارد شوید</span>
+                </div>
+                <div className="logo  w-full border-b border-black flex justify-center items-center pb-5">
+                  <figure>
+                    <img src="./images/svg/logo.svg" alt="logo" className="w-80 h-auto" />
+                  </figure>
+                </div>
+                <div className="search w-full flex justify-end">
+                  <DesktopSearchDrawer/>
+                </div>
+              </div>
+              <div className="nav w-full flex justify-center items-center mt-5">
+                <div className="flex space-x-4 ml-5 border-l border-black">
                   {navigation.map((item, index) => (
                     <a
                       key={index}
                       href={item.href}
                       className={classNames(
-                        item.current
-                          ? " text-blue-500 mx-2 "
-                          : "text-gray-700 hover:text-blue-500 hover:text-white",
-                        "px-5 py-2 rounded-md text-md font-medium"
+                        "text-gray-900 hover:text-black font-bold px-5 py-2 rounded-md text-xl font-medium"
                       )}
-                      aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
                     </a>
                   ))}
+                </div>
+                <div>
+                  <a
+                    href="/sale"
+                    className="text-red-500 font-bold hover:text-black px-5 py-2 rounded-md text-xl font-medium"
+                  >
+                    فروش ویژه
+                  </a>
                 </div>
               </div>
             </div>

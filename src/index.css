@@ -242,3 +242,7 @@ body {
   transform: rotate(45deg);
   box-shadow: 2px 2px;
 }
+
+.product-card:hover .card-actions{
+  display: flex;
+}

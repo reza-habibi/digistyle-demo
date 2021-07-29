@@ -88,7 +88,7 @@ function Footer() {
             کلیه حقوقو این وبسایت متعلق به
           </span>
           <span className="text-lg text-gray-400 w-full text-center block">
-            <a href="http://mrhabibi.ir" target="_blank">
+            <a href="http://mrhabibi.ir" target="_blank" rel="noreferrer">
               محمدرضا حبیبی{" "}
             </a>
             می باشد و به هیچکسم مربوطی نیست .

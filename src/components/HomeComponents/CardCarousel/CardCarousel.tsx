@@ -30,7 +30,7 @@ export default function CardCarousel() {
             key={product._id}
             className="bg-white shadow-lg rounded-lg h-100 py-2 transform lg:hover:translate-y-2 lg:hover:shadow-xl transition duration-300 mb-3"
           >
-            <div className="w-full relative product-card group">
+            <div className="w-full relative product-card">
               <div className="bg-white rounded-lg h-100 p-2  mb-3">
                 <figure className="mb-2">
                   <Link to={`/product/${product._id}`}>
@@ -58,7 +58,7 @@ export default function CardCarousel() {
                       {" "}
                       {Humanize.intComma(product.price)} تومان
                     </div>
-                    <div className="card-actions group-hover:flex flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-20 left-5 lg:hidden lg:top-28 top-5 animate-fade-in-right">
+                    <div className="card-actions flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-20 left-5 lg:hidden lg:top-28 top-5 animate-fade-in-right">
                       <button className="flex justify-center items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-gray-200">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
