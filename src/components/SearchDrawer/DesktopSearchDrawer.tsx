@@ -166,7 +166,6 @@ function Drawer({ children, isOpen, toggle }: any) {
               ref={ref}
               tabIndex={-1}
               aria-modal={true}
-              role="dialogue"
               className={style.orientation.top}
             >
               <div className={`${style.animation.top} ${style.content}`}>

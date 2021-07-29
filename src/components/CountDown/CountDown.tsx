@@ -30,7 +30,7 @@ const CountDown = () => {
 
   return (
     <div>
-      <p>{`${hrs.toString().padStart(2, "0")}:${mins
+      <p className="text-red-500 text-5xl">{`${hrs.toString().padStart(2, "0")}:${mins
         .toString()
         .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`}</p>
     </div>

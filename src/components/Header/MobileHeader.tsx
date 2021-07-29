@@ -8,7 +8,7 @@ function MobileHeader() {
         <DrawerPage />
         <img
           className="block h-6 w-auto"
-          src="/images/svg/logo.svg"
+          src="../images/svg/logo.svg"
           alt="Logo"
         />
         

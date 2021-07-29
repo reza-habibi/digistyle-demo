@@ -135,6 +135,21 @@ export const data = {
       numReviews: 10,
       description: "اورجینال با بهترین کیفیت",
     },
+    {
+      _id: "10",
+      name: "کفش پیاده روی مردانه آدیداس مدل alpha bounce",
+      mainCategory: "مردانه",
+      category: "کفش مردانه",
+      subCategory: "ورزشی مردانه",
+      image: "/images/products/adidas-running.jpg",
+      price: 2370000,
+      countInStock: 12,
+      brand: "Adidas",
+      brandFa: "آدیداس",
+      rating: 4.5,
+      numReviews: 15,
+      description: "اورجینال با بهترین کیفیت",
+    },
   ],
 };
 

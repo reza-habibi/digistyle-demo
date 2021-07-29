@@ -1,8 +1,11 @@
 import { Disclosure } from "@headlessui/react";
 import { TNavigation } from "../../type.ds";
 import { useEffect, useState } from "react";
-import { ShoppingBagIcon, SearchIcon } from "@heroicons/react/outline";
+import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { DesktopSearchDrawer } from "../SearchDrawer/DesktopSearchDrawer";
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+
 const navigation: TNavigation = [
   { name: "زنانه", href: "/category/women" },
   { name: "مردانه", href: "/category/men" },
@@ -15,6 +18,10 @@ function classNames(...classes: string[]) {
 }
 
 export default function Header() {
+
+  const location = useLocation()
+
+  console.log(location)
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -36,7 +43,7 @@ export default function Header() {
   return (
     <Disclosure
       as="nav"
-      className={`w-full hidden lg:block absolute top-0 z-10 bg-transparent py-10 transition-all duration-500 ${
+      className={`w-full hidden lg:block ${location.pathname==="/"?"absolute top-0 z-10 bg-transparent":"relative bg-white"}  py-10 transition-all duration-500 ${
         scrolled ? "fixed top-0 motion-safe:animate-fade-in-down" : ""
       }`}
     >
@@ -53,9 +60,11 @@ export default function Header() {
                   <span className="text-black mr-5 text-xl">وارد شوید</span>
                 </div>
                 <div className="logo  w-full border-b border-black flex justify-center items-center pb-5">
+                  <Link to="/">
                   <figure>
-                    <img src="./images/svg/logo.svg" alt="logo" className="w-80 h-auto" />
+                    <img src="../images/svg/logo.svg" alt="logo" className="w-80 h-auto" />
                   </figure>
+                  </Link>
                 </div>
                 <div className="search w-full flex justify-end">
                   <DesktopSearchDrawer/>
