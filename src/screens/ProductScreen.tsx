@@ -36,6 +36,12 @@ export default function ProductScreen(props: {
         <div className="col-2">
           <img className="large" src={product.image} alt={product.name}></img>
         </div>
+        <figure>
+          <img
+            src={`../images/product/pp-brands/${product.brand}.png`}
+            alt=""
+          />
+        </figure>
         <div className="col-1">
           <ul>
             <li>

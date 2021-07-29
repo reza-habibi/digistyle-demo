@@ -75,12 +75,14 @@ body {
   color: black;
   right: 8%;
   top: 80% !important;
+  z-index: 1000;
 }
 
 #desktopCarousel > .swiper-button-next {
   color: black;
   right: 11%;
   top: 80% !important;
+  z-index: 1000;
 }
 
 #desktopCarousel > .swiper-pagination {

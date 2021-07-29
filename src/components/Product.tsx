@@ -20,6 +20,8 @@ export default function Product(props: { product: TProducts }) {
             />
           </Link>
         </figure>
+        <div>
+        </div>
         <div className="rounded-lg p-4 bg-white flex flex-col">
           <div>
             <Link to={`/product/${product._id}`}>

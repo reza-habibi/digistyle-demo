@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import DesktopCarousel from "../components/HomeComponents/DesktopMainCarousel/DesktopCarousel";
 import CategoryLinks from "../components/HomeComponents/CategoryLinks/CategoryLinks";
 import DesktopBrands from "../components/HomeComponents/Brands/DesktopBrands";
+import { FaArrowLeft } from "react-icons/fa";
 export default function HomeScreen() {
   return (
     <div className=" mx-auto flex flex-col gap-y-20 items-center min-h-screen">
@@ -81,7 +82,17 @@ export default function HomeScreen() {
       </div>
 
       <div className="w-full hidden lg:block">
-        <DesktopBrands/>
+        <div className="w-10/12 mx-auto flex justify-between items-center mb-5">
+          <span className="text-gray-900 text-4xl">
+            محــبوبــــ‌ترینــ بــرنــدها
+          </span>
+          <span className="flex ">
+            <span className="text-gray-700 text-2xl">مشاهده همه برندها</span>
+            <FaArrowLeft className="text-gray-700 mr-3" />
+          </span>
+        </div>
+        <DesktopBrands brandFilter={"adidas"} direction={"right"} />
+        <DesktopBrands brandFilter={"nike"} direction={"left"} />
       </div>
 
       <div className="w-full lg:hidden bg-white md:rounded-lg flex flex-wrap ">
@@ -96,7 +107,14 @@ export default function HomeScreen() {
         <Brands />
       </div>
 
-      <div className=" w-full bg-white mt-10 hidden lg:block">
+      <div className=" w-10/12 mx-auto hidden lg:block">
+        <figure>
+          <img src="../images/desktop/gift-banner.png" alt="banner" />
+        </figure>
+      </div>
+
+
+      <div className=" w-full bg-white hidden lg:block">
         <CategoryLinks />
 
         <div className="w-full  hidden md:block bg-white rounded-lg sm:px-10 flex flex-wrap items-start pt-6 ">
