@@ -10,6 +10,7 @@ import Humanize from "humanize-plus";
 
 import CardCarousel from "../HomeComponents/CardCarousel/CardCarousel";
 import Advantage from "../Advantage/Advantage";
+import ProductFeatureTab from "./ProductFeatureTab/ProductFeatureTab";
 
 export default function DesktopSingleProduct({ product }: any) {
   const [scrolled, setScrolled] = useState(false);
@@ -49,8 +50,8 @@ export default function DesktopSingleProduct({ product }: any) {
     );
   }
   return (
-    <>
-      <div className="product w-4/5 bg-white flex flex-col mx-auto my-5">
+    <div className="space-y-20">
+      <div className="product w-4/5 bg-white flex flex-col mx-auto mt-5">
         <div className="w-full grid grid-cols-2 ">
           <div className="w-full flex justify-center">
             <figure>
@@ -99,6 +100,10 @@ export default function DesktopSingleProduct({ product }: any) {
           <CardCarousel />
         </div>
       </div>
-    </>
+
+      <div className="w-4/5 mx-auto bg-white">
+        <ProductFeatureTab />
+      </div>
+    </div>
   );
 }
