@@ -21,7 +21,6 @@ export default function Header() {
 
   const location = useLocation()
 
-  console.log(location)
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -44,7 +43,7 @@ export default function Header() {
     <Disclosure
       as="nav"
       className={`w-full hidden lg:block ${location.pathname==="/"?"absolute top-0 z-10 bg-transparent":"relative bg-white"}  py-10 transition-all duration-500 ${
-        scrolled ? "fixed top-0 motion-safe:animate-fade-in-down" : ""
+        scrolled ? "fixed top-0 motion-safe:animate-fade-in-down " : ""
       }`}
     >
       <>

@@ -3,7 +3,7 @@ import CardCarousel from "../components/HomeComponents/CardCarousel/CardCarousel
 import ProductCategoryCard from "../components/HomeComponents/ProductCategoryCard/ProductCategoryCard";
 import MobileCategoryHomeSection from "../components/HomeComponents/ProductCategoryCard/MobileCategoryHomeSection";
 import CountDown from "../components/CountDown/CountDown";
-import Advantage from "../components/HomeComponents/Advantage/Advantage";
+import Advantage from "../components/Advantage/Advantage";
 import Brands from "../components/HomeComponents/Brands/Brands";
 import { Link } from "react-router-dom";
 import DesktopCarousel from "../components/HomeComponents/DesktopMainCarousel/DesktopCarousel";
@@ -15,18 +15,18 @@ export default function HomeScreen() {
     <div className=" mx-auto flex flex-col gap-y-20 items-center min-h-screen">
       <Carousel />
       <DesktopCarousel />
-      <div className="w-full grid grid-cols-12 bg-white  px-10 flex flex-wrap items-start ">
-        <div className="col-span-2 h-full flex flex-col justify-around items-center">
+      <div className="w-full md:grid md:grid-cols-12 flex-col bg-white  px-10 flex flex-wrap items-start ">
+        <div className="md:col-span-2  mt-5 w-full flex md:flex-col items-center justify-around h-full">
           <figure>
             <img src="/images/svg/sale.svg" alt="hot-sale" />
           </figure>
           <CountDown />
 
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button className="hidden md:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             همه محصولات
           </button>
         </div>
-        <div className="col-span-9">
+        <div className="md:col-span-9 w-full">
           <CardCarousel />
         </div>
       </div>
@@ -36,9 +36,9 @@ export default function HomeScreen() {
         <MobileCategoryHomeSection />
       </div>
 
-      <div className="w-full grid grid-cols-12 bg-white  px-10 flex flex-wrap items-start ">
-        <div className="col-span-2  mt-5 w-full flex flex-col items-center justify-around h-full">
-          <span className="text-gray-700 text-6xl leading-tight text-center ">
+      <div className="w-full md:grid md:grid-cols-12 flex-col bg-white  px-10 flex flex-wrap items-start ">
+        <div className="md:col-span-2  mt-5 w-full flex md:flex-col items-center justify-around h-full">
+        <span className="text-gray-700 md:text-6xl leading-tight md:text-center ">
             {" "}
             پربــازدیـد تریـن‌های اخــیــــــــر
           </span>
@@ -47,7 +47,9 @@ export default function HomeScreen() {
             مشاهده همه
           </button>
         </div>
-        <CardCarousel />
+        <div className="md:col-span-10 w-full">
+          <CardCarousel />
+        </div>
       </div>
 
       <div className="w-full md:hidden bg-white rounded-lg px-10 flex flex-wrap items-start pt-6 ">
@@ -67,9 +69,9 @@ export default function HomeScreen() {
         </Link>
       </div>
 
-      <div className="w-full grid grid-cols-12 bg-white  px-10 flex flex-wrap items-start ">
-        <div className="col-span-2  mt-5 w-full flex flex-col items-center justify-around h-full">
-          <span className="text-gray-700 text-6xl leading-tight text-center ">
+      <div className="w-full md:grid md:grid-cols-12 flex-col bg-white  px-10 flex flex-wrap items-start ">
+        <div className="md:col-span-2  mt-5 w-full flex md:flex-col items-center justify-around h-full">
+          <span className="text-gray-700 md:text-6xl leading-tight md:text-center ">
             {" "}
             پرفـــروش تریـن‌های اخــیــــــــر
           </span>
@@ -78,7 +80,9 @@ export default function HomeScreen() {
             مشاهده همه
           </button>
         </div>
-        <CardCarousel />
+        <div className="md:col-span-10 w-full">
+          <CardCarousel />
+        </div>
       </div>
 
       <div className="w-full hidden lg:block">
@@ -112,7 +116,6 @@ export default function HomeScreen() {
           <img src="../images/desktop/gift-banner.png" alt="banner" />
         </figure>
       </div>
-
 
       <div className=" w-full bg-white hidden lg:block">
         <CategoryLinks />

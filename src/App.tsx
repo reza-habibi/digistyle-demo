@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Header />
       <MobileHeader />
-      <main className="bg-gray-200 ">
+      <main>
         <Route path="/product/:id" component={ProductScreen}></Route>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function DesktopFooter() {
   return (
-    <div className="w-full bg-white hidden lg:block pt-10 h-auto">
+    <footer className="w-full bg-white hidden lg:block pt-10 h-auto">
       <div className="w-11/12 mx-auto">
         <div className=" space-y-3 divide-y divide-gray-400 divide-opacity-50">
           <div className="log w-full relative mb-9">
@@ -189,7 +189,7 @@ function DesktopFooter() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 

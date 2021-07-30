@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Portal from "@reach/portal";
 import { ShoppingBagIcon, XIcon } from "@heroicons/react/outline";
-import Advantage from "../HomeComponents/Advantage/Advantage";
+import Advantage from "../Advantage/Advantage";
 
 export const BasketDrawer = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);

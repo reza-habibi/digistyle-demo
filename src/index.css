@@ -228,7 +228,7 @@ body {
   display: none;
 }
 
-.collapse-arrow .collapse-title:after {
+footer .collapse-arrow .collapse-title:after {
   display: block;
   height: 1.5rem;
   position: absolute;
@@ -239,6 +239,23 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   top: 80% !important;
   right: 50%;
+  content: "";
+  transform-origin: 75% 75%;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px;
+}
+
+.product .collapse-arrow .collapse-title:after {
+  display: block;
+  height: 1rem;
+  position: absolute;
+  width: 1rem;
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  top: 5% !important;
+  right: 90%;
   content: "";
   transform-origin: 75% 75%;
   transform: rotate(45deg);

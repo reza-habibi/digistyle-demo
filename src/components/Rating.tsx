@@ -62,7 +62,7 @@ export default function Rating(props: { rating: number; numReviews: number; }) {
           ></i>
         </span>
       </div>
-      <span className="mr-3 text-xl text-white">{numReviews + "نظر"}</span>
+      <span className="mr-3 text-xl text-gray-500">{numReviews + "نظر"}</span>
     </div>
   );
 }
