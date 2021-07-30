@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Rating from "../Rating";
+import Rating from "../Rating/Rating";
 import {
   ChevronRightIcon,
   HeartIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/outline";
-import Humanize from "humanize-plus"
+import Humanize from "humanize-plus";
 import CardCarousel from "../HomeComponents/CardCarousel/CardCarousel";
 import Advantage from "../Advantage/Advantage";
 
@@ -22,7 +22,7 @@ export default function MobileSingleProduct({ product }: any) {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
   });
   const history = useHistory();
   if (!product) {
@@ -59,10 +59,10 @@ export default function MobileSingleProduct({ product }: any) {
         >
           <ChevronRightIcon
             className="block w-12 h-12 md:w-16 md:h-16"
-            aria-label="true"
+            aria-hidden="true"
             onClick={() => history.goBack()}
           />
-          <HeartIcon className="block w-12 h-12" aria-label="true" />
+          <HeartIcon className="block w-12 h-12" aria-hidden="true" />
         </div>
         <div className="w-full flex flex-col space-y-3 divide-y divide-gray-400 divide-opacity-50">
           <figure className="w-full flex justify-center">
@@ -76,14 +76,16 @@ export default function MobileSingleProduct({ product }: any) {
             </div>
             <span className="text-gray-700 text-2xl">{product.name}</span>
             <div className="price w-full text-left">
-              <span className="w-full  text-2xl">{Humanize.intComma(product.price)} تومان</span>
+              <span className="w-full  text-2xl">
+                {Humanize.intComma(product.price)} تومان
+              </span>
             </div>
             <div className="w-1/2 h-24 mx-auto hidden md:block">
               <div className="flex justify-center items-center bg-pink-500 hover:bg-pink-900 text-white-900 font-semibold hover:text-white py-2 px-4 ">
                 <span className=" w-auto ">
                   <ShoppingBagIcon
                     className="text-white block w-12 h-12"
-                    aria-label="true"
+                    aria-hidden="true"
                   />
                 </span>
                 <span className="text-xl text-white mr-3">
@@ -139,7 +141,7 @@ export default function MobileSingleProduct({ product }: any) {
           <span className=" w-auto ">
             <ShoppingBagIcon
               className="text-white block w-12 h-12"
-              aria-label="true"
+              aria-hidden="true"
             />
           </span>
           <span className="text-xl text-white mr-3">افزودن به سبد خرید</span>

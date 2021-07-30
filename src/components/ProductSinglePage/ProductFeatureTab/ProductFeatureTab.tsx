@@ -1,8 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
 import { Comment } from "../../../data";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
-import { command } from "yargs";
 function ProductFeatureTab() {
   return (
     <Tabs className="hidden sm:block">
@@ -16,7 +14,7 @@ function ProductFeatureTab() {
       <TabPanel>
         <div className="w-2/3 mx-auto divide-gray-500 divide-opacity-50 divide-y space-y-10">
           {Comment.map((item: any, index: number) => (
-            <div className="w-full flex flex-col items-star space-y-5">
+            <div key={index} className="w-full flex flex-col items-star space-y-5">
               <span className="text-4xl text-black-600">{item.title}</span>
               <span className="text-2xl text-gray-400">{item.author}</span>
               <p className="text-justify text-2xl text-gray-500">

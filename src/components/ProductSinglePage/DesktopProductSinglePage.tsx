@@ -1,9 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import Rating from "../Rating";
 import {
-  ChevronRightIcon,
-  HeartIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
@@ -13,20 +8,6 @@ import Advantage from "../Advantage/Advantage";
 import ProductFeatureTab from "./ProductFeatureTab/ProductFeatureTab";
 
 export default function DesktopSingleProduct({ product }: any) {
-  const [scrolled, setScrolled] = useState(false);
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 200) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
-  const history = useHistory();
   if (!product) {
     return (
       <div
@@ -75,7 +56,7 @@ export default function DesktopSingleProduct({ product }: any) {
                 <span className=" w-auto ">
                   <ShoppingBagIcon
                     className="text-white block w-12 h-12"
-                    aria-label="true"
+                    aria-hidden="true"
                   />
                 </span>
                 <span className="text-xl text-white mr-3">
@@ -101,7 +82,7 @@ export default function DesktopSingleProduct({ product }: any) {
         </div>
       </div>
 
-      <div className="w-4/5 mx-auto bg-white">
+      <div className="w-4/5 mx-auto bg-white mb-32">
         <ProductFeatureTab />
       </div>
     </div>

@@ -18,8 +18,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Header() {
-
-  const location = useLocation()
+  const location = useLocation();
 
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
@@ -32,7 +31,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
   });
   let navbarClasses = ["navbar"];
   if (scrolled) {
@@ -42,7 +41,11 @@ export default function Header() {
   return (
     <Disclosure
       as="nav"
-      className={`w-full hidden lg:block ${location.pathname==="/"?"absolute top-0 z-10 bg-transparent":"relative bg-white"}  py-10 transition-all duration-500 ${
+      className={`w-full hidden lg:block ${
+        location.pathname === "/"
+          ? "absolute top-0 z-10 bg-transparent"
+          : "relative bg-white"
+      }  py-10 transition-all duration-500 ${
         scrolled ? "fixed top-0 motion-safe:animate-fade-in-down " : ""
       }`}
     >
@@ -60,13 +63,17 @@ export default function Header() {
                 </div>
                 <div className="logo  w-full border-b border-black flex justify-center items-center pb-5">
                   <Link to="/">
-                  <figure>
-                    <img src="../images/svg/logo.svg" alt="logo" className="w-80 h-auto" />
-                  </figure>
+                    <figure>
+                      <img
+                        src="../images/svg/logo.svg"
+                        alt="logo"
+                        className="w-80 h-auto"
+                      />
+                    </figure>
                   </Link>
                 </div>
                 <div className="search w-full flex justify-end">
-                  <DesktopSearchDrawer/>
+                  <DesktopSearchDrawer />
                 </div>
               </div>
               <div className="nav w-full flex justify-center items-center mt-5">
