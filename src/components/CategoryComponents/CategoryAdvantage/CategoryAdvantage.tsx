@@ -48,7 +48,7 @@ function CategoryAdvantage() {
           کالای اورجینال
         </span>
         <p className="hidden lg:block w-1/2 mx-auto text-2xl text-gray-500 text-center">
-          دیجی‌استایل نماینده رسمی برندهاست، با اطمینان از اورجینال بودن کالا
+          دیجی‌استایل نماینده رسمی برندهاست، با اطمینان از اورجینال بودن 
           خرید کنید.
         </p>
       </div>

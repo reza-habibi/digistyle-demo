@@ -2,6 +2,25 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      "2xs": "300px",
+      xs: "480px",
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+    },
+
     keyframes: {
       "fade-in-down": {
         "0%": {
@@ -108,8 +127,8 @@ module.exports = {
         kids: "url('../src/assets/images/mobile/category-kids.png')",
         beauty: "url('../src/assets/images/mobile/category-beauty.png')",
       }),
-      fontFamily:{
-        'yekan':['iranyekan']
+      fontFamily: {
+        yekan: ["iranyekan"],
       },
       colors: {
         pelorous: {
@@ -453,7 +472,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('daisyui'),
+    require("daisyui"),
     require("tailwindcss-rtl"),
     require("@tailwindcss/forms")({
       strategy: "class",
@@ -462,6 +481,5 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("tailwindcss-children"),
   ],
-  corePlugins: {
-  },
+  corePlugins: {},
 };

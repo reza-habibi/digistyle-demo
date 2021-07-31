@@ -8,6 +8,7 @@ import MobileHeader from "./components/Header/MobileHeader";
 import DesktopFooter from "./components/Footer/DesktopFooter";
 import CategoryScreen from "./screens/CategoryScreen";
 import { Categories } from "./data";
+import SubCategory from "./screens/SubCategoryScreen";
 
 function App() {
   return (
@@ -18,12 +19,21 @@ function App() {
         <Route path="/" component={HomeScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
         {Categories.map((category: any, index: number) => (
-          <Route key={index} path={`/category/${category.nameEn}`} exact render={(props) => <CategoryScreen
-            {...props}
-            filter={category.nameEn}
+          <Route
+            key={index}
+            path={category.URL}
+            exact
+            render={(props) => (
+              <CategoryScreen {...props} filter={category.nameEn} />
+            )}
           />
-          } />
         ))}
+
+        {Categories.map((item: any) =>
+          item.subCategory.map((category: any, index: number) => (
+            <Route key={index} path={category.url} component={SubCategory} />
+          ))
+        )}
       </Switch>
       <Footer />
       <DesktopFooter />

@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 function CategoryBanner({category}:any) {
   return (
-    <div className="w-full">
-      <div className="w-4/5 mx-auto flex justify-evenly hidden lg:block">
-        <div className="  flex flex-col ">
+    <div className=" w-full">
+      <div className="w-4/5 mx-auto relative flex justify-evenly hidden lg:block">
+        <div className=" w-1/2 ml-5 flex flex-col ">
           <Link
             to={`/category/${category.nameEn}/${category.nameEn}-accessories`}
             className="w-full mb-8"
@@ -29,7 +29,7 @@ function CategoryBanner({category}:any) {
           </Link>
         </div>
 
-        <div className="  flex flex-col">
+        <div className="w-1/2 absolute top-0 -left-5 flex flex-col">
           <Link
             to={`/category/${category.nameEn}/${category.nameEn}-clothing`}
             className="w-full mb-8"
@@ -55,7 +55,7 @@ function CategoryBanner({category}:any) {
         </div>
       </div>
 
-      <div className="w-full px-5 flex flex-col justify-evenly">
+      <div className="w-full px-5 flex flex-col justify-evenly lg:hidden">
         <div className=" w-full flex mb-8">
           <Link
             to={`/category/${category.nameEn}/${category.nameEn}-sport`}
