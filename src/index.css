@@ -5,6 +5,7 @@
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   box-sizing: border-box;
+  font-family: iranyekan !important;
 }
 body {
   background-color: #f5f5f5;
@@ -121,7 +122,7 @@ body {
   padding-right: 10px;
 }
 
-#main.swiper-container {
+/* #main.swiper-container {
   width: 250px;
 }
 
@@ -161,7 +162,7 @@ body {
   #main.swiper-container {
     width: 1430px;
   }
-}
+} */
 
 .container {
   width: 85%;

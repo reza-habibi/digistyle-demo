@@ -115,28 +115,28 @@ function DesktopFooter() {
               <div className="col-span-3 flex justify-end">
                 <figure className="mr-5">
                   <img
-                    src="../images/desktop/app/google-play.png"
+                    src="/images/desktop/app/google-play.png"
                     alt="google-play"
                     className="w-54 h-16"
                   />
                 </figure>
                 <figure className="mr-5">
                   <img
-                    src="../images/desktop/app/bazaar.png"
+                    src="/images/desktop/app/bazaar.png"
                     alt="bazaar"
                     className="w-54 h-16"
                   />
                 </figure>
                 <figure className="mr-5">
                   <img
-                    src="../images/desktop/app/myket.png"
+                    src="/images/desktop/app/myket.png"
                     alt="myket"
                     className="w-54 h-16"
                   />
                 </figure>
                 <figure className="mr-5">
                   <img
-                    src="../images/desktop/app/sib-app.png"
+                    src="/images/desktop/app/sib-app.png"
                     alt="sib-app"
                     className="w-54 h-16"
                   />
@@ -172,7 +172,7 @@ function DesktopFooter() {
                 </div>
               </div>
               <figure className="flex justify-center items-center col-span-2">
-                <img src="../images/desktop/samandehi.png" alt="samandehi" />
+                <img src="/images/desktop/samandehi.png" alt="samandehi" />
               </figure>
             </div>
           </div>

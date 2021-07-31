@@ -1,4 +1,4 @@
-import Carousel from "../components/HomeComponents/MobileCarousel/MobileBannerCarousel";
+import Carousel from "../components/HomeComponents/MainCarousel/MobileBannerCarousel";
 import CardCarousel from "../components/HomeComponents/CardCarousel/CardCarousel";
 import ProductCategoryCard from "../components/HomeComponents/ProductCategoryCard/ProductCategoryCard";
 import MobileCategoryHomeSection from "../components/HomeComponents/ProductCategoryCard/MobileCategoryHomeSection";
@@ -6,7 +6,7 @@ import CountDown from "../components/CountDown/CountDown";
 import Advantage from "../components/Advantage/Advantage";
 import Brands from "../components/HomeComponents/Brands/Brands";
 import { Link } from "react-router-dom";
-import DesktopCarousel from "../components/HomeComponents/DesktopMainCarousel/DesktopCarousel";
+import DesktopCarousel from "../components/HomeComponents/MainCarousel/DesktopCarousel";
 import CategoryLinks from "../components/HomeComponents/CategoryLinks/CategoryLinks";
 import DesktopBrands from "../components/HomeComponents/Brands/DesktopBrands";
 import { FaArrowLeft } from "react-icons/fa";
@@ -15,10 +15,21 @@ export default function HomeScreen() {
     <div className=" mx-auto flex flex-col gap-y-20 items-center min-h-screen">
       <Carousel />
       <DesktopCarousel />
-      <div className="w-full md:grid md:grid-cols-12 flex-col bg-white  px-10 flex flex-wrap items-start ">
+      <div className="w-full md:grid md:grid-cols-12 flex flex-col bg-white  px-10 flex flex-wrap items-start ">
         <div className="md:col-span-2  mt-5 w-full flex md:flex-col items-center justify-around h-full">
           <figure>
-            <img src="/images/svg/sale.svg" alt="hot-sale" />
+            <img
+              src="/images/svg/sale.svg"
+              alt="hot-sale"
+              className="hidden md:block"
+            />
+          </figure>
+          <figure>
+            <img
+              src="/images/svg/mobileSale.svg"
+              alt="hot-sale"
+              className="block md:hidden"
+            />
           </figure>
           <CountDown />
 
@@ -38,7 +49,7 @@ export default function HomeScreen() {
 
       <div className="w-full md:grid md:grid-cols-12 flex-col bg-white  px-10 flex flex-wrap items-start ">
         <div className="md:col-span-2  mt-5 w-full flex md:flex-col items-center justify-around h-full">
-        <span className="text-gray-700 md:text-6xl leading-tight md:text-center ">
+          <span className="text-gray-700 md:text-6xl leading-tight md:text-center ">
             {" "}
             پربــازدیـد تریـن‌های اخــیــــــــر
           </span>

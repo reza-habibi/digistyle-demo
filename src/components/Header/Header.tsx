@@ -65,7 +65,7 @@ export default function Header() {
                   <Link to="/">
                     <figure>
                       <img
-                        src="../images/svg/logo.svg"
+                        src="/images/svg/logo.svg"
                         alt="logo"
                         className="w-80 h-auto"
                       />

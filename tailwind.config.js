@@ -108,6 +108,9 @@ module.exports = {
         kids: "url('../src/assets/images/mobile/category-kids.png')",
         beauty: "url('../src/assets/images/mobile/category-beauty.png')",
       }),
+      fontFamily:{
+        'yekan':['iranyekan']
+      },
       colors: {
         pelorous: {
           DEFAULT: "#41C1C6",
@@ -460,6 +463,5 @@ module.exports = {
     require("tailwindcss-children"),
   ],
   corePlugins: {
-    container: false,
   },
 };
