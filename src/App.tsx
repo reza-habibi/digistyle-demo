@@ -18,7 +18,7 @@ function App() {
         <Route path="/" component={HomeScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
         {Categories.map((category: any, index: number) => (
-          <Route key={index} path={`/category/${category.nameEn}`} render={(props) => <CategoryScreen
+          <Route key={index} path={`/category/${category.nameEn}`} exact render={(props) => <CategoryScreen
             {...props}
             filter={category.nameEn}
           />

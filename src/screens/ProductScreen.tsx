@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 
 import { data } from "../data";
 import MobileSingleProduct from "../components/ProductSinglePage/MobileProductSinglePage";
@@ -7,8 +6,6 @@ export default function ProductScreen(props: {
   match: { params: { id: string } };
 }) {
 
-  const history = useHistory();
-  console.log(history);
   const product = data.products.find((x) => x._id === props.match.params.id);
 
   return (
