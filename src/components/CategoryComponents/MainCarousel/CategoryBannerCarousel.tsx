@@ -6,7 +6,6 @@ import "swiper/components/navigation/navigation.min.css";
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Autoplay, Pagination } from "swiper/core";
 import { Link } from "react-router-dom";
-import { Categories } from "../../../data";
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -45,7 +44,7 @@ export default function CategoryDesktopBannerCarousel({ category }: any) {
             <figure className="w-full">
               <Link to={item.url}>
                 <img
-                  src={`/images/sliders/${item.nameEn}.jpg`}
+                  src={`/images/sliders/mobile-${item.nameEn}.jpg`}
                   alt=""
                   className="w-full h-auto ml-auto mr-auto"
                 />

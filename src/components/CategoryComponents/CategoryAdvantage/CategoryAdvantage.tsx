@@ -15,7 +15,7 @@ function CategoryAdvantage() {
           {" "}
           تحویل سریع و ارزان
         </span>
-        <p className="w-1/2 mx-auto text-2xl text-gray-500 text-center">
+        <p className="hidden lg:block w-1/2 mx-auto text-2xl text-gray-500 text-center">
           هزینه ارسال برای سفارشات بالای ۳۰۰ هزار تومان رایگان است.
         </p>
       </div>
@@ -31,7 +31,7 @@ function CategoryAdvantage() {
           {" "}
           ضمانت بازگشت کالا
         </span>
-        <p className="w-1/2 mx-auto text-2xl text-gray-500 text-center">
+        <p className="hidden lg:block w-1/2 mx-auto text-2xl text-gray-500 text-center">
           اگر کالا برای شما مناسب نبود تا چهارده روز می توانید آن را تعویض کنید.
         </p>
       </div>
@@ -47,7 +47,7 @@ function CategoryAdvantage() {
           {" "}
           کالای اورجینال
         </span>
-        <p className="w-1/2 mx-auto text-2xl text-gray-500 text-center">
+        <p className="hidden lg:block w-1/2 mx-auto text-2xl text-gray-500 text-center">
           دیجی‌استایل نماینده رسمی برندهاست، با اطمینان از اورجینال بودن کالا
           خرید کنید.
         </p>
