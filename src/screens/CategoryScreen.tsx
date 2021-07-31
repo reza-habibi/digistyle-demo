@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CategoryAdvantage from "../components/CategoryComponents/CategoryAdvantage/CategoryAdvantage";
+import CategoryBanner from "../components/CategoryComponents/CategoryBanner/CategoryBanner";
 import CategoryDesktopBannerCarousel from "../components/CategoryComponents/MainCarousel/CategoryBannerCarousel";
-import CardCarousel from "../components/HomeComponents/CardCarousel/CardCarousel";
+import CardCarousel from "../components/CardCarousel/CardCarousel";
 import { Categories } from "../data";
 
 function CategoryScreen({ filter }: any) {
@@ -17,7 +18,7 @@ function CategoryScreen({ filter }: any) {
       <div className="w-full hidden lg:block">
         <div className="xl:w-1/2 flex justify-between mx-auto ">
           {currentCategory.subCategory.map((item: any, index: number) => (
-            <Link to={item.url}>
+            <Link to={item.url} key={index}>
               <div className=" ml-8 relative group " key={index}>
                 <figure className="w-full  h-auto">
                   <img
@@ -37,8 +38,8 @@ function CategoryScreen({ filter }: any) {
       <div className="w-full lg:hidden">
         <div className="xl:w-1/2 flex justify-between mx-auto ">
           {currentCategory.subCategory.map((item: any, index: number) => (
-            <Link to={item.url}>
-              <div className="mx-3 flex flex-col justify-center items-center " key={index}>
+            <Link key={index} to={item.url}>
+              <div className="mx-3 flex flex-col justify-center items-center ">
                 <figure className="w-full  h-auto ">
                   <img
                     src={`/images/product-category/category-page/${item.nameEn}.jpg`}
@@ -70,115 +71,7 @@ function CategoryScreen({ filter }: any) {
         </button>
       </div>
 
-      <div className="w-full">
-        <div className="w-4/5 mx-auto flex justify-evenly hidden lg:block">
-          <div className="  flex flex-col ">
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-accessories`}
-              className="w-full mb-8"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/${currentCategory.nameEn}-accessories.jpg`}
-                  alt={`${currentCategory.nameEn}-accessories`}
-                />
-              </figure>
-            </Link>
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-sport`}
-              className="w-full"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/${currentCategory.nameEn}-sport-clothing.jpg`}
-                  alt={`${currentCategory.nameEn}-sport-clothing`}
-                />
-              </figure>
-            </Link>
-          </div>
-
-          <div className="  flex flex-col">
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-clothing`}
-              className="w-full mb-8"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/${currentCategory.nameEn}-shirts.jpg`}
-                  alt={`${currentCategory.nameEn}-shirts`}
-                />
-              </figure>
-            </Link>
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-shoes`}
-              className="w-full"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/${currentCategory.nameEn}-casual-shoes.jpg`}
-                  alt={`${currentCategory.nameEn}-casual-shoes`}
-                />
-              </figure>
-            </Link>
-          </div>
-        </div>
-
-        <div className="w-full px-5 flex flex-col justify-evenly">
-          <div className=" w-full flex mb-8">
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-sport`}
-              className="w-full"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/mobile-${currentCategory.nameEn}-sport-clothing.jpg`}
-                  alt={`${currentCategory.nameEn}-sport-clothing`}
-                />
-              </figure>
-            </Link>
-          </div>
-
-          <div className=" w-full flex">
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-accessories`}
-              className="w-full mb-8"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/mobile-${currentCategory.nameEn}-accessories.jpg`}
-                  alt={`${currentCategory.nameEn}-accessories`}
-                />
-              </figure>
-            </Link>
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-shoes`}
-              className="w-full"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/mobile-${currentCategory.nameEn}-casual-shoes.jpg`}
-                  alt={`${currentCategory.nameEn}-casual-shoes`}
-                />
-              </figure>
-            </Link>
-          </div>
-
-          <div className=" w-full flex">
-            <Link
-              to={`/category/${currentCategory.nameEn}/${currentCategory.nameEn}-clothing`}
-              className="w-full mb-8"
-            >
-              <figure>
-                <img
-                  src={`/images/category-banner/mobile-${currentCategory.nameEn}-shirts.jpg`}
-                  alt={`${currentCategory.nameEn}-shirts`}
-                />
-              </figure>
-            </Link>
-            
-          </div>
-        </div>
-      </div>
+      <CategoryBanner category={currentCategory} />
 
       <div className="full flex flex-col bg-white space-y-10">
         <div className="w-4/5 mx-auto flex justify-between items-center px-6">

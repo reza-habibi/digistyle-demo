@@ -3,7 +3,7 @@ import {
 } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
 
-import CardCarousel from "../HomeComponents/CardCarousel/CardCarousel";
+import CardCarousel from "../CardCarousel/CardCarousel";
 import Advantage from "../Advantage/Advantage";
 import ProductFeatureTab from "./ProductFeatureTab/ProductFeatureTab";
 

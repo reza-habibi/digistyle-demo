@@ -1,5 +1,5 @@
 import Carousel from "../components/HomeComponents/MainCarousel/MobileBannerCarousel";
-import CardCarousel from "../components/HomeComponents/CardCarousel/CardCarousel";
+import CardCarousel from "../components/CardCarousel/CardCarousel";
 import ProductCategoryCard from "../components/HomeComponents/ProductCategoryCard/ProductCategoryCard";
 import MobileCategoryHomeSection from "../components/HomeComponents/ProductCategoryCard/MobileCategoryHomeSection";
 import CountDown from "../components/CountDown/CountDown";

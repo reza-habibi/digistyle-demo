@@ -11,7 +11,7 @@ function CategoryAdvantage() {
             className="md:w-56 md:h-56"
           />
         </figure>
-        <span className="text-base md:text-5xl text-gray-700 mt-5 ">
+        <span className="text-base sm:text-xl md:text-3xl lg:text-5xl text-gray-700 mt-5 ">
           {" "}
           تحویل سریع و ارزان
         </span>
@@ -27,7 +27,7 @@ function CategoryAdvantage() {
             className="md:w-56 md:h-56"
           />
         </figure>
-        <span className="text-base md:text-5xl text-black mt-5 ">
+        <span className="text-base sm:text-xl md:text-3xl lg:text-5xl text-black mt-5 ">
           {" "}
           ضمانت بازگشت کالا
         </span>
@@ -43,7 +43,7 @@ function CategoryAdvantage() {
             className="md:w-56 md:h-56"
           />
         </figure>
-        <span className="text-base md:text-5xl text-gray-700 mt-5 ">
+        <span className="text-base sm:text-xl md:text-3xl lg:text-5xl text-gray-700 mt-5 ">
           {" "}
           کالای اورجینال
         </span>

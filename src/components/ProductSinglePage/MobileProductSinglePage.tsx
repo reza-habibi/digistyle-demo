@@ -7,7 +7,7 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
-import CardCarousel from "../HomeComponents/CardCarousel/CardCarousel";
+import CardCarousel from "../CardCarousel/CardCarousel";
 import Advantage from "../Advantage/Advantage";
 
 export default function MobileSingleProduct({ product }: any) {
