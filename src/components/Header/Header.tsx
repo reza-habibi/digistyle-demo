@@ -55,10 +55,12 @@ export default function Header() {
             <div className="w-full flex flex-col items-center justify-center sm:items-stretch sm:justify-start">
               <div className="top w-full grid grid-cols-3">
                 <div className="w-full basket flex justify-start items-center">
-                  <ShoppingBagIcon
-                    className="block h-10 w-10 text-black"
-                    aria-hidden="true"
-                  />
+                  <Link to="/cart">
+                    <ShoppingBagIcon
+                      className="block h-10 w-10 text-black"
+                      aria-hidden="true"
+                    />
+                  </Link>
                   <span className="text-black mr-5 text-xl">وارد شوید</span>
                 </div>
                 <div className="logo  w-full border-b border-black flex justify-center items-center pb-5">

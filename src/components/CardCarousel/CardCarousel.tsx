@@ -32,19 +32,18 @@ export default function CardCarousel() {
             "@0.00": {
               slidesPerView: 1,
               spaceBetween: 10,
-              navigation: false,
             },
-            "@1.00": {
+            "@0.75": {
               slidesPerView: 2,
               spaceBetween: 20,
             },
-            "@1.75": {
+            "@1.00": {
               slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            "@2.50": {
-              slidesPerView: 4,
               spaceBetween: 40,
+            },
+            "@1.50": {
+              slidesPerView: 4,
+              spaceBetween: 50,
             },
           }}
           className="mySwiper my-4"

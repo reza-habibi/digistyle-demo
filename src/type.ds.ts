@@ -15,6 +15,7 @@ export type TProducts = {
   rating: number;
   numReviews: number;
   description: string;
+  discount?: string;
 };
 
 export type TNavigation = {

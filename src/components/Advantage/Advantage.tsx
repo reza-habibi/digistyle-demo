@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 
 function Advantage() {
   const location = useLocation();
+  console.log(location)
   return (
     <div className="w-full p-5 grid grid-cols-3 bg-white">
       <div className="flex flex-col justify-center items-center">
@@ -20,7 +21,6 @@ function Advantage() {
               : "text-base text-gray-700 mt-5"
           }`}
         >
-          {" "}
           تحویل سریع و ارزان
         </span>
       </div>
@@ -39,7 +39,6 @@ function Advantage() {
               : "text-base text-gray-700 mt-5"
           }`}
         >
-          {" "}
           ضمانت بازگشت کالا
         </span>
       </div>
@@ -58,7 +57,6 @@ function Advantage() {
               : "text-base text-gray-700 mt-5"
           }`}
         >
-          {" "}
           کالای اورجینال
         </span>
       </div>
