@@ -15,7 +15,7 @@ export default function ShippingModal({ open, setOpen }: any) {
         open={open}
         onClose={setOpen}
       >
-        <div  className="w-full h-full flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="w-full h-full flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -44,18 +44,66 @@ export default function ShippingModal({ open, setOpen }: any) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className=" inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle h-4/5 w-3/5">
-              <div className="h-full bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="h-full sm:flex sm:items-start">
-                  <div className=" w-full mt-3 text-right sm:mt-0 sm:ml-4">
+            <div className=" inline-block align-bottom bg-white rounded-lg  shadow-xl transform transition-all sm:my-8 sm:align-middle lg:h-5/6 lg:w-4/5 w-full h-full">
+              <div className="h-full bg-white ">
+                <div className="w-4/5 mx-auto h-full py-10 flex flex-col">
+                  <div className=" w-full flex flex-col my-8 text-right sm:mt-0 sm:ml-4 space-y-8">
                     <Dialog.Title
                       as="h3"
-                      className="h-full text-xl leading-6 font-medium text-gray-900"
+                      className="h-full text-3xl leading-6 font-medium text-gray-900"
                     >
-                        افزودن آدرس جدید 
+                      افزودن آدرس جدید
+                    </Dialog.Title>
+                    <Dialog.Title
+                      as="h4"
+                      className="h-full text-2xl leading-6 font-medium text-gray-900"
+                    >
+                      اطلاعات تحویل گیرنده
                     </Dialog.Title>
                   </div>
-                  
+                  <div className="w-full block">
+                    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+                      <div className="relative py-3 w-11/12 max-w-xl sm:mx-auto">
+                        <div className="relative p-8 bg-white shadow-sm sm:rounded-xl">
+                          <form className="w-full">
+                            <div className="floating-input mb-5 relative">
+                              <input
+                                type="email"
+                                id="email"
+                                className="border-none focus:border-b border-gray-200  outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
+                                placeholder="name@example.com"
+                                autoComplete="off"
+                              />
+                              <label
+                                htmlFor="email"
+                                className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out "
+                              >
+                                نام و نام خانوادگی تحویل گیرنده
+                              </label>
+                            </div>
+                            <div className="floating-input mb-5 relative">
+                              <input
+                                type="password"
+                                id="password"
+                                className="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
+                                placeholder="password"
+                                autoComplete="off"
+                              />
+                              <label
+                                htmlFor="password"
+                                className="absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out "
+                              >
+                                Password
+                              </label>
+                            </div>
+                            <button className="w-full bg-indigo-600 text-white p-3 rounded-md">
+                              Submit
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

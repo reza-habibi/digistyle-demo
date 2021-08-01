@@ -4,13 +4,13 @@ import { Link, useLocation } from "react-router-dom";
 function ProgressBar() {
   const location = useLocation();
   return (
-    <div className="w-3/5 mx-auto flex justify-center items-center">
+    <div className="w-full md:w-2/3 mx-auto flex justify-center items-center ">
       <Link to="/cart">
-        <figure className="border-4 border-blue-400 rounded-full">
+        <figure className="border-4 border-blue-400 rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
           <img
             src="/images/svg/cart-icon.svg"
             alt="cart"
-            className="px-8 py-6"
+            className="w-2/3 h-2/3"
           />
         </figure>
       </Link>
@@ -19,19 +19,19 @@ function ProgressBar() {
           location.pathname === "/cart"
             ? "bg-gradient-to-l from-blue-400 to-gray-300"
             : "bg-blue-400"
-        } h-2 w-60 md:w-72 lg:w-96`}
+        } h-2 w-16 md:w-28 lg:w-36`}
       ></div>
       <figure
         className={`border-4 ${
           location.pathname === "/shipping"
             ? "border-blue-400"
             : "border-gray-300"
-        } rounded-full`}
+        } rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32`}
       >
         <img
           src="/images/svg/shipping-icon.svg"
           alt="cart"
-          className={`px-8 py-6 ${
+          className={`w-2/3 h-2/3 ${
             location.pathname === "/cart" ? "filter grayscale" : ""
           }`}
         />
@@ -43,19 +43,19 @@ function ProgressBar() {
             : location.pathname === "/checkout"
             ? "bg-blue-400"
             : "bg-gray-300"
-        } h-2 w-60 md:w-72 lg:w-96`}
+        } h-2 w-16 md:w-28 lg:w-36`}
       ></div>
       <figure
         className={`border-4 ${
           location.pathname === "/checkout"
             ? "border-blue-400"
             : "border-gray-300"
-        } rounded-full`}
+        } rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32`}
       >
         <img
           src="/images/svg/checkout-icon.svg"
           alt="cart"
-          className={`px-8 py-6 ${
+          className={`w-2/3 h-2/3 ${
             location.pathname !== "/checkout" ? "filter grayscale" : ""
           }`}
         />
