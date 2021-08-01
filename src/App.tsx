@@ -10,6 +10,7 @@ import CategoryScreen from "./screens/CategoryScreen";
 import { Categories } from "./data";
 import SubCategory from "./screens/SubCategoryScreen";
 import CartScreen from "./screens/CartScreen";
+import ShippingScreen from "./screens/ShippingScreen";
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           ))
         )}
         <Route path="/cart" exact component={CartScreen}/>
+        <Route path="/shipping" exact component={ShippingScreen}/>
+
       </Switch>
       <Footer />
       <DesktopFooter />

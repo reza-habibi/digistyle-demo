@@ -16,7 +16,7 @@ function CartItem({ product, carts , setCarts }: any) {
         <span className="text-black text-2xl lg:text-4xl font-bold">
           {product.brandFa}
         </span>
-        <span className="text-black text-xl lg:text-3xl">{product.name}</span>
+        <span className="textbaselack textxl lg:text-2xl">{product.name}</span>
         <span className="text-gray-700 text-lg lg:text-xl">
           کد محصول : 123456789
         </span>
@@ -24,26 +24,26 @@ function CartItem({ product, carts , setCarts }: any) {
       <div className="col-span-6 flex flex-col w-full h-full divide-gray-500 divide-y">
         <div className="flex justify-between items-start py-8 h-2/3">
           <div className="self-end ">
-            <span className="text-xl md:text-2xl lg:text-3xl text-gray-500">
+            <span className="text-base md:text-xl lg:text-2xl text-gray-500">
               تعداد :
             </span>
           </div>
           <div className="flex flex-col w-2/3 h-full justify-between">
             <div className="w-full flex justify-between">
-              <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+              <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 قیمت واحد
               </span>
-              <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+              <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
                 {Humanize.intComma(product.price)} تومان
               </span>
             </div>
             {product.discount !== "0" ? (
               <div className="w-full flex justify-between">
-                <span className="text-red-400 text-xl md:text-2xl lg:text-3xl">
+                <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                   تخفیف شگفت آویز
                 </span>
-                <span className="text-red-400 text-xl md:text-2xl lg:text-3xl">
+                <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                   {" "}
                   {Humanize.intComma(
                     (product.price * parseInt(product.discount)) / 100
@@ -57,10 +57,10 @@ function CartItem({ product, carts , setCarts }: any) {
         <div className="w-full ">
           {product.discount ? (
             <div className="w-2/3 py-8 mr-auto flex justify-between">
-              <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+              <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 قیمت کل
               </span>
-              <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+              <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
                 {Humanize.intComma(
                   product.price -
@@ -71,10 +71,10 @@ function CartItem({ product, carts , setCarts }: any) {
             </div>
           ) : (
             <div className="w-2/3 py-8 mr-auto flex justify-between">
-              <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+              <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 قیمت واحد
               </span>
-              <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+              <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
                 {Humanize.intComma(product.price)} تومان
               </span>

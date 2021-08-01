@@ -37,7 +37,7 @@ function CartScreen() {
       {carts.length !== 0 ? (
         <>
           <div className="xl:w-3/4 lg:w-4/5 mx-auto w-full  ">
-            <h2 className="text-3xl text-gray-700 mb-5">سبد خرید شما</h2>
+            <h2 className="text-2xl text-gray-700 mb-5">سبد خرید شما</h2>
             {carts.map((product: any) => (
               <CartItem
                 key={product._id}
@@ -48,36 +48,36 @@ function CartScreen() {
             ))}
           </div>
 
-          <div className="xl:w-3/4 lg:w-4/5 mx-auto w-full bg-white flex h-52 px-5">
+          <div className="xl:w-3/4 lg:w-4/5 mx-auto w-full bg-white flex h-56 p-5">
             <div className="w-2/3">
               <Advantage />
             </div>
             <div className="flex flex-col justify-between w-1/3 h-full divide-y divide-gray-300">
               <div className="w-full flex flex-col justify-between  h-full py-5">
                 <div className="w-full flex justify-between">
-                  <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+                  <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                     جمع کل سفارش
                   </span>
-                  <span className="text-gray-400 text-xl md:text-2xl lg:text-3xl">
+                  <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                     {Humanize.intComma(subPrice)} تومان
                   </span>
                 </div>
                 {discount ? (
                   <div className="w-full flex justify-between ">
-                    <span className="text-red-400 text-xl md:text-2xl lg:text-3xl">
+                    <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                       تخفیف شگفت آویز
                     </span>
-                    <span className="text-red-400 text-xl md:text-2xl lg:text-3xl">
+                    <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                       {Humanize.intComma(discount)} تومان
                     </span>
                   </div>
                 ) : null}
               </div>
               <div className="w-full flex justify-between pt-5">
-                <span className="text-black text-xl md:text-2xl lg:text-3xl text-bold">
+                <span className="text-black text-base md:text-xl lg:text-2xl text-bold">
                   قیمت نهایی
                 </span>
-                <span className="text-black text-xl md:text-2xl lg:text-3xl">
+                <span className="text-black text-base md:text-xl lg:text-2xl">
                   {Humanize.intComma(subPrice - discount)} تومان
                 </span>
               </div>
@@ -92,9 +92,9 @@ function CartScreen() {
                 حالا سبد خود را ثبت و خرید را تکمیل کنید.
               </p>
             </div>
-            <button className="bg-pink-500 text-white text-2xl w-96 h-20">
+            <Link to="/shipping" className="text-center bg-pink-500 text-white text-2xl w-96 py-6" >
               ثبت و مرحله بعد
-            </button>
+            </Link>
           </div>
         </>
       ) : (
@@ -106,12 +106,12 @@ function CartScreen() {
               className="w-40 h-64"
             />
           </figure>
-          <span className="text-gray-900 text-3xl mt-20">
+          <span className="text-gray-900 text-2xl mt-20">
             سبد خرید شما خالی است.
           </span>
           <Link
             to="/"
-            className="bg-transparent -64 hover:bg-gray-500 text-gray-700 font-bold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent my-20"
+            className="bg-transparent w-64 hover:bg-gray-500 text-gray-700 font-bold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent my-20"
           >
             صفحه اصلی
           </Link>

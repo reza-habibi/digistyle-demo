@@ -14,20 +14,50 @@ function ProgressBar() {
           />
         </figure>
       </Link>
-      <div className="bg-gradient-to-l from-blue-400 to-gray-300 h-2 w-60 md:w-72 lg:w-96"></div>
-      <figure className="border-4 border-gray-300 rounded-full">
+      <div
+        className={`${
+          location.pathname === "/cart"
+            ? "bg-gradient-to-l from-blue-400 to-gray-300"
+            : "bg-blue-400"
+        } h-2 w-60 md:w-72 lg:w-96`}
+      ></div>
+      <figure
+        className={`border-4 ${
+          location.pathname === "/shipping"
+            ? "border-blue-400"
+            : "border-gray-300"
+        } rounded-full`}
+      >
         <img
           src="/images/svg/shipping-icon.svg"
           alt="cart"
-          className={`px-8 py-6 ${location.pathname==='/cart'?"filter grayscale":""}`}
+          className={`px-8 py-6 ${
+            location.pathname === "/cart" ? "filter grayscale" : ""
+          }`}
         />
       </figure>
-      <div className="bg-gray-300 h-2 w-60 md:w-72 lg:w-96"></div>
-      <figure className="border-4 border-gray-300 rounded-full">
+      <div
+        className={`${
+          location.pathname === "/shipping"
+            ? "bg-gradient-to-l from-blue-400 to-gray-300"
+            : location.pathname === "/checkout"
+            ? "bg-blue-400"
+            : "bg-gray-300"
+        } h-2 w-60 md:w-72 lg:w-96`}
+      ></div>
+      <figure
+        className={`border-4 ${
+          location.pathname === "/checkout"
+            ? "border-blue-400"
+            : "border-gray-300"
+        } rounded-full`}
+      >
         <img
           src="/images/svg/checkout-icon.svg"
           alt="cart"
-          className={`px-8 py-6 ${location.pathname!=='/checkout'?"filter grayscale":""}`}
+          className={`px-8 py-6 ${
+            location.pathname !== "/checkout" ? "filter grayscale" : ""
+          }`}
         />
       </figure>
     </div>
