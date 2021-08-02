@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
@@ -14,6 +14,17 @@ import ShippingScreen from "./screens/ShippingScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
 
 function App() {
+  const [address, setAddress] = useState({
+    name: "محمدرضا حبیبی",
+    mobile: "09354535833",
+    province: "تهران",
+    city: "اسلامشهر",
+    address: "شهرک توحید ، خیابان شهید بهشتی ، کوچه شهید قاسم اکبری ، پلاک 56",
+    postalCode: "1234567890",
+    telephone: "56838352",
+    cityCode: "021",
+  });
+
   return (
     <Router>
       <Header />
@@ -38,8 +49,27 @@ function App() {
           ))
         )}
         <Route path="/cart" exact component={CartScreen} />
-        <Route path="/shipping" exact component={ShippingScreen} />
-        <Route path="/checkout" exact component={CheckoutScreen} />
+        <Route
+          path="/shipping"
+          exact
+          render={(props) => (
+            <ShippingScreen
+              {...props}
+              address={address}
+              setAddress={setAddress}
+            />
+          )}
+        />
+        <Route
+          path="/checkout"
+          exact
+          render={(props) => (
+            <CheckoutScreen
+              {...props}
+              address={address}
+            />
+          )}
+        />
       </Switch>
       <Footer />
       <DesktopFooter />

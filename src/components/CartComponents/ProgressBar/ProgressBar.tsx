@@ -5,7 +5,7 @@ function ProgressBar() {
   const location = useLocation();
   return (
     <div className="w-full md:w-2/3 mx-auto flex justify-center items-center ">
-      <Link to="/cart">
+      {location.pathname === "/cart" ? (
         <figure className="border-4 border-blue-400 rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
           <img
             src="/images/svg/cart-icon.svg"
@@ -13,7 +13,17 @@ function ProgressBar() {
             className="w-2/3 h-2/3"
           />
         </figure>
-      </Link>
+      ) : (
+        <Link to="/cart">
+          <figure className="border-4 border-blue-400 rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
+            <img
+              src="/images/svg/cart-icon.svg"
+              alt="cart"
+              className="w-2/3 h-2/3"
+            />
+          </figure>
+        </Link>
+      )}
       <div
         className={`${
           location.pathname === "/cart"
@@ -21,21 +31,34 @@ function ProgressBar() {
             : "bg-blue-400"
         } h-2 w-16 md:w-40 lg:w-72`}
       ></div>
-      <figure
-        className={`border-4 ${
-          location.pathname === "/shipping"
-            ? "border-blue-400"
-            : "border-gray-300"
-        } rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32`}
-      >
-        <img
-          src="/images/svg/shipping-icon.svg"
-          alt="cart"
-          className={`w-2/3 h-2/3 ${
-            location.pathname === "/cart" ? "filter grayscale" : ""
-          }`}
-        />
-      </figure>
+      {location.pathname === "/checkout" ? (
+        <Link to="/shipping">
+          <figure className="border-4 border-blue-400 rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
+            <img
+              src="/images/svg/shipping-icon.svg"
+              alt="cart"
+              className="w-2/3 h-2/3"
+            />
+          </figure>
+        </Link>
+      ) : (
+        <figure
+          className={`border-4 ${
+            location.pathname !== "/cart"
+              ? "border-blue-400"
+              : "border-gray-300"
+          } rounded-full flex justify-center items-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32`}
+        >
+          <img
+            src="/images/svg/shipping-icon.svg"
+            alt="cart"
+            className={`w-2/3 h-2/3 ${
+              location.pathname === "/cart" ? "filter grayscale" : ""
+            }`}
+          />
+        </figure>
+      )}
+
       <div
         className={`${
           location.pathname === "/shipping"

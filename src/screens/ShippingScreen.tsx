@@ -5,18 +5,9 @@ import Advantage from "../components/Advantage/Advantage";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import ShippingModal from "../components/ShippingComponents/ShippingModal/ShippingModal";
 
-function ShippingScreen() {
+function ShippingScreen({address , setAddress}:any) {
   const [open, setOpen] = useState(false);
-  const [address, setAddress] = useState({
-    name: "",
-    mobile: "",
-    province: "",
-    city: "",
-    address: "",
-    postalCode: "",
-    telephone: "",
-    cityCode: "",
-  });
+  
 
   const handleModal = () => {
     setOpen(true);
@@ -86,7 +77,7 @@ function ShippingScreen() {
           </div>
         </div>
         <Link
-          to="/shipping"
+          to="/checkout"
           className="hidden lg:block text-center bg-pink-500 text-white text-2xl w-96 py-6"
         >
           ثبت و مرحله بعد
