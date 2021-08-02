@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { data } from "../../data";
 import { TProducts } from "../../type.ds";
 import Humanize from "humanize-plus";
 import {
@@ -19,7 +18,7 @@ import { Link } from "react-router-dom";
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
-export default function CardCarousel() {
+export default function CardCarousel({products}:any) {
   return (
     <>
       <div className="hidden lg:block">
@@ -48,7 +47,7 @@ export default function CardCarousel() {
           }}
           className="mySwiper my-4"
         >
-          {data.products.map((product: TProducts) => (
+          {products.map((product: TProducts) => (
             <SwiperSlide
               key={product._id}
               className="bg-white shadow-lg rounded-lg h-100 py-2 transform lg:hover:translate-y-2 lg:hover:shadow-xl transition duration-300 mb-3"
@@ -139,7 +138,7 @@ export default function CardCarousel() {
           }}
           className="mySwiper my-4"
         >
-          {data.products.map((product: TProducts) => (
+          {products.map((product: TProducts) => (
             <SwiperSlide
               key={product._id}
               className="bg-white shadow-lg rounded-lg h-100 py-2 transform lg:hover:translate-y-2 lg:hover:shadow-xl transition duration-300 mb-3"

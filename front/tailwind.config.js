@@ -1,6 +1,4 @@
 module.exports = {
-
-  
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -24,6 +22,19 @@ module.exports = {
     },
 
     keyframes: {
+      spin: {
+        "0%": {
+          transform: "rotate(0deg)",
+        },
+        "100%": {
+          transform: "rotate(360deg)",
+        },
+      },
+
+      wiggle: {
+        "0%, 100%": { transform: "rotate(-3deg)" },
+        "50%": { transform: "rotate(3deg)" },
+      },
       "fade-in-down": {
         "0%": {
           opacity: "0",
@@ -69,6 +80,10 @@ module.exports = {
       },
     },
     animation: {
+      spin: "spin 1s linear infinite",
+      wiggle: "wiggle 1s ease-in-out infinite",
+      bounce200: "bounce 1s infinite 200ms",
+      bounce400: "bounce 1s infinite 400ms",
       "fade-in-down": "fade-in-down 0.5s ease-out",
       "fade-in-right": "fade-in-right 0.5s ease-out",
       left: "left 0.3s",
@@ -249,7 +264,7 @@ module.exports = {
     alignContent: ["responsive"],
     alignItems: ["responsive"],
     alignSelf: ["responsive"],
-    animation: ["responsive", "motion-safe"],
+    animation: ["responsive", "motion-safe", "motion-reduce"],
     appearance: ["responsive"],
     backdropBlur: ["responsive"],
     backdropBrightness: ["responsive"],
