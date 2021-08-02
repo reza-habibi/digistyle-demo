@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const provinces = require("../../../json/provinces.json");
 const cities = require("../../../json/cities.json");
-export default function ShippingModal({ open, setOpen }: any) {
+export default function ShippingModal({ open, setOpen , address , setAddress }: any) {
   const cancelButtonRef = useRef(null);
   const [province, setProvince] = useState({
     id: 0,
@@ -13,16 +13,7 @@ export default function ShippingModal({ open, setOpen }: any) {
     slug: "",
   });
 
-  const [address, setAddress] = useState({
-    name: "",
-    mobile: "",
-    province: "",
-    city: "",
-    address: "",
-    postalCode: "",
-    telephone: "",
-    cityCode: "",
-  });
+  
 
   const handleCities = (e: ChangeEvent<HTMLSelectElement>) => {
     setProvince(provinces.find((item: any) => item.name === e.target.value));
@@ -37,7 +28,7 @@ export default function ShippingModal({ open, setOpen }: any) {
   const handleAddress = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     address.province = province.name;
-    console.log(address);
+    setOpen(false)
   };
 
   return (
@@ -79,9 +70,9 @@ export default function ShippingModal({ open, setOpen }: any) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className=" inline-block align-bottom bg-white rounded-lg  shadow-xl transform transition-all sm:my-8 sm:align-middle lg:h-5/6 lg:w-4/5 w-full h-full">
+            <div className=" inline-block align-bottom bg-white rounded-lg  shadow-xl transform transition-all sm:my-8 sm:align-middle lg:h-5/6 lg:w-4/5 w-full h-auto">
               <div className="h-full bg-white ">
-                <div className="w-4/5 mx-auto h-full py-10 flex flex-col">
+                <div className="w-4/5 mx-auto h-auto py-10 flex flex-col">
                   <div className=" w-full flex flex-col my-8 text-right sm:mt-0 sm:ml-4 space-y-16">
                     <Dialog.Title
                       as="h3"
@@ -98,7 +89,7 @@ export default function ShippingModal({ open, setOpen }: any) {
                   </div>
                   <div className="w-full block">
                     <form
-                      className="w-full space-y-12"
+                      className="w-full bg-white space-y-12"
                       onSubmit={handleAddress}
                     >
                       <div className="floating-input mb-5 relative ">
@@ -123,8 +114,8 @@ export default function ShippingModal({ open, setOpen }: any) {
                       <div className="floating-input mb-5 relative w-1/2">
                         <input
                           type="text"
-                          id="mobilePhone"
-                          name="mobilePhoe"
+                          id="mobile"
+                          name="mobile"
                           className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
                           placeholder=" "
                           autoComplete="off"
@@ -132,7 +123,7 @@ export default function ShippingModal({ open, setOpen }: any) {
                           onChange={getValue}
                         />
                         <label
-                          htmlFor="mobilePhone"
+                          htmlFor="mobile"
                           className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
                         >
                           شماره تماس ضروری
@@ -205,7 +196,7 @@ export default function ShippingModal({ open, setOpen }: any) {
                         </label>
                       </div>
 
-                      <div className="grid grid-cols-8 gap-4">
+                      <div className="flex flex-col md:grid md:grid-cols-8 gap-4">
                         <div className="col-span-3 relative floating-input mb-5">
                           <input
                             type="text"

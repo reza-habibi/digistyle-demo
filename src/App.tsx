@@ -11,6 +11,7 @@ import { Categories } from "./data";
 import SubCategory from "./screens/SubCategoryScreen";
 import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
+import CheckoutScreen from "./screens/CheckoutScreen";
 
 function App() {
   return (
@@ -36,9 +37,9 @@ function App() {
             <Route key={index} path={category.url} component={SubCategory} />
           ))
         )}
-        <Route path="/cart" exact component={CartScreen}/>
-        <Route path="/shipping" exact component={ShippingScreen}/>
-
+        <Route path="/cart" exact component={CartScreen} />
+        <Route path="/shipping" exact component={ShippingScreen} />
+        <Route path="/checkout" exact component={CheckoutScreen} />
       </Switch>
       <Footer />
       <DesktopFooter />
