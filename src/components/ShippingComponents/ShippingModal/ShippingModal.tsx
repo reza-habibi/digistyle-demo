@@ -1,9 +1,44 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useRef } from "react";
+import { ChangeEvent, Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { useState } from "react";
 
+const provinces = require("../../../json/provinces.json");
+const cities = require("../../../json/cities.json");
 export default function ShippingModal({ open, setOpen }: any) {
   const cancelButtonRef = useRef(null);
+  const [province, setProvince] = useState({
+    id: 0,
+    name: "",
+    slug: "",
+  });
+
+  const [address, setAddress] = useState({
+    name: "",
+    mobile: "",
+    province: "",
+    city: "",
+    address: "",
+    postalCode: "",
+    telephone: "",
+    cityCode: "",
+  });
+
+  const handleCities = (e: ChangeEvent<HTMLSelectElement>) => {
+    setProvince(provinces.find((item: any) => item.name === e.target.value));
+  };
+
+  const getValue: any = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  };
+
+  const handleAddress = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    address.province = province.name;
+    console.log(address);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -47,7 +82,7 @@ export default function ShippingModal({ open, setOpen }: any) {
             <div className=" inline-block align-bottom bg-white rounded-lg  shadow-xl transform transition-all sm:my-8 sm:align-middle lg:h-5/6 lg:w-4/5 w-full h-full">
               <div className="h-full bg-white ">
                 <div className="w-4/5 mx-auto h-full py-10 flex flex-col">
-                  <div className=" w-full flex flex-col my-8 text-right sm:mt-0 sm:ml-4 space-y-8">
+                  <div className=" w-full flex flex-col my-8 text-right sm:mt-0 sm:ml-4 space-y-16">
                     <Dialog.Title
                       as="h3"
                       className="h-full text-3xl leading-6 font-medium text-gray-900"
@@ -62,66 +97,185 @@ export default function ShippingModal({ open, setOpen }: any) {
                     </Dialog.Title>
                   </div>
                   <div className="w-full block">
-                    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-                      <div className="relative py-3 w-11/12 max-w-xl sm:mx-auto">
-                        <div className="relative p-8 bg-white shadow-sm sm:rounded-xl">
-                          <form className="w-full">
-                            <div className="floating-input mb-5 relative">
-                              <input
-                                type="email"
-                                id="email"
-                                className="border-none focus:border-b border-gray-200  outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
-                                placeholder="name@example.com"
-                                autoComplete="off"
-                              />
-                              <label
-                                htmlFor="email"
-                                className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out "
+                    <form
+                      className="w-full space-y-12"
+                      onSubmit={handleAddress}
+                    >
+                      <div className="floating-input mb-5 relative ">
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                          placeholder=" "
+                          autoComplete="off"
+                          required
+                          onChange={getValue}
+                        />
+                        <label
+                          htmlFor="name"
+                          className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
+                        >
+                          نام و نام خانوادگی تحویل گیرنده
+                        </label>
+                      </div>
+
+                      <div className="floating-input mb-5 relative w-1/2">
+                        <input
+                          type="text"
+                          id="mobilePhone"
+                          name="mobilePhoe"
+                          className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                          placeholder=" "
+                          autoComplete="off"
+                          required
+                          onChange={getValue}
+                        />
+                        <label
+                          htmlFor="mobilePhone"
+                          className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
+                        >
+                          شماره تماس ضروری
+                        </label>
+                      </div>
+
+                      <div className="w-full flex">
+                        <div className="floating-input mb-5 relative w-1/2 ml-5">
+                          <select
+                            name="province"
+                            className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                            onChange={handleCities}
+                          >
+                            <option value="">استان</option>
+                            {provinces.map((item: any) => (
+                              <option
+                                key={item.id}
+                                value={item.name}
+                                className="text-gray-900 text-xl"
                               >
-                                نام و نام خانوادگی تحویل گیرنده
-                              </label>
-                            </div>
-                            <div className="floating-input mb-5 relative">
-                              <input
-                                type="password"
-                                id="password"
-                                className="border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-16"
-                                placeholder="password"
-                                autoComplete="off"
-                              />
-                              <label
-                                htmlFor="password"
-                                className="absolute top-0 left-0 px-3 py-5 h-full pointer-events-none transform origin-left transition-all duration-100 ease-in-out "
-                              >
-                                Password
-                              </label>
-                            </div>
-                            <button className="w-full bg-indigo-600 text-white p-3 rounded-md">
-                              Submit
-                            </button>
-                          </form>
+                                {item.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        <div className="floating-input mb-5 relative w-1/2">
+                          <select
+                            name="city"
+                            onChange={getValue}
+                            className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                          >
+                            {province.id !== 0 ? (
+                              cities
+                                .filter(
+                                  (item: any) =>
+                                    item.province_id === province.id
+                                )
+                                .map((item: any) => (
+                                  <option
+                                    key={item.id}
+                                    value={item.name}
+                                    className="text-gray-900 text-xl"
+                                  >
+                                    {item.name}
+                                  </option>
+                                ))
+                            ) : (
+                              <option>شهر</option>
+                            )}
+                          </select>
                         </div>
                       </div>
-                    </div>
+
+                      <div className="floating-input mb-5 relative">
+                        <input
+                          type="address"
+                          id="address"
+                          name="address"
+                          onChange={getValue}
+                          className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                          placeholder=" "
+                          autoComplete="off"
+                        />
+                        <label
+                          htmlFor="address"
+                          className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
+                        >
+                          آدرس پستی
+                        </label>
+                      </div>
+
+                      <div className="grid grid-cols-8 gap-4">
+                        <div className="col-span-3 relative floating-input mb-5">
+                          <input
+                            type="text"
+                            id="postalCode"
+                            name="postalCode"
+                            onChange={getValue}
+                            className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                            placeholder=" "
+                            autoComplete="off"
+                          />
+                          <label
+                            htmlFor="postalCode"
+                            className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
+                          >
+                            کد پستی
+                          </label>
+                        </div>
+
+                        <div className="col-span-3 relative floating-input mb-5">
+                          <input
+                            type="text"
+                            id="telephone"
+                            name="telephone"
+                            className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                            placeholder=" "
+                            autoComplete="off"
+                          />
+                          <label
+                            htmlFor="telephone"
+                            className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
+                          >
+                            شماره تلفن ثابت
+                          </label>
+                        </div>
+                        <div className="col-span-2 relative floating-input mb-5">
+                          <input
+                            type="text"
+                            id="cityCode"
+                            name="cityCode"
+                            onChange={getValue}
+                            className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
+                            placeholder=" "
+                            autoComplete="off"
+                          />
+                          <label
+                            htmlFor="cityCode"
+                            className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
+                          >
+                            کد شهر
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="w-full flex justify-end">
+                        <button
+                          className="bg-transparent text-gray-700 p-3 lg:text-3xl hover:text-red-500 ml-10"
+                          onClick={() => setOpen(false)}
+                        >
+                          انصراف
+                        </button>
+                        <button
+                          type="submit"
+                          className="bg-transparent text-pink-500 p-3 lg:text-3xl hover:text-pelorous "
+                        >
+                          ثبت اطلاعات و بازگشت
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-full sm:text-xl"
-                  onClick={() => setOpen(false)}
-                >
-                  Deactivate
-                </button>
-                <button
-                  type="button"
-                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-xl"
-                  onClick={() => setOpen(false)}
-                  ref={cancelButtonRef}
-                >
-                  Cancel
-                </button>
               </div>
             </div>
           </Transition.Child>

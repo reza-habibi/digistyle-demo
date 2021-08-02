@@ -16,7 +16,7 @@ function CartItem({ product, carts , setCarts }: any) {
         <span className="text-black text-2xl lg:text-4xl font-bold">
           {product.brandFa}
         </span>
-        <span className="textbaselack textxl lg:text-2xl">{product.name}</span>
+        <span className="text-lack text-xl lg:text-2xl lg:pr-2">{product.name}</span>
         <span className="text-gray-700 text-lg lg:text-xl">
           کد محصول : 123456789
         </span>

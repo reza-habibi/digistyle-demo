@@ -276,5 +276,5 @@ footer .collapse-arrow .collapse-title:after {
 }
 .floating-input>input:focus~label, 
 .floating-input>input:not(:placeholder-shown)~label {
-@apply opacity-75 scale-75 -translate-y-3 translate-x-1; 
+@apply opacity-75 scale-75 -translate-y-8 text-pelorous; 
 }

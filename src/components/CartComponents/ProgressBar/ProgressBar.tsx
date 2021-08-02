@@ -19,7 +19,7 @@ function ProgressBar() {
           location.pathname === "/cart"
             ? "bg-gradient-to-l from-blue-400 to-gray-300"
             : "bg-blue-400"
-        } h-2 w-16 md:w-28 lg:w-36`}
+        } h-2 w-16 md:w-40 lg:w-72`}
       ></div>
       <figure
         className={`border-4 ${
@@ -43,7 +43,7 @@ function ProgressBar() {
             : location.pathname === "/checkout"
             ? "bg-blue-400"
             : "bg-gray-300"
-        } h-2 w-16 md:w-28 lg:w-36`}
+        } h-2 w-16 md:w-40 lg:w-72`}
       ></div>
       <figure
         className={`border-4 ${
