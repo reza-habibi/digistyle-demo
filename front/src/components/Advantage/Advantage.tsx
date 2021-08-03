@@ -3,7 +3,6 @@ import { useLocation } from "react-router";
 
 function Advantage() {
   const location = useLocation();
-  console.log(location)
   return (
     <div className="w-full p-5 grid grid-cols-3 bg-white">
       <div className="flex flex-col justify-center items-center">

@@ -55,7 +55,7 @@ export default function CardCarousel({products}:any) {
               <div className="w-full relative product-card">
                 <div className="bg-white rounded-lg h-100 p-2  mb-3">
                   <figure className="mb-2">
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img
                         src={product.image}
                         alt={product.name}
@@ -68,7 +68,7 @@ export default function CardCarousel({products}:any) {
                   </span>
                   <div className="rounded-lg p-2 bg-white flex flex-col mb-3">
                     <div>
-                      <Link to={`/product/${product._id}`}>
+                      <Link to={`/products/${product._id}`}>
                         <h5 className="text-gray-700 text-xl font-bold leading-6 ">
                           {product.name}
                         </h5>
@@ -146,7 +146,7 @@ export default function CardCarousel({products}:any) {
               <div className="w-full relative product-card">
                 <div className="bg-white rounded-lg h-100 p-2  mb-3">
                   <figure className="mb-2">
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img
                         src={product.image}
                         alt={product.name}
@@ -159,7 +159,7 @@ export default function CardCarousel({products}:any) {
                   </span>
                   <div className="rounded-lg p-2 bg-white flex flex-col mb-3">
                     <div>
-                      <Link to={`/product/${product._id}`}>
+                      <Link to={`/products/${product._id}`}>
                         <h5 className="text-gray-700 text-xl font-bold leading-6 ">
                           {product.name}
                         </h5>

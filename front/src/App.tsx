@@ -26,24 +26,6 @@ function App() {
     cityCode: "021",
   });
 
-  const [products, setProducts] = useState<TProducts[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get("/api/products");
-        setLoading(false);
-        setProducts(data);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <Router>
@@ -53,16 +35,10 @@ function App() {
         <Route
           path="/"
           exact
-          render={(props) => (
-            <HomeScreen
-              {...props}
-              products={products}
-              loading={loading}
-              error={error}
-            />
-          )}
+          component={HomeScreen}
         />
-        <Route path="/product/:id" component={ProductScreen} />
+        <Route path="/products/:id" component={ProductScreen} />
+        
         {Categories.map((category: any, index: number) => (
           <Route
             key={index}

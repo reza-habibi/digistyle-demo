@@ -27,3 +27,10 @@ export type TSub = {
   name: string;
   url: string;
 };
+
+
+export type TPState={
+  loading:Boolean
+  product:any
+  error?:string
+}

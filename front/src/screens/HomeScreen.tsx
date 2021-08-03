@@ -10,17 +10,27 @@ import DesktopCarousel from "../components/HomeComponents/MainCarousel/DesktopCa
 import CategoryLinks from "../components/HomeComponents/CategoryLinks/CategoryLinks";
 import DesktopBrands from "../components/HomeComponents/Brands/DesktopBrands";
 import { FaArrowLeft } from "react-icons/fa";
-import { TProducts } from "../type.ds";
 import Loading from "../components/Loading/Loading";
-import MessageBox from "../components/MessagBox/MessageBox";
+import MessageBox from "../components/MessageBox/MessageBox";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { listProducts } from "../redux/actions/productAction";
+export default function HomeScreen() {
+  //@ts-ignore
+  const productList = useSelector((state) => state.productList);
+  const { products, loading, error } = productList;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
 
-export default function HomeScreen({products , loading , error}:{products:TProducts[] , loading:Boolean ,error:string}) {
-  
   return (
     <div>
       {loading ? (
         <Loading />
-      ) : error ?<MessageBox  error={error}/>: (
+      ) : error ? (
+        <MessageBox error={error} />
+      ) : (
         <div className=" mx-auto flex flex-col gap-y-20 items-center min-h-screen">
           <Carousel />
           <DesktopCarousel />
