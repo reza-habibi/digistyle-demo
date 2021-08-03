@@ -3,7 +3,7 @@ import DesktopSingleProduct from "../components/ProductSinglePage/DesktopProduct
 import { useSelector, useDispatch } from "react-redux";
 import MessageBox from "../components/MessageBox/MessageBox";
 import Loading from "../components/Loading/Loading";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { detailsProduct } from "../redux/actions/productAction";
 
 export default function ProductScreen(props: any) {
@@ -16,8 +16,8 @@ export default function ProductScreen(props: any) {
     //@ts-ignore
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
+  const [qty, setQty] = useState(0);
 
-  
 
   return (
     <div>
@@ -28,11 +28,11 @@ export default function ProductScreen(props: any) {
       ) : (
         <div>
           <div className="lg:hidden">
-            <MobileSingleProduct product={product} />
+            <MobileSingleProduct product={product} qty={qty} setQty={setQty} />
           </div>
 
           <div className="hidden lg:block">
-            <DesktopSingleProduct product={product} />
+            <DesktopSingleProduct product={product} qty={qty} setQty={setQty} />
           </div>
         </div>
       )}

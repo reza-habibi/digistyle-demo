@@ -12,8 +12,6 @@ import SubCategory from "./screens/SubCategoryScreen";
 import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
-import axios from "axios";
-import { TProducts } from "./type.ds";
 function App() {
   const [address, setAddress] = useState({
     name: "محمدرضا حبیبی",
@@ -38,7 +36,7 @@ function App() {
           component={HomeScreen}
         />
         <Route path="/products/:id" component={ProductScreen} />
-        
+
         {Categories.map((category: any, index: number) => (
           <Route
             key={index}
