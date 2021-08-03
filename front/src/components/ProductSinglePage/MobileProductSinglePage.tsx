@@ -52,7 +52,7 @@ export default function MobileSingleProduct({ product, qty, setQty }: any) {
   
   const productId = product._id;
 
-  const addToCardHandler = () => {
+  const addToCartHandler = () => {
     dispatch(addToCart(productId, qty));
   };
   return (
@@ -137,7 +137,7 @@ export default function MobileSingleProduct({ product, qty, setQty }: any) {
                   <div className="w-1/2 h-24 mx-auto hidden md:block">
                     <button
                       className="flex justify-center items-center bg-pink-500 hover:bg-pink-900 text-white-900 font-semibold hover:text-white py-2 px-4 "
-                      onClick={addToCardHandler}
+                      onClick={addToCartHandler}
                     >
                       <span className=" w-auto ">
                         <ShoppingBagIcon
@@ -199,7 +199,7 @@ export default function MobileSingleProduct({ product, qty, setQty }: any) {
             </div>
             <button
               className="z-50 bg-pink-500 text-2xl flex justify-center items-center sm:hidden fixed bottom-0 w-full h-24"
-              onClick={addToCardHandler}
+              onClick={addToCartHandler}
               disabled={product.countInStock === 0}
             >
               <span className=" w-auto ">

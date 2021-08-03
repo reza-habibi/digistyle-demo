@@ -8,10 +8,13 @@ import { TProducts } from "../type.ds";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ImWarning } from "react-icons/im";
+import { useDispatch, useSelector } from "react-redux";
 
 function CartScreen() {
-  const cart = data.products.filter((item: TProducts) => item.brand === "nike");
-  const [carts, setCarts] = useState(cart);
+  //@ts-ignore
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  const [carts, setCarts] = useState(cartItems);
 
   const discount =
     carts.length !== 0
@@ -92,7 +95,10 @@ function CartScreen() {
                 حالا سبد خود را ثبت و خرید را تکمیل کنید.
               </p>
             </div>
-            <Link to="/shipping" className="text-center bg-pink-500 text-white text-2xl w-96 py-6" >
+            <Link
+              to="/shipping"
+              className="text-center bg-pink-500 text-white text-2xl w-96 py-6"
+            >
               ثبت و مرحله بعد
             </Link>
           </div>

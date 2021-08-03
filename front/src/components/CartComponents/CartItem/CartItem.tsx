@@ -5,8 +5,10 @@ import Humanize from "humanize-plus";
 function CartItem({ product, carts, setCarts }: any) {
   const handleRemove = (id: string) => {
     setCarts(carts.filter((item: any) => item._id !== id));
-    console.log(carts);
   };
+
+  console.log(carts);
+
   return (
     <div className="w-full bg-transparent h-auto  flex flex-col items-center lg:grid lg:grid-cols-12 lg:border lg:border-gray-700 lg:border-opacity-60 p-3 relative mt-5">
       <div className="flex col-span-5 grid grid-cols-5">
@@ -29,7 +31,7 @@ function CartItem({ product, carts, setCarts }: any) {
         <div className="flex justify-between items-start py-8 h-2/3">
           <div className="self-end ">
             <span className="text-base md:text-xl lg:text-2xl text-gray-500">
-              تعداد :
+              تعداد : {product.qty}
             </span>
           </div>
           <div className="flex flex-col w-2/3 h-full justify-between">
@@ -39,7 +41,7 @@ function CartItem({ product, carts, setCarts }: any) {
               </span>
               <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
-                {Humanize.intComma(product.price)} تومان
+                {Humanize.intComma((product.price)*product.qty)} تومان
               </span>
             </div>
             {product.discount !== "0" ? (
@@ -50,7 +52,7 @@ function CartItem({ product, carts, setCarts }: any) {
                 <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                   {" "}
                   {Humanize.intComma(
-                    (product.price * parseInt(product.discount)) / 100
+                    ((product.price * parseInt(product.discount)) / 100)*product.qty
                   )}{" "}
                   تومان
                 </span>
@@ -67,8 +69,8 @@ function CartItem({ product, carts, setCarts }: any) {
               <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
                 {Humanize.intComma(
-                  product.price -
-                    (product.price * parseInt(product.discount)) / 100
+                  ((product.price)*product.qty) -
+                    (((product.price * parseInt(product.discount)) / 100)*product.qty)
                 )}{" "}
                 تومان
               </span>

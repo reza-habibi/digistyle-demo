@@ -2,12 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import Portal from "@reach/portal";
 import { ShoppingBagIcon, XIcon } from "@heroicons/react/outline";
 import Advantage from "../Advantage/Advantage";
+import { useDispatch, useSelector } from "react-redux";
 
 export const BasketDrawer = () => {
+  //@ts-ignore
+  const cart = useSelector(state => state.cart)
+  const {cartItems}=cart
   const [isOpen, setIsOpen] = useState<Boolean>(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+console.log(cartItems)
 
   return (
     <div className="m-8">

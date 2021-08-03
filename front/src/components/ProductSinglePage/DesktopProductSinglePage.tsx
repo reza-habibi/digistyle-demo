@@ -17,7 +17,7 @@ export default function DesktopSingleProduct({ product, qty, setQty }: any) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listProducts());
-    setQty(0)
+    setQty(0);
   }, [dispatch, setQty]);
 
   const increaseQty = () => {
@@ -28,13 +28,11 @@ export default function DesktopSingleProduct({ product, qty, setQty }: any) {
     setQty(qty - 1);
   };
 
-  const productId =product._id
+  const productId = product._id;
 
-  useEffect(() => {
-    dispatch(addToCart(productId , qty))
-
-  }, [dispatch, productId, qty])
-   
+  const addToCartHandler = () => {
+    dispatch(addToCart(productId, qty));
+  };
   return (
     <>
       {loading ? (
@@ -67,7 +65,9 @@ export default function DesktopSingleProduct({ product, qty, setQty }: any) {
                   <span className="text-2xl text-gray-900 ml-5">تعداد : </span>
                   <button
                     className={`${
-                      qty === product.countInStock ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded":"opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
+                      qty === product.countInStock
+                        ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
+                        : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
                     }`}
                     onClick={increaseQty}
                     disabled={qty === product.countInStock ? true : false}
@@ -82,7 +82,9 @@ export default function DesktopSingleProduct({ product, qty, setQty }: any) {
                   </span>
                   <button
                     className={`${
-                      qty === 0 ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded":"opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
+                      qty === 0
+                        ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
+                        : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
                     }`}
                     onClick={decreaseQty}
                     disabled={qty === 0 ? true : false}
@@ -95,7 +97,10 @@ export default function DesktopSingleProduct({ product, qty, setQty }: any) {
                 </div>
                 {product.countInStock > 0 && (
                   <div className=" h-24 w-1/2">
-                    <div className="flex justify-center items-center bg-pink-500 hover:bg-pink-900 text-white-900 font-semibold hover:text-white py-2 px-4 ">
+                    <button
+                      className="flex justify-center items-center bg-pink-500 hover:bg-pink-900 text-white-900 font-semibold hover:text-white py-2 px-4 "
+                      onClick={addToCartHandler}
+                    >
                       <span className=" w-auto ">
                         <ShoppingBagIcon
                           className="text-white block w-12 h-12"
@@ -105,7 +110,7 @@ export default function DesktopSingleProduct({ product, qty, setQty }: any) {
                       <span className="text-xl text-white mr-3">
                         افزودن به سبد خرید
                       </span>
-                    </div>
+                    </button>
                   </div>
                 )}
                 <div className="w-full">
