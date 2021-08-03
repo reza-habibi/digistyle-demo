@@ -10,37 +10,17 @@ import DesktopCarousel from "../components/HomeComponents/MainCarousel/DesktopCa
 import CategoryLinks from "../components/HomeComponents/CategoryLinks/CategoryLinks";
 import DesktopBrands from "../components/HomeComponents/Brands/DesktopBrands";
 import { FaArrowLeft } from "react-icons/fa";
-import { useState } from "react";
 import { TProducts } from "../type.ds";
-import { useEffect } from "react";
-import axios from "axios";
 import Loading from "../components/Loading/Loading";
+import MessageBox from "../components/MessagBox/MessageBox";
 
-export default function HomeScreen() {
-  const [products, setProducts] = useState<TProducts[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get("/api/products");
-        setLoading(false);
-        setProducts(data);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
+export default function HomeScreen({products , loading , error}:{products:TProducts[] , loading:Boolean ,error:string}) {
+  
   return (
     <div>
       {loading ? (
         <Loading />
-      ) : (
+      ) : error ?<MessageBox  error={error}/>: (
         <div className=" mx-auto flex flex-col gap-y-20 items-center min-h-screen">
           <Carousel />
           <DesktopCarousel />

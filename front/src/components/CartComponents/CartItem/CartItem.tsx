@@ -2,24 +2,28 @@ import React from "react";
 import { XIcon } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
 
-function CartItem({ product, carts , setCarts }: any) {
+function CartItem({ product, carts, setCarts }: any) {
   const handleRemove = (id: string) => {
     setCarts(carts.filter((item: any) => item._id !== id));
     console.log(carts);
   };
   return (
-    <div className="w-full bg-transparent h-auto flex items-center grid grid-cols-12 lg:border lg:border-gray-700 lg:border-opacity-60 p-3 relative mt-5">
-      <figure className="w-full h-auto col-span-2">
-        <img src={product.image} alt={product.name} />
-      </figure>
-      <div className="flex flex-col w-full h-full space-y-10 col-span-3 py-3 mr-5">
-        <span className="text-black text-2xl lg:text-4xl font-bold">
-          {product.brandFa}
-        </span>
-        <span className="text-lack text-xl lg:text-2xl lg:pr-2">{product.name}</span>
-        <span className="text-gray-700 text-lg lg:text-xl">
-          کد محصول : 123456789
-        </span>
+    <div className="w-full bg-transparent h-auto  flex flex-col items-center lg:grid lg:grid-cols-12 lg:border lg:border-gray-700 lg:border-opacity-60 p-3 relative mt-5">
+      <div className="flex col-span-5 grid grid-cols-5">
+        <figure className="lg:w-2/3 lg:h-auto mx-auto col-span-2 ">
+          <img src={product.image} alt={product.name} />
+        </figure>
+        <div className="flex flex-col w-full h-full space-y-10 col-span-3 py-3 mr-5">
+          <span className="text-black text-2xl lg:text-4xl font-bold">
+            {product.brandFa}
+          </span>
+          <span className="text-lack text-xl lg:text-2xl lg:pr-2">
+            {product.name}
+          </span>
+          <span className="text-gray-700 text-lg lg:text-xl">
+            کد محصول : 123456789
+          </span>
+        </div>
       </div>
       <div className="col-span-6 flex flex-col w-full h-full divide-gray-500 divide-y">
         <div className="flex justify-between items-start py-8 h-2/3">
