@@ -28,9 +28,24 @@ export type TSub = {
   url: string;
 };
 
+export type TPState = {
+  loading: Boolean;
+  product: TProducts[];
+  error?: string;
+};
 
-export type TPState={
-  loading:Boolean
-  product:any
-  error?:string
+
+
+export type TCartItem = {
+  name: string
+  image: string
+  price: number
+  discount: string
+  countInStock: number
+  product: string
+  qty:number
+};
+
+export type TCartState={
+  cartItems:TCartItem[]
 }

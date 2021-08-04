@@ -15,10 +15,21 @@ import "swiper/components/navigation/navigation.min.css";
 import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/actions/cartAction";
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
 export default function CardCarousel({products}:any) {
+
+
+  const dispatch = useDispatch()
+
+  const addToCartHandler = (productId: string) => {
+    const qty=1
+    dispatch(addToCart(productId, qty));
+  };
+
   return (
     <>
       <div className="hidden lg:block">
@@ -89,7 +100,7 @@ export default function CardCarousel({products}:any) {
                             aria-hidden="true"
                           />
                         </button>
-                        <button className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500">
+                        <button className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500" onClick={()=>addToCartHandler(product._id)}>
                           <ShoppingCartIcon
                             className="block h-8 w-8"
                             aria-hidden="true"

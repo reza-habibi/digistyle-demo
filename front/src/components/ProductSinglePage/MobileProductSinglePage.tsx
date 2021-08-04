@@ -16,6 +16,8 @@ import { listProducts } from "../../redux/actions/productAction";
 import Loading from "../Loading/Loading";
 import MessageBox from "../MessageBox/MessageBox";
 import { addToCart } from "../../redux/actions/cartAction";
+import { RootState } from "../../redux/Store/Store";
+import { showDrawer } from "../../redux/actions/drawerAction";
 
 export default function MobileSingleProduct({ product, qty, setQty }: any) {
   const [scrolled, setScrolled] = useState(false);
@@ -31,13 +33,12 @@ export default function MobileSingleProduct({ product, qty, setQty }: any) {
   useEffect(() => {
     handleScroll();
   });
-  //@ts-ignore
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state: RootState) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listProducts());
-    setQty(0);
+    setQty(1);
   }, [dispatch, setQty]);
 
   const history = useHistory();
@@ -49,18 +50,19 @@ export default function MobileSingleProduct({ product, qty, setQty }: any) {
   const decreaseQty = () => {
     setQty(qty - 1);
   };
-  
+
   const productId = product._id;
 
   const addToCartHandler = () => {
     dispatch(addToCart(productId, qty));
+    dispatch(showDrawer())
   };
   return (
     <>
       {loading ? (
         <Loading />
       ) : error ? (
-        <MessageBox error={error.message} />
+        <MessageBox error={error} />
       ) : (
         <div>
           <div className="product w-full bg-white flex flex-col">
@@ -120,12 +122,12 @@ export default function MobileSingleProduct({ product, qty, setQty }: any) {
                   </span>
                   <button
                     className={`${
-                      qty === 0
+                      qty === 1
                         ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
                         : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
                     }`}
                     onClick={decreaseQty}
-                    disabled={qty === 0 ? true : false}
+                    disabled={qty === 1 ? true : false}
                   >
                     <MinusIcon
                       className="block w-8 h-8 mx-auto"

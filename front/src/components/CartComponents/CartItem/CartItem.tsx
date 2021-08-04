@@ -41,7 +41,7 @@ function CartItem({ product, carts, setCarts }: any) {
               </span>
               <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
-                {Humanize.intComma((product.price)*product.qty)} تومان
+                {Humanize.intComma(product.price * product.qty)} تومان
               </span>
             </div>
             {product.discount !== "0" ? (
@@ -52,7 +52,8 @@ function CartItem({ product, carts, setCarts }: any) {
                 <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                   {" "}
                   {Humanize.intComma(
-                    ((product.price * parseInt(product.discount)) / 100)*product.qty
+                    ((product.price * parseInt(product.discount)) / 100) *
+                      product.qty
                   )}{" "}
                   تومان
                 </span>
@@ -69,8 +70,9 @@ function CartItem({ product, carts, setCarts }: any) {
               <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}
                 {Humanize.intComma(
-                  ((product.price)*product.qty) -
-                    (((product.price * parseInt(product.discount)) / 100)*product.qty)
+                  product.price * product.qty -
+                    ((product.price * parseInt(product.discount)) / 100) *
+                      product.qty
                 )}{" "}
                 تومان
               </span>
@@ -78,7 +80,7 @@ function CartItem({ product, carts, setCarts }: any) {
           ) : (
             <div className="w-2/3 py-8 mr-auto flex justify-between">
               <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
-                قیمت واحد
+                قیمت کل
               </span>
               <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                 {" "}

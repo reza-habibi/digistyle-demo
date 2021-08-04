@@ -1,6 +1,9 @@
+import { TCartState } from "../../type.ds";
 import { CART_ADD_ITEM } from "../constants/cartConstants";
-//@ts-ignore
-export const cartReducer = (state = { cartItems: [] }, action: any) => {
+
+const initialState :TCartState ={ cartItems: [] }
+
+export const cartReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case CART_ADD_ITEM:
       const item = action.payload;

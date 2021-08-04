@@ -2,17 +2,16 @@ import React from "react";
 import Advantage from "../components/Advantage/Advantage";
 import CartItem from "../components/CartComponents/CartItem/CartItem";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
-import { data } from "../data";
 import Humanize from "humanize-plus";
 import { TProducts } from "../type.ds";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ImWarning } from "react-icons/im";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/Store/Store";
 
 function CartScreen() {
-  //@ts-ignore
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state:RootState) => state.cart);
   const { cartItems } = cart;
   const [carts, setCarts] = useState(cartItems);
 
@@ -117,7 +116,7 @@ function CartScreen() {
           </span>
           <Link
             to="/"
-            className="bg-transparent w-64 hover:bg-gray-500 text-gray-700 font-bold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent my-20"
+            className="bg-transparent text-center w-64 hover:bg-gray-500 text-gray-700 font-bold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent my-20"
           >
             صفحه اصلی
           </Link>

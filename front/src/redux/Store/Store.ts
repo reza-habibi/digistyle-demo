@@ -1,22 +1,20 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { cartReducer } from "../reducers/cartReducer";
+import { drawerReducer } from "../reducers/drawerReducer";
 import {
   productDetailsReducer,
   productListReducer,
 } from "../reducers/productReducer";
 
-interface IReducer {
-  productList: any;
-  productDetails: any;
-}
 
 const initialState = {};
-const reducer = combineReducers<IReducer>({
+const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   //@ts-ignore
   cart: cartReducer,
+  drawer:drawerReducer,
 });
 //@ts-ignore
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,4 +23,7 @@ const store = createStore(
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
+
+export type RootState = ReturnType<typeof reducer>;
+
 export default store;
