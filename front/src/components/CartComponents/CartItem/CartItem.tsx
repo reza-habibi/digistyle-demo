@@ -1,13 +1,15 @@
 import React from "react";
 import { XIcon } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../../redux/actions/cartAction";
 
-function CartItem({ product, carts, setCarts }: any) {
-  const handleRemove = (id: string) => {
-    setCarts(carts.filter((item: any) => item._id !== id));
+function CartItem({ product }: any) {
+  const dispatch = useDispatch();
+
+  const removeFromCartHandler = (productId: string) => {
+    dispatch(removeFromCart(productId));
   };
-
-  console.log(carts);
 
   return (
     <div className="w-full bg-transparent h-auto  flex flex-col items-center lg:grid lg:grid-cols-12 lg:border lg:border-gray-700 lg:border-opacity-60 p-3 relative mt-5">
@@ -91,11 +93,12 @@ function CartItem({ product, carts, setCarts }: any) {
         </div>
       </div>
 
-      <span
-        className="w-14 h-14 bg-white rounded-full flex items-center justify-center absolute top-5 left-5 cursor-pointer"
-        onClick={() => handleRemove(product._id)}
-      >
-        <XIcon className="block h-8 w-8" aria-hidden={true} />
+      <span className="w-14 h-14 bg-white rounded-full flex items-center justify-center absolute top-5 left-5 cursor-pointer">
+        <XIcon
+          className="block h-8 w-8"
+          aria-hidden={true}
+          onClick={() => removeFromCartHandler(product.product)}
+        />
       </span>
     </div>
   );

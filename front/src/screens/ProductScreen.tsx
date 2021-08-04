@@ -1,4 +1,4 @@
-import DesktopSingleProduct from "../components/ProductSinglePage/DesktopProductSinglePage";
+import DesktopSingleProduct from "../components/ProductSinglePage/ProductSinglePage";
 import { useSelector, useDispatch } from "react-redux";
 import MessageBox from "../components/MessageBox/MessageBox";
 import Loading from "../components/Loading/Loading";

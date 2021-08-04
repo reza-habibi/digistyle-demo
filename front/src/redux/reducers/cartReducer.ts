@@ -1,7 +1,7 @@
 import { TCartState } from "../../type.ds";
-import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
-const initialState :TCartState ={ cartItems: [] }
+const initialState: TCartState = { cartItems: [] };
 
 export const cartReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -18,6 +18,10 @@ export const cartReducer = (state = initialState, action: any) => {
       } else {
         return { ...state, cartItems: [...state.cartItems, item] };
       }
+    case CART_REMOVE_ITEM:
+      return {
+        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
     default:
       return state;
   }

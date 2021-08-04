@@ -17,6 +17,7 @@ import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/cartAction";
+import { showDrawer } from "../../redux/actions/drawerAction";
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
@@ -28,6 +29,7 @@ export default function CardCarousel({products}:any) {
   const addToCartHandler = (productId: string) => {
     const qty=1
     dispatch(addToCart(productId, qty));
+    dispatch(showDrawer())
   };
 
   return (

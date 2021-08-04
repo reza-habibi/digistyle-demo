@@ -1,13 +1,18 @@
-
-import { MinusIcon, PlusIcon } from "@heroicons/react/outline";
+import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../redux/actions/cartAction";
 
-export default function BasketItem({ product }: any) {
- 
+export default function CartDrawerItems({ product }: any) {
+  const dispatch = useDispatch();
+
+  const removeFromCartHandler = (productId: string) => {
+    dispatch(removeFromCart(productId));
+  };
 
   return (
     <div>
-      <div className="pt-5 w-full flex">
+      <div className="pt-5 w-full flex relative">
         <figure className="w-40 h-40">
           <img src={product.image} alt={product.name} />
         </figure>
@@ -18,6 +23,7 @@ export default function BasketItem({ product }: any) {
           <div className="w-full py-2 flex items-center ">
             <span className="text-2xl text-gray-900 ml-5">تعداد : </span>
             <button
+            onClick={()=>console.log("hi")}
               className={`${
                 product.qty === product.countInStock
                   ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
@@ -41,6 +47,13 @@ export default function BasketItem({ product }: any) {
               <MinusIcon className="block w-8 h-8 mx-auto" aria-hidden={true} />
             </button>
           </div>
+          <span className="w-14 h-14 bg-white rounded-full flex items-center justify-center absolute top-5 left-5 cursor-pointer">
+            <XIcon
+              className="block h-8 w-8"
+              aria-hidden={true}
+              onClick={() => removeFromCartHandler(product.product)}
+            />
+          </span>
           <div className="w-full text-right">
             <span className="text-gray-900 text-2xl">
               {Humanize.intComma(product.price)}

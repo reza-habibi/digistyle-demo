@@ -114,7 +114,7 @@ export default function DesktopSingleProduct({ product }: any) {
                           </span>
                           <span className="text-white text-2xl">تومان</span>
                         </div>
-                        <div className="w-11  overflow-hidden inline-block">
+                        <div className="w-11 hidden md:block overflow-hidden inline-block">
                           <div className=" h-16  bg-black -rotate-45 transform origin-top-right"></div>
                         </div>
                       </div>

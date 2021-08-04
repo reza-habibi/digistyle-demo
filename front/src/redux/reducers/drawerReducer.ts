@@ -1,4 +1,5 @@
-import { DrawerAction, DrawerActionTypes } from "../actions/drawerAction";
+import { DrawerAction } from "../actions/drawerAction";
+import { DrawerActionTypes } from "../constants/drawerConstants";
 
 
 const initialState = {

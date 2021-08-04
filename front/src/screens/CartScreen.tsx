@@ -1,23 +1,20 @@
 import React from "react";
 import Advantage from "../components/Advantage/Advantage";
-import CartItem from "../components/CartComponents/CartItem/CartItem";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import Humanize from "humanize-plus";
 import { TProducts } from "../type.ds";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ImWarning } from "react-icons/im";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/Store/Store";
+import CartItem from "../components/CartComponents/CartItem/CartItem";
 
 function CartScreen() {
-  const cart = useSelector((state:RootState) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart);
   const { cartItems } = cart;
-  const [carts, setCarts] = useState(cartItems);
-
   const discount =
-    carts.length !== 0
-      ? carts
+    cartItems.length !== 0
+      ? cartItems
           .filter((item: TProducts) => item.discount)
           .map(
             (item: TProducts) => (item.price * parseInt(item.discount)) / 100
@@ -26,32 +23,32 @@ function CartScreen() {
       : 0;
 
   const subPrice =
-    carts.length !== 0
-      ? carts
+    cartItems.length !== 0
+      ? cartItems
           .map((item: TProducts) => item.price)
           .reduce((a: number, b: number) => a + b)
       : 0;
+
 
   return (
     <div className="mt-10 flex flex-col space-y-16">
       <ProgressBar />
 
-      {carts.length !== 0 ? (
+      {cartItems.length !== 0 ? (
         <>
           <div className="xl:w-3/4 lg:w-4/5 mx-auto w-full  ">
             <h2 className="text-2xl text-gray-700 mb-5">سبد خرید شما</h2>
-            {carts.map((product: any) => (
+            {cartItems.map((product: any) => (
               <CartItem
                 key={product._id}
                 product={product}
-                carts={carts}
-                setCarts={setCarts}
+                cartItem={cartItems}
               />
             ))}
           </div>
 
           <div className="xl:w-3/4 lg:w-4/5 mx-auto w-full bg-white flex h-56 p-5">
-            <div className="w-2/3">
+            <div className="w-2/3 mx-auto">
               <Advantage />
             </div>
             <div className="flex flex-col justify-between w-1/3 h-full divide-y divide-gray-300">

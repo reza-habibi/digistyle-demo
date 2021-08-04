@@ -1,8 +1,5 @@
-export enum DrawerActionTypes {
-    ShowDrawer,
-    HideDrawer,
-  }
-  
+import { DrawerActionTypes } from "../constants/drawerConstants";
+
   export interface DrawerAction {
     type: DrawerActionTypes;
     payload?: any;
