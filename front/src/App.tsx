@@ -12,6 +12,7 @@ import SubCategory from "./screens/SubCategoryScreen";
 import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
+import LoginScreen from "./screens/LoginScreen";
 function App() {
   const [address, setAddress] = useState({
     name: "محمدرضا حبیبی",
@@ -24,17 +25,12 @@ function App() {
     cityCode: "021",
   });
 
-
   return (
     <Router>
       <Header />
       <MobileHeader />
       <Switch>
-        <Route
-          path="/"
-          exact
-          component={HomeScreen}
-        />
+        <Route path="/" exact component={HomeScreen} />
         <Route path="/products/:id" component={ProductScreen} />
 
         {Categories.map((category: any, index: number) => (
@@ -70,6 +66,7 @@ function App() {
           exact
           render={(props) => <CheckoutScreen {...props} address={address} />}
         />
+        <Route path="/login" component={LoginScreen} />
       </Switch>
       <Footer />
       <DesktopFooter />
