@@ -53,7 +53,7 @@ export default function CardCarousel({products}:any) {
               slidesPerView: 3,
               spaceBetween: 40,
             },
-            "@1.50": {
+            "@2.00": {
               slidesPerView: 4,
               spaceBetween: 50,
             },

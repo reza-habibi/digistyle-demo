@@ -17,7 +17,7 @@ export const data = {
   ],
   products: [
     {
-      _id: "1",
+      
       name: "پیراهن مردانه نایک",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -36,7 +36,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "2",
+      
       name: "پیراهن مردانه آدیداس",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -56,7 +56,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "3",
+      
       name: "پیراهن مردانه لاکوست",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -75,7 +75,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "4",
+      
       name: "شلوار مردانه نایک",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -94,7 +94,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "5",
+      
       name: "شلوار مردانه پوما",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -113,7 +113,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "6",
+      
       name: "شلوار مردانه آدیداس",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -133,7 +133,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "7",
+      
       name: "لگینگ ورزشی مردانه تکنیک پلاس 07 مدل SH-126-ME",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -152,7 +152,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "8",
+      
       name: "پولوشرت ورزشی مردانه تکنیک پلاس 07 مدل TS-145-SO",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -171,7 +171,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "9",
+      
       name: "لگینگ ورزشی مردانه تکنیک پلاس 07 مدل SH-115-KA",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -190,7 +190,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "10",
+      
       name: "کفش پیاده روی مردانه آدیداس مدل alpha bounce",
       mainCategory: "مردانه",
       mainCategoryEn: "men",
@@ -209,7 +209,7 @@ export const data = {
       description: "اورجینال با بهترین کیفیت",
     },
     {
-      _id: "11",
+      
       name: "تی شرت یقه گرد مردانه Jordan Sportswear - نایکی",
       mainCategory: "مردانه",
       mainCategoryEn: "men",

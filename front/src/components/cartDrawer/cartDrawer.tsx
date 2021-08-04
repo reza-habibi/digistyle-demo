@@ -6,10 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/Store/Store";
 import { hideDrawer, showDrawer } from "../../redux/actions/drawerAction";
 import { TCartItem } from "../../type.ds";
-import Humanize from 'humanize-plus'
+import Humanize from "humanize-plus";
 import CartDrawerItems from "./CartDrawerItems";
-
-export const BasketDrawer = () => {
+export const CartDrawer = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
   const drawerState = useSelector((state: RootState) => state.drawer);
@@ -87,7 +86,7 @@ export const BasketDrawer = () => {
             </div>
           ) : (
             <div className="w-full px-4 flex flex-col divide-y divide-gray-500 space-y-5">
-              {cartItems.map((item: TCartItem) => (
+              {cartItems.map((item: TCartItem , index:number) => (
                 <>
                   <CartDrawerItems key={item.product} product={item} />
                 </>
@@ -95,42 +94,44 @@ export const BasketDrawer = () => {
             </div>
           )}
         </DrawerBody>
-        {cartItems.length!==0?<DrawerFooter>
-          <div className="w-full px-6 flex flex-col">
-            <div className="w-full flex justify-between items-center">
-              <div className="flex flex-col justify-between w-full h-full divide-y divide-gray-300">
-                <div className="w-full flex flex-col justify-between  h-full py-5">
-                  <div className="w-full flex justify-between">
-                    <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
-                      جمع کل سفارش
-                    </span>
-                    <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
-                      {Humanize.intComma(subPrice)} تومان
-                    </span>
-                  </div>
-                  {discount ? (
-                    <div className="w-full flex justify-between ">
-                      <span className="text-red-400 text-base md:text-xl lg:text-2xl">
-                        تخفیف شگفت آویز
+        {cartItems.length !== 0 ? (
+          <DrawerFooter>
+            <div className="w-full px-6 flex flex-col">
+              <div className="w-full flex justify-between items-center">
+                <div className="flex flex-col justify-between w-full h-full divide-y divide-gray-300">
+                  <div className="w-full flex flex-col justify-between  h-full py-5">
+                    <div className="w-full flex justify-between">
+                      <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
+                        جمع کل سفارش
                       </span>
-                      <span className="text-red-400 text-base md:text-xl lg:text-2xl">
-                        {Humanize.intComma(discount)} تومان
+                      <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
+                        {Humanize.intComma(subPrice)} تومان
                       </span>
                     </div>
-                  ) : null}
-                </div>
-                <div className="w-full flex justify-between pt-5">
-                  <span className="text-black text-base md:text-xl lg:text-2xl text-bold">
-                    قیمت نهایی
-                  </span>
-                  <span className="text-black text-base md:text-xl lg:text-2xl">
-                    {Humanize.intComma(subPrice - discount)} تومان
-                  </span>
+                    {discount ? (
+                      <div className="w-full flex justify-between ">
+                        <span className="text-red-400 text-base md:text-xl lg:text-2xl">
+                          تخفیف شگفت آویز
+                        </span>
+                        <span className="text-red-400 text-base md:text-xl lg:text-2xl">
+                          {Humanize.intComma(discount)} تومان
+                        </span>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="w-full flex justify-between pt-5">
+                    <span className="text-black text-base md:text-xl lg:text-2xl text-bold">
+                      قیمت نهایی
+                    </span>
+                    <span className="text-black text-base md:text-xl lg:text-2xl">
+                      {Humanize.intComma(subPrice - discount)} تومان
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </DrawerFooter>:null}
+          </DrawerFooter>
+        ) : null}
       </Drawer>
     </div>
   );

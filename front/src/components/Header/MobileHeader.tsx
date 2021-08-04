@@ -1,6 +1,6 @@
 import { DrawerPage } from "./Drawer";
 import { SearchDrawer } from "../SearchDrawer/SearchDrawer";
-import { BasketDrawer } from "../cartDrawer/CartDrawer";
+import { CartDrawer } from "../CartDrawer/CartDrawer";
 import { Link } from "react-router-dom";
 function MobileHeader() {
   return (
@@ -17,7 +17,7 @@ function MobileHeader() {
       </div>
       <div className=" flex  items-center pl-5  sm:ml-6 sm:pr-0">
         <SearchDrawer />
-        <BasketDrawer />
+        <CartDrawer/>
       </div>
     </div>
   );
