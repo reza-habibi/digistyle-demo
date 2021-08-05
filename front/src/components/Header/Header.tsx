@@ -5,6 +5,8 @@ import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { DesktopSearchDrawer } from "../SearchDrawer/DesktopSearchDrawer";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/Store/Store";
 
 const navigation: TNavigation = [
   { name: "زنانه", href: "/category/women" },
@@ -19,6 +21,8 @@ function classNames(...classes: string[]) {
 
 export default function Header() {
   const location = useLocation();
+  const cart = useSelector((state: RootState) => state.cart);
+  const { cartItems } = cart;
 
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
@@ -54,13 +58,19 @@ export default function Header() {
           <div className="relative flex items-center justify-between h-auto">
             <div className="w-full flex flex-col items-center justify-center sm:items-stretch sm:justify-start">
               <div className="top w-full grid grid-cols-3">
-                <div className="w-full basket flex justify-start items-center">
-                  <Link to="/cart">
+                <div className="w-full basket flex justify-start items-center relative">
+                  <Link to="/cart" className="relative">
                     <ShoppingBagIcon
                       className="block h-10 w-10 text-black"
                       aria-hidden="true"
                     />
+                    {cartItems.length > 0 && (
+                      <span className="absolute -right-1 top-0 rounded-full bg-pink-500 w-6 h-6 top right p-0 m-0 text-white text-lg vertical-middle leading-tight text-center">
+                        {cartItems.length}
+                      </span>
+                    )}
                   </Link>
+
                   <span className="text-black mr-5 text-xl">وارد شوید</span>
                 </div>
                 <div className="logo  w-full border-b border-black flex justify-center items-center pb-5">

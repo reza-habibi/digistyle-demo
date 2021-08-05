@@ -15,9 +15,9 @@ import MessageBox from "../components/MessageBox/MessageBox";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { listProducts } from "../redux/actions/productAction";
+import { RootState } from "../redux/Store/Store";
 export default function HomeScreen() {
-  //@ts-ignore
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state:RootState) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {

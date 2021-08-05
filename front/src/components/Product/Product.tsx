@@ -15,7 +15,7 @@ function Product({ product }: any) {
       <div className="w-full relative product-card">
         <div className="bg-white rounded-lg h-100 mb-3">
           <figure className="mb-2">
-            <Link to={`/product/${product._id}`}>
+            <Link to={`/products/${product._id}`}>
               <img
                 src={product.image}
                 alt={product.name}

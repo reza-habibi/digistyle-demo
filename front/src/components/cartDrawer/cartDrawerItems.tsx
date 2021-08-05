@@ -1,14 +1,23 @@
 import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../redux/actions/cartAction";
 
 export default function CartDrawerItems({ product }: any) {
   const dispatch = useDispatch();
-
+  const [newQty, setNewQty] = useState(product.qty);
   const removeFromCartHandler = (productId: string) => {
     dispatch(removeFromCart(productId));
   };
+
+  const increaseQuantity = () => {
+    setNewQty(newQty+1);
+  };
+
+  useEffect(() => {
+    product.qty = newQty;
+  }, [newQty]);
 
   return (
     <div>
@@ -23,11 +32,11 @@ export default function CartDrawerItems({ product }: any) {
           <div className="w-full py-2 flex items-center ">
             <span className="text-2xl text-gray-900 ml-5">تعداد : </span>
             <button
-            onClick={()=>console.log("hi")}
+              onClick={increaseQuantity}
               className={`${
                 product.qty === product.countInStock
                   ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
-                  : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
+                  : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded cursor-pointer"
               }`}
               disabled={product.qty === product.countInStock ? true : false}
             >

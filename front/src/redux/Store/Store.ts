@@ -7,14 +7,18 @@ import {
   productListReducer,
 } from "../reducers/productReducer";
 
-
-const initialState = {};
+const initialState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+  },
+};
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  //@ts-ignore
   cart: cartReducer,
-  drawer:drawerReducer,
+  drawer: drawerReducer,
 });
 //@ts-ignore
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

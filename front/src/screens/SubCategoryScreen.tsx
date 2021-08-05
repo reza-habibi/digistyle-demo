@@ -18,7 +18,6 @@ function SubCategory() {
   const currentCategory = Categories.map((item: any) =>
     item.subCategory.find((item: any) => item.url === location.pathname)
   ).find((item: any) => item.url === location.pathname);
-  console.log(currentCategory);
   return (
     <div>
       {loading ? (

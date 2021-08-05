@@ -21,15 +21,13 @@ import { showDrawer } from "../../redux/actions/drawerAction";
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
-export default function CardCarousel({products}:any) {
-
-
-  const dispatch = useDispatch()
+export default function CardCarousel({ products }: any) {
+  const dispatch = useDispatch();
 
   const addToCartHandler = (productId: string) => {
-    const qty=1
+    const qty = 1;
     dispatch(addToCart(productId, qty));
-    dispatch(showDrawer())
+    dispatch(showDrawer());
   };
 
   return (
@@ -90,6 +88,11 @@ export default function CardCarousel({products}:any) {
                         {product.description}
                       </span>
                     </div>
+                    {product.countInStock === 0 && (
+                      <span className="text-lg text-red-400">
+                        محصول در انبار موجود نمی باشد.
+                      </span>
+                    )}
                     <div className="flex justify-center items-center mt-3">
                       <div className="lg:text-2xl md:text-xl text-gray-700 font-light">
                         {" "}
@@ -102,12 +105,17 @@ export default function CardCarousel({products}:any) {
                             aria-hidden="true"
                           />
                         </button>
-                        <button className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500" onClick={()=>addToCartHandler(product._id)}>
-                          <ShoppingCartIcon
-                            className="block h-8 w-8"
-                            aria-hidden="true"
-                          />
-                        </button>
+                        {product.countInStock > 0 && (
+                          <button
+                            className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500"
+                            onClick={() => addToCartHandler(product._id)}
+                          >
+                            <ShoppingCartIcon
+                              className="block h-8 w-8"
+                              aria-hidden="true"
+                            />
+                          </button>
+                        )}
                         <button className="rounded-full hidden md:flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-green-500">
                           <SearchIcon
                             className="block h-8 w-8"

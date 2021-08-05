@@ -13,15 +13,15 @@ const addToCart =
           name: data.name,
           image: data.image,
           price: data.price,
-          discount:data.discount,
+          discount: data.discount,
           countInStock: data.countInStock,
           qty,
         },
       });
-      const {
-        cart: { cartItems },
-      } = getState();
-      Cookie.set("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(getState().cart.cartItems)
+      );
     } catch (error) {}
   };
 
@@ -32,11 +32,10 @@ const removeFromCart =
     getState: () => { cart: { cartItems: any } }
   ) => {
     dispatch({ type: CART_REMOVE_ITEM, payload: productId });
-
-    const {
-      cart: { cartItems },
-    } = getState();
-    Cookie.set("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(getState().cart.cartItems)
+    );
   };
 
 export { addToCart, removeFromCart };

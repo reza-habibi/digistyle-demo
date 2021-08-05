@@ -6,7 +6,7 @@ import "swiper/components/navigation/navigation.min.css";
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 import { Link } from "react-router-dom";
-import { MobileBannerSlider } from "../../../data";
+import { BannerSlider } from "../../../data";
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
@@ -16,9 +16,10 @@ export default function Carousel() {
       <Swiper
         autoplay={{ delay: 8000 }}
         slidesPerView={"auto"}
+        spaceBetween={30}
         className="mySwiper lg:hidden w-full mt-5 bg-white"
       >
-        {MobileBannerSlider.map((category: any, index: number) => (
+        {BannerSlider.map((category: any, index: number) => (
           <SwiperSlide
             key={index}
             className=" rounded-lg h-auto p-2 transition duration-300 mb-3"
@@ -26,7 +27,7 @@ export default function Carousel() {
             <figure className="">
               <Link to={category.url}>
                 <img
-                  src={category.img}
+                  src={`/images/banner-slider/tablet-banner-${index+1}.jpg`}
                   alt=""
                   className="h-auto ml-auto mr-auto"
                 />
@@ -35,6 +36,7 @@ export default function Carousel() {
           </SwiperSlide>
         ))}
       </Swiper>
+      
     </>
   );
 }
