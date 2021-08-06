@@ -7,6 +7,7 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/Store/Store";
+import CartDropDown from "./CartDropDown/CartDropDown";
 
 const navigation: TNavigation = [
   { name: "زنانه", href: "/category/women" },
@@ -20,9 +21,13 @@ function classNames(...classes: string[]) {
 }
 
 export default function Header() {
+  const [dropDown, setDropDown] = useState(false);
   const location = useLocation();
   const cart = useSelector((state: RootState) => state.cart);
   const { cartItems } = cart;
+
+  const userSignin = useSelector((state: RootState) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
@@ -42,6 +47,12 @@ export default function Header() {
     navbarClasses.push("scrolled");
   }
 
+  const hideDropDown = () => {
+    setTimeout(() => {
+      setDropDown(false);
+    }, 5000);
+  };
+
   return (
     <Disclosure
       as="nav"
@@ -59,7 +70,12 @@ export default function Header() {
             <div className="w-full flex flex-col items-center justify-center sm:items-stretch sm:justify-start">
               <div className="top w-full grid grid-cols-3">
                 <div className="w-full basket flex justify-start items-center relative">
-                  <Link to="/cart" className="relative">
+                  <Link
+                    to="/cart"
+                    className="relative"
+                    onMouseOver={() => setDropDown(true)}
+                    onMouseOut={hideDropDown}
+                  >
                     <ShoppingBagIcon
                       className="block h-10 w-10 text-black"
                       aria-hidden="true"
@@ -71,7 +87,15 @@ export default function Header() {
                     )}
                   </Link>
 
-                  <span className="text-black mr-5 text-xl">وارد شوید</span>
+                  {userInfo.name ? (
+                    <Link to="/#" className="text-black mr-5 text-xl">
+                      {userInfo.name}
+                    </Link>
+                  ) : (
+                    <Link to="/signin" className="text-black mr-5 text-xl">
+                      وارد شوید
+                    </Link>
+                  )}
                 </div>
                 <div className="logo  w-full border-b border-black flex justify-center items-center pb-5">
                   <Link to="/">
@@ -87,6 +111,11 @@ export default function Header() {
                 <div className="search w-full flex justify-end">
                   <DesktopSearchDrawer />
                 </div>
+                {dropDown && (
+                  <div className="absolute top-20 -right-1w0 w-1/2">
+                    <CartDropDown />
+                  </div>
+                )}
               </div>
               <div className="nav w-full flex justify-center items-center mt-5">
                 <div className="flex space-x-4 ml-5 border-l border-black">

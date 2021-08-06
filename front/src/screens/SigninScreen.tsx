@@ -1,6 +1,33 @@
-import React from "react";
+import React, { FormEvent } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { signin } from "../redux/actions/userAction";
+import { RootState } from "../redux/Store/Store";
 
-export default function LoginScreen() {
+export default function SigninScreen(props:any) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const redirect = props.location.search
+    ? props.location.search.split("=")[1]
+    : "/";
+
+  const userSignin = useSelector((state: RootState) => state.userSignin);
+  const { userInfo } = userSignin;
+
+  useEffect(() => {
+    if(userInfo){
+      props.history.push(redirect)
+    }
+  }, [userInfo , props.history , redirect])
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(signin(email, password));
+  };
+
   return (
     <div>
       <div>
@@ -15,24 +42,32 @@ export default function LoginScreen() {
                   با دیجی ممد جوری تیپ بزنید که مخ همه دافا محل رو بزنید
                 </p>
               </div>
-              <div className="lg:w-2/6 md:w-1/2 bg-white shadow-lg rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+              <form
+                className="lg:w-2/6 md:w-1/2 bg-white shadow-lg rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0"
+                onSubmit={submitHandler}
+              >
                 <div className="relative mb-4">
                   <input
-                    type="text"
-                    name="full-name"
+                    type="email"
+                    name="email"
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="ایمیل خود را وارد نمایید"
                     className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-lg outline-none  text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
                 <div className="relative mb-4">
                   <input
-                    type="email"
-                    name="email"
+                    type="password"
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="رمز عبور"
                     className="w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200  outline-none text-lg text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
-                <button className="text-white border-0 py-2 px-8 focus:outline-none font-medium  rounded text-xl bg-blue-600 ">
+                <button
+                  type="submit"
+                  className="text-white border-0 py-2 px-8 focus:outline-none font-medium  rounded text-xl bg-blue-600 "
+                >
                   ورود{" "}
                 </button>
                 <p className="text-sm text-blue-500 py-5 text-center">
@@ -40,9 +75,9 @@ export default function LoginScreen() {
                 </p>
                 <hr className="my-5" />
                 <button className="text-white  border-0 py-2 px-8 focus:outline-none font-medium  rounded text-xl bg-green-500 ">
-                  ساختن اکانت جدید{" "}
+                  <Link to="/register">ساختن اکانت جدید</Link>
                 </button>
-              </div>
+              </form>
             </div>
           </section>
         </div>

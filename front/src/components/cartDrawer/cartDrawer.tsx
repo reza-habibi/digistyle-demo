@@ -120,7 +120,7 @@ export const CartDrawer = () => {
                     ) : null}
                   </div>
                   <div className="w-full flex justify-between pt-5">
-                    <span className="text-black text-base md:text-xl lg:text-2xl text-bold">
+                    <span className="text-black text-base md:text-xl lg:text-2xl font-bold">
                       قیمت نهایی
                     </span>
                     <span className="text-black text-base md:text-xl lg:text-2xl">

@@ -15,6 +15,7 @@ const addToCart =
           price: data.price,
           discount: data.discount,
           countInStock: data.countInStock,
+          brand:data.brand,
           qty,
         },
       });

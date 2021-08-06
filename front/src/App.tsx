@@ -12,7 +12,7 @@ import SubCategory from "./screens/SubCategoryScreen";
 import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
-import LoginScreen from "./screens/LoginScreen";
+import SigninScreen from "./screens/SigninScreen";
 function App() {
   const [address, setAddress] = useState({
     name: "محمدرضا حبیبی",
@@ -66,7 +66,7 @@ function App() {
           exact
           render={(props) => <CheckoutScreen {...props} address={address} />}
         />
-        <Route path="/login" component={LoginScreen} />
+        <Route path="/signin" component={SigninScreen} />
       </Switch>
       <Footer />
       <DesktopFooter />

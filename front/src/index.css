@@ -278,3 +278,8 @@ footer .collapse-arrow .collapse-title:after {
 .floating-input>input:not(:placeholder-shown)~label {
 @apply opacity-75 scale-75 -translate-y-8 text-pelorous; 
 }
+
+
+.swiper-pagination-bullet-active{
+  background: black !important;
+}

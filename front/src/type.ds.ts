@@ -43,6 +43,7 @@ export type TCartItem = {
   discount: string
   countInStock: number
   product: string
+  brand:string
   qty:number
 };
 
