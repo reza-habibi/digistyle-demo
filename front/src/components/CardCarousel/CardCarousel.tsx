@@ -38,24 +38,7 @@ export default function CardCarousel({ products }: any) {
           dir="rtl"
           spaceBetween={30}
           navigation={true}
-          breakpoints={{
-            "@0.00": {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            "@0.75": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            "@1.00": {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            "@2.00": {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
+          
           className="mySwiper my-4"
         >
           {products.map((product: TProducts) => (
@@ -98,7 +81,7 @@ export default function CardCarousel({ products }: any) {
                         {" "}
                         {Humanize.intComma(product.price)} تومان
                       </div>
-                      <div className="card-actions flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-24 left-5 lg:hidden lg:top-24 top-5 animate-fade-in-right">
+                      <div className="card-actions flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-16 left-5 lg:hidden lg:top-24 top-5 animate-fade-in-right">
                         <button className="flex justify-center items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-red-500">
                           <HeartIcon
                             className="block h-8 w-8"

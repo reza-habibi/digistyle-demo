@@ -126,8 +126,8 @@ export default function HomeScreen() {
                 <FaArrowLeft className="text-gray-700 mr-3" />
               </span>
             </div>
-            <DesktopBrands brandFilter={"adidas"} direction={"right"} />
-            <DesktopBrands brandFilter={"nike"} direction={"left"} />
+            <DesktopBrands brandFilter={"adidas"} direction={"right"} products={products} />
+            <DesktopBrands brandFilter={"nike"} direction={"left"}  products={products}/>
           </div>
 
           <div className="w-full lg:hidden bg-white md:rounded-lg flex flex-wrap ">

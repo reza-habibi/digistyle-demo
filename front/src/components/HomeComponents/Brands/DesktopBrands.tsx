@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { data } from "../../../data";
 import { TProducts } from "../../../type.ds";
 import Humanize from "humanize-plus";
 import {
@@ -9,9 +8,18 @@ import {
   ShoppingCartIcon,
   HeartIcon,
 } from "@heroicons/react/outline";
+import { addToCart } from "../../../redux/actions/cartAction";
+import { showDrawer } from "../../../redux/actions/drawerAction";
+import { useDispatch } from "react-redux";
 
-function DesktopBrands({ brandFilter, direction }: any) {
-  const [brand, setBrand] = useState<TProducts[]>(data.products);
+function DesktopBrands({ brandFilter, direction, products }: any) {
+  const dispatch = useDispatch();
+  const [brand, setBrand] = useState<TProducts[]>(products);
+  const addToCartHandler = (productId: string) => {
+    const qty = 1;
+    dispatch(addToCart(productId, qty));
+    dispatch(showDrawer());
+  };
 
   return (
     <div className="w-full relative h-auto flex flex-col justify-between mb-16">
@@ -44,7 +52,7 @@ function DesktopBrands({ brandFilter, direction }: any) {
                 <div className="w-full relative product-card">
                   <div className="bg-white  h-100 p-2  mb-3">
                     <figure className="mb-2">
-                      <Link to={`/product/${product._id}`}>
+                      <Link to={`/products/${product._id}`}>
                         <img
                           src={product.image}
                           alt={product.name}
@@ -57,7 +65,7 @@ function DesktopBrands({ brandFilter, direction }: any) {
                     </span>
                     <div className="w-full text-center p-2 bg-white flex flex-col items-center mb-3">
                       <div>
-                        <Link to={`/product/${product._id}`}>
+                        <Link to={`/products/${product._id}`}>
                           <h5 className="text-gray-700 text-xl font-bold leading-6 ">
                             {product.name}
                           </h5>
@@ -78,12 +86,17 @@ function DesktopBrands({ brandFilter, direction }: any) {
                               aria-hidden="true"
                             />
                           </button>
-                          <button className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500">
-                            <ShoppingCartIcon
-                              className="block h-8 w-8"
-                              aria-hidden="true"
-                            />
-                          </button>
+                          {product.countInStock > 0 && (
+                            <button
+                              className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500"
+                              onClick={() => addToCartHandler(product._id)}
+                            >
+                              <ShoppingCartIcon
+                                className="block h-8 w-8"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          )}
                           <button className="rounded-full hidden md:flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-green-500">
                             <SearchIcon
                               className="block h-8 w-8"
@@ -104,3 +117,6 @@ function DesktopBrands({ brandFilter, direction }: any) {
 }
 
 export default DesktopBrands;
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}

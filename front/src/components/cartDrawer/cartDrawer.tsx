@@ -144,8 +144,8 @@ const style = {
   orientation: {
     right: `flex drawer-scrollbar overflow-y-scroll h-full w-full md:w-1/3 lg:w-1/3 h-full right-0 mx-0 my-0 absolute focus:outline-none `,
   },
-  body: `flex-shrink flex-grow p-4 bg-white `,
-  content: `relative w-full h-full flex flex-col bg-white pointer-events-auto `,
+  body: `flex-shrink flex-grow p-4 bg-white overflow-scroll drawer-scrollbar`,
+  content: `relative w-full h-full flex flex-col bg-white pointer-events-auto  `,
   header: `w-full flex items-center justify-between p-4 border-b border-gray-300 h-24`,
   container: `fixed top-0 left-0 z-40 w-full h-full m-0 overflow-hidden `,
   overlay: `fixed top-0 left-0 z-30 w-full h-screen bg-black opacity-50 `,

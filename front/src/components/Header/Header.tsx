@@ -1,6 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { TNavigation } from "../../type.ds";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { DesktopSearchDrawer } from "../SearchDrawer/DesktopSearchDrawer";
 import { useLocation } from "react-router";
@@ -48,10 +48,22 @@ export default function Header() {
   }
 
   const hideDropDown = () => {
-    setTimeout(() => {
-      setDropDown(false);
-    }, 5000);
+    // setTimeout(() => {
+    //   setDropDown(false);
+    // }, 5000);
   };
+
+  const ref = useRef(null);
+  // close drawer on click outside
+  useEffect(() => {
+    const handleOutsideClick = (event: any) => {
+      if (!ref.current?.contains(event.target)) {
+        setDropDown(false);
+      }
+    };
+    window.addEventListener("click", handleOutsideClick);
+    return () => window.removeEventListener("click", handleOutsideClick);
+  }, [ref]);
 
   return (
     <Disclosure
@@ -80,11 +92,10 @@ export default function Header() {
                       className="block h-10 w-10 text-black"
                       aria-hidden="true"
                     />
-                    {cartItems.length > 0 && (
-                      <span className="absolute -right-1 top-0 rounded-full bg-pink-500 w-6 h-6 top right p-0 m-0 text-white text-lg vertical-middle leading-tight text-center">
-                        {cartItems.length}
-                      </span>
-                    )}
+
+                    <span className="absolute -right-1 top-0 rounded-full bg-pink-500 w-6 h-6 top right p-0 m-0 text-white text-lg vertical-middle leading-tight text-center">
+                      {cartItems.length}
+                    </span>
                   </Link>
 
                   {userInfo.name ? (
@@ -112,7 +123,7 @@ export default function Header() {
                   <DesktopSearchDrawer />
                 </div>
                 {dropDown && (
-                  <div className="absolute top-20 -right-1w0 w-1/2">
+                  <div className="absolute top-20 -right-2 w-2/5">
                     <CartDropDown />
                   </div>
                 )}

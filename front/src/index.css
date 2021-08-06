@@ -122,7 +122,7 @@ body {
   padding-right: 10px;
 }
 
-/* #main.swiper-container {
+#main.swiper-container {
   width: 250px;
 }
 
@@ -162,7 +162,7 @@ body {
   #main.swiper-container {
     width: 1430px;
   }
-} */
+}
 
 .container {
   width: 85%;
@@ -226,6 +226,10 @@ body {
 }
 
 .drawer-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
