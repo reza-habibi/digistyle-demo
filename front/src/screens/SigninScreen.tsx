@@ -6,23 +6,22 @@ import { Link } from "react-router-dom";
 import { signin } from "../redux/actions/userAction";
 import { RootState } from "../redux/Store/Store";
 
-export default function SigninScreen(props:any) {
+export default function SigninScreen(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const redirect = props.location.search
-    ? props.location.search.split("=")[1]
-    : "/";
+  const redirect = "/";
 
   const userSignin = useSelector((state: RootState) => state.userSignin);
-  const { userInfo } = userSignin;
+  //@ts-ignore
+  const { userInfo, loading, error } = userSignin;
 
   useEffect(() => {
-    if(userInfo){
-      props.history.push(redirect)
+    if (userInfo) {
+      props.history.push(redirect);
     }
-  }, [userInfo , props.history , redirect])
+  }, [userInfo, props.history, redirect]);
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(signin(email, password));
@@ -71,8 +70,17 @@ export default function SigninScreen(props:any) {
                   ورود{" "}
                 </button>
                 <p className="text-sm text-blue-500 py-5 text-center">
-                  رمز عبور خود را فرامشو کرده اید ؟{" "}
+                  رمز عبور خود را فراموش کرده اید ؟{" "}
                 </p>
+
+                {loading && (
+                  <div className="flex justify-center items-center h-32">
+                    <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
+                    <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
+                    <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
+                  </div>
+                )}
+                {error && <span className="text-red-400 text-xl">{error}</span>}
                 <hr className="my-5" />
                 <button className="text-white  border-0 py-2 px-8 focus:outline-none font-medium  rounded text-xl bg-green-500 ">
                   <Link to="/register">ساختن اکانت جدید</Link>

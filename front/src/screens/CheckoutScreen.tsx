@@ -2,27 +2,28 @@ import React from "react";
 import { useState } from "react";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import { data } from "../data";
-import { TProducts } from "../type.ds";
+import { TCartItem, TProducts } from "../type.ds";
 import Humanize from "humanize-plus";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/Store/Store";
 function CheckoutScreen({ address }: any) {
-  const cart = data.products.filter((item: TProducts) => item.brand === "nike");
-  const [carts, setCarts] = useState(cart);
-
+const cart = useSelector((state:RootState) => state.cart)
+const {cartItems} = cart
   const discount =
-    carts.length !== 0
-      ? carts
-          .filter((item: TProducts) => item.discount)
+    cartItems.length !== 0
+      ? cartItems
+          .filter((item: TCartItem) => item.discount)
           .map(
-            (item: TProducts) => (item.price * parseInt(item.discount)) / 100
+            (item: TCartItem) => (item.price * parseInt(item.discount)) / 100
           )
           .reduce((a: number, b: number) => a + b)
       : 0;
 
   const subPrice =
-    carts.length !== 0
-      ? carts
-          .map((item: TProducts) => item.price)
+    cartItems.length !== 0
+      ? cartItems
+          .map((item: TCartItem) => item.price)
           .reduce((a: number, b: number) => a + b)
       : 0;
 
@@ -184,8 +185,8 @@ function CheckoutScreen({ address }: any) {
           <div className="w-4/5 mx-auto flex flex-col">
             <span className="font-bold text-4xl mb-10">سفارش شما </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-              {carts.map((item) => (
-                <div className="w-full flex border border-gray-100 px-2 py-4">
+              {cartItems.map((item) => (
+                <div key={item.product} className="w-full flex border border-gray-100 px-2 py-4">
                   <figure className="w-44 h-44">
                     <img src={item.image} alt={item.name} />
                   </figure>
@@ -197,7 +198,7 @@ function CheckoutScreen({ address }: any) {
                       {item.name}
                     </span>
                     <span className="text-gray-500 text-lg sm:text-xl">
-                      تعداد : {item._id}
+                      تعداد : {item.qty}
                     </span>
                   </div>
                 </div>

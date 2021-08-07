@@ -22,6 +22,16 @@ module.exports = {
     },
 
     keyframes: {
+      bounce: {
+        " 0%, 100%": {
+          transform: "translateY(-25%)",
+          animation_timing_function: "cubic-bezier(0.8, 0, 1, 1)",
+        },
+        "50%": {
+          transform: "translateY(0)",
+          animation_timing_function: "cubic-bezier(0, 0, 0.2, 1)",
+        },
+      },
       spin: {
         "0%": {
           transform: "rotate(0deg)",
@@ -80,10 +90,14 @@ module.exports = {
       },
     },
     animation: {
+      bounce: "bounce 1s infinite",
+
       spin: "spin 1s linear infinite",
       wiggle: "wiggle 1s ease-in-out infinite",
       bounce200: "bounce 1s infinite 200ms",
       bounce400: "bounce 1s infinite 400ms",
+      bounce600: "bounce 1s infinite 600ms",
+
       "fade-in-down": "fade-in-down 0.5s ease-out",
       "fade-in-right": "fade-in-right 0.5s ease-out",
       left: "left 0.3s",
@@ -138,7 +152,6 @@ module.exports = {
         "mb-cat": "96px",
         100: "28rem",
         120: "40rem",
-
       },
       backgroundImage: (theme) => ({
         women: "url('../src/assets/images/mobile/category-women.png')",

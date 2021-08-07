@@ -117,6 +117,3 @@ function DesktopBrands({ brandFilter, direction, products }: any) {
 }
 
 export default DesktopBrands;
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}

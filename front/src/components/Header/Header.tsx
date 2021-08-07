@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/Store/Store";
 import CartDropDown from "./CartDropDown/CartDropDown";
+import UserDropDown from "./UserDropDown/UserDropDown";
 
 const navigation: TNavigation = [
   { name: "زنانه", href: "/category/women" },
@@ -27,8 +28,10 @@ export default function Header() {
   const { cartItems } = cart;
 
   const userSignin = useSelector((state: RootState) => state.userSignin);
+  //@ts-ignore
   const { userInfo } = userSignin;
 
+  console.log(userInfo);
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -71,7 +74,7 @@ export default function Header() {
       className={`w-full hidden lg:block ${
         location.pathname === "/"
           ? "absolute top-0 z-10 bg-transparent"
-          : "relative bg-white"
+          : "relative bg-white z-50"
       }  py-10 transition-all duration-500 ${
         scrolled ? "fixed top-0 motion-safe:animate-fade-in-down " : ""
       }`}
@@ -98,10 +101,19 @@ export default function Header() {
                     </span>
                   </Link>
 
-                  {userInfo.name ? (
-                    <Link to="/#" className="text-black mr-5 text-xl">
-                      {userInfo.name}
-                    </Link>
+                  {userInfo ? (
+                    <div className="flex items-center ">
+                      <UserDropDown />
+                      <div>
+                        <Link
+                          to="/#"
+                          className="text-black mr-5 text-2xl font-bold"
+                        >
+                          {userInfo.name} عزیز
+                        </Link>
+                        <span className="text-2xl">، سلام</span>
+                      </div>
+                    </div>
                   ) : (
                     <Link to="/signin" className="text-black mr-5 text-xl">
                       وارد شوید

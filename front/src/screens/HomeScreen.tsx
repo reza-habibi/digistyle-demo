@@ -35,7 +35,7 @@ export default function HomeScreen() {
           <Carousel />
           <DesktopCarousel />
           <div className="w-full md:grid md:grid-cols-12 flex flex-col bg-white  px-10 flex flex-wrap items-start ">
-            <div className="md:col-span-2  mt-5 w-full flex md:flex-col items-center justify-around h-full">
+            <div className="md:col-span-2 w-full flex md:flex-col items-center justify-around h-full">
               <figure>
                 <img
                   src="/images/svg/sale.svg"

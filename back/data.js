@@ -4,7 +4,7 @@ export const data = {
   users: [
     {
       name: "Reza",
-      email: "rezhabibi372@gamil.com",
+      email: "rezhabibi372@gmail.com",
       password: bcrypt.hashSync("1234", 8),
       isAdmin: true,
     },

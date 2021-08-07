@@ -42,7 +42,7 @@ export default function CartDropDown() {
           .reduce((a: number, b: number) => a + b)
       : 0;
   return (
-    <div className="w-full bg-white shadow-lg rounded-xl divide-y divide-gray-200 h-1/2">
+    <div className="w-full z-50 bg-white shadow-lg rounded-xl divide-y divide-gray-200 h-1/2">
       {cartItems.length === 0 ? (
         <div className="w-full flex flex-col justify-center items-center">
           <figure className="mt-10">

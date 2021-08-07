@@ -36,6 +36,7 @@ export default function CardCarousel({ products }: any) {
         <Swiper
           id="main"
           dir="rtl"
+          slidesPerView={"auto"}
           spaceBetween={30}
           navigation={true}
           
