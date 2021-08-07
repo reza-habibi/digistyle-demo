@@ -48,5 +48,4 @@ export type TCartItem = {
 };
 
 export type TCartState={
-  cartItems:TCartItem[]
-}
+  cartItems:TCartItem[]}

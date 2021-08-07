@@ -19,7 +19,7 @@ export default function RegisterScreen(props: any) {
   const userRegister = useSelector((state: RootState) => state.userRegister);
   //@ts-ignore
   const { userInfo, loading, error } = userRegister;
-
+console.log(error)
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);

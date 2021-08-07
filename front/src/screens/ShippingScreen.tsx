@@ -1,17 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Advantage from "../components/Advantage/Advantage";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import ShippingModal from "../components/ShippingComponents/ShippingModal/ShippingModal";
+import { RootState } from "../redux/Store/Store";
 
-function ShippingScreen({address , setAddress}:any) {
+function ShippingScreen() {
   const [open, setOpen] = useState(false);
-  
+
 
   const handleModal = () => {
     setOpen(true);
   };
+
+  const cart = useSelector((state:RootState) => state.cart)
+  //@ts-ignore
+  const {shippingAddress} = cart
+  
 
   return (
     <div className="mt-10 flex flex-col space-y-20 ">
@@ -28,19 +35,19 @@ function ShippingScreen({address , setAddress}:any) {
         </button>
       </div>
       <div className="lg:w-4/5 w-full mx-auto bg-white">
-        {address.name !== "" ? (
+        {shippingAddress.name !== "" ? (
           <div className="md:grid md:grid-cols-6 flex flex-col  ">
             <span className="text-gray-900 border-b border-gray-300 lg:border-none text-2xl font-bold col-span-1 py-8 px-4">
-              {address.name}
+              {shippingAddress.name}
             </span>
             <span className="text-gray-900 border-b border-gray-300 lg:border-none text-2xl col-span-4 py-8 px-4">
               آدرس :{" "}
               <span className="text-gray-500">
-                {address.province} ،{address.city} ،{address.address}
+                {shippingAddress.province} ،{shippingAddress.city} ،{shippingAddress.address}
               </span>
             </span>
             <span className="text-gray-500 border-b border-gray-300 lg:border-none text-2xl py-8 px-4 hidden lg:block">
-              تلفن همراه : {address.mobile}
+              تلفن همراه : {shippingAddress.mobile}
             </span>
           </div>
         ) : null}
@@ -88,8 +95,7 @@ function ShippingScreen({address , setAddress}:any) {
       <ShippingModal
         open={open}
         setOpen={setOpen}
-        address={address}
-        setAddress={setAddress}
+
       />
       <Link
         to="/checkout"

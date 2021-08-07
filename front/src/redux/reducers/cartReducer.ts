@@ -1,5 +1,9 @@
 import { TCartState } from "../../type.ds";
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_SAVE_SHIPPING_ADDRESS,
+} from "../constants/cartConstants";
 
 const initialState: TCartState = { cartItems: [] };
 
@@ -21,6 +25,12 @@ export const cartReducer = (state = initialState, action: any) => {
     case CART_REMOVE_ITEM:
       return {
         cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
+
+    case CART_SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;

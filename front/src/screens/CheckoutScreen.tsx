@@ -1,15 +1,14 @@
 import React from "react";
-import { useState } from "react";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
-import { data } from "../data";
-import { TCartItem, TProducts } from "../type.ds";
+import { TCartItem } from "../type.ds";
 import Humanize from "humanize-plus";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/Store/Store";
-function CheckoutScreen({ address }: any) {
-const cart = useSelector((state:RootState) => state.cart)
-const {cartItems} = cart
+function CheckoutScreen() {
+  const cart = useSelector((state: RootState) => state.cart);
+  //@ts-ignore
+  const { cartItems , shippingAddress} = cart;
   const discount =
     cartItems.length !== 0
       ? cartItems
@@ -27,6 +26,8 @@ const {cartItems} = cart
           .reduce((a: number, b: number) => a + b)
       : 0;
 
+
+
   return (
     <div className="w-full space-y-10">
       <ProgressBar />
@@ -39,8 +40,8 @@ const {cartItems} = cart
                 <p className="w-full h-auto text-justify p-2 leading-relaxed ">
                   این سفارش در بازه ساعت ۹ تا ۲۱ تاریخ چهار‌شنبه ۱۳ مرداد ۱۴۰۰
                   به &nbsp;
-                  {address.name} به آدرس {address.address} و شماره تماس{" "}
-                  {address.mobile} تحویل می‌گردد.{" "}
+                  {shippingAddress.name} به آدرس {shippingAddress.address} و شماره تماس{" "}
+                  {shippingAddress.mobile} تحویل می‌گردد.{" "}
                 </p>
               </div>
 
@@ -48,14 +49,14 @@ const {cartItems} = cart
                 <div className="w-1/2 floating-input mb-5 relative ">
                   <input
                     type="text"
-                    id="name"
-                    name="name"
+                    id="giftCard"
+                    name="giftCard"
                     className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
                     placeholder=" "
                     autoComplete="off"
                   />
                   <label
-                    htmlFor="name"
+                    htmlFor="giftCard"
                     className="absolute text-gray-500 top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
                   >
                     کارت هدیه
@@ -64,14 +65,14 @@ const {cartItems} = cart
                 <div className="w-1/2 floating-input mb-5 relative ">
                   <input
                     type="text"
-                    id="name"
-                    name="name"
+                    id="discount"
+                    name="discount"
                     className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
                     placeholder=" "
                     autoComplete="off"
                   />
                   <label
-                    htmlFor="name"
+                    htmlFor="discount"
                     className="absolute text-gray-500 top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
                   >
                     کد تخفیف
@@ -152,13 +153,13 @@ const {cartItems} = cart
                     className="w-12 h-12 mx-2 stroke-current"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                     ></path>
                   </svg>
-                  <label className="text-2xl"> 
+                  <label className="text-2xl">
                     برای کاستن از احتمال انتقال ویروس کرونا پیشنهاد می‌کنیم از
                     شیوه پرداخت اینترنتی استفاده کنید.
                   </label>
@@ -186,7 +187,10 @@ const {cartItems} = cart
             <span className="font-bold text-4xl mb-10">سفارش شما </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
               {cartItems.map((item) => (
-                <div key={item.product} className="w-full flex border border-gray-100 px-2 py-4">
+                <div
+                  key={item.product}
+                  className="w-full flex border border-gray-100 px-2 py-4"
+                >
                   <figure className="w-44 h-44">
                     <img src={item.image} alt={item.name} />
                   </figure>

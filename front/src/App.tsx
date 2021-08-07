@@ -15,17 +15,6 @@ import CheckoutScreen from "./screens/CheckoutScreen";
 import SigninScreen from "./screens/SigninScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 function App() {
-  const [address, setAddress] = useState({
-    name: "محمدرضا حبیبی",
-    mobile: "09354535833",
-    province: "تهران",
-    city: "اسلامشهر",
-    address: "شهرک توحید ، خیابان شهید بهشتی ، کوچه شهید قاسم اکبری ، پلاک 56",
-    postalCode: "1234567890",
-    telephone: "56838352",
-    cityCode: "021",
-  });
-
   return (
     <Router>
       <Header />
@@ -51,22 +40,8 @@ function App() {
           ))
         )}
         <Route path="/cart" exact component={CartScreen} />
-        <Route
-          path="/shipping"
-          exact
-          render={(props) => (
-            <ShippingScreen
-              {...props}
-              address={address}
-              setAddress={setAddress}
-            />
-          )}
-        />
-        <Route
-          path="/checkout"
-          exact
-          render={(props) => <CheckoutScreen {...props} address={address} />}
-        />
+        <Route path="/shipping" exact component={ShippingScreen} />
+        <Route path="/checkout" exact component={CheckoutScreen} />
         <Route path="/signin" component={SigninScreen} />
         <Route path="/register" component={RegisterScreen} />
       </Switch>

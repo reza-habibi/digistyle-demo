@@ -17,7 +17,10 @@ const initialState = {
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
-      : [],
+      : null,
+      shippingAddress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : null,
   },
 };
 const reducer = combineReducers({

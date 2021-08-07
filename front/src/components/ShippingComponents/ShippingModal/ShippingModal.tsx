@@ -2,10 +2,12 @@
 import { ChangeEvent, Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { saveShippingAddress } from "../../../redux/actions/cartAction";
 
 const provinces = require("../../../json/provinces.json");
 const cities = require("../../../json/cities.json");
-export default function ShippingModal({ open, setOpen , address , setAddress }: any) {
+export default function ShippingModal({ open, setOpen}: any) {
   const cancelButtonRef = useRef(null);
   const [province, setProvince] = useState({
     id: 0,
@@ -13,7 +15,18 @@ export default function ShippingModal({ open, setOpen , address , setAddress }: 
     slug: "",
   });
 
-  
+  const [address, setAddress] = useState({
+    name: "",
+    mobile: "",
+    province: "",
+    city: "",
+    address: "",
+    postalCode: "",
+    telephone: "",
+    cityCode: "",
+  });
+
+  const dispatch = useDispatch()
 
   const handleCities = (e: ChangeEvent<HTMLSelectElement>) => {
     setProvince(provinces.find((item: any) => item.name === e.target.value));
@@ -24,10 +37,11 @@ export default function ShippingModal({ open, setOpen , address , setAddress }: 
   ) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
-
+  
   const handleAddress = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     address.province = province.name;
+    dispatch(saveShippingAddress(address))
     setOpen(false)
   };
 

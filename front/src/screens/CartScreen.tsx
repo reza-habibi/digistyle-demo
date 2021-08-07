@@ -2,7 +2,7 @@ import React from "react";
 import Advantage from "../components/Advantage/Advantage";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import Humanize from "humanize-plus";
-import { TProducts } from "../type.ds";
+import { TCartItem, TProducts } from "../type.ds";
 import { Link } from "react-router-dom";
 import { ImWarning } from "react-icons/im";
 import { useSelector } from "react-redux";
@@ -15,9 +15,9 @@ function CartScreen() {
   const discount =
     cartItems.length !== 0
       ? cartItems
-          .filter((item: TProducts) => item.discount)
+          .filter((item: TCartItem) => item.discount)
           .map(
-            (item: TProducts) => (item.price * parseInt(item.discount)) / 100
+            (item: TCartItem) => (item.price * parseInt(item.discount)) / 100
           )
           .reduce((a: number, b: number) => a + b)
       : 0;
@@ -25,7 +25,7 @@ function CartScreen() {
   const subPrice =
     cartItems.length !== 0
       ? cartItems
-          .map((item: TProducts) => item.price)
+          .map((item: TCartItem) => item.price)
           .reduce((a: number, b: number) => a + b)
       : 0;
 
@@ -40,7 +40,7 @@ function CartScreen() {
             <h2 className="text-2xl text-gray-700 mb-5">سبد خرید شما</h2>
             {cartItems.map((product: any) => (
               <CartItem
-                key={product._id}
+                key={product.product}
                 product={product}
                 cartItem={cartItems}
               />
