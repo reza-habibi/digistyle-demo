@@ -13,6 +13,7 @@ import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
 import SigninScreen from "./screens/SigninScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 function App() {
   const [address, setAddress] = useState({
     name: "محمدرضا حبیبی",
@@ -67,6 +68,7 @@ function App() {
           render={(props) => <CheckoutScreen {...props} address={address} />}
         />
         <Route path="/signin" component={SigninScreen} />
+        <Route path="/register" component={RegisterScreen} />
       </Switch>
       <Footer />
       <DesktopFooter />

@@ -1,9 +1,9 @@
 import express from "express";
 import { data } from "../data.js";
-import bcrypt from 'bcryptjs'
+import bcrypt from "bcryptjs";
 import User from "../models/userModels.js";
 import expressAsyncHandler from "express-async-handler";
-import { generateToken } from '../utils.js';
+import { generateToken } from "../utils.js";
 
 data;
 const userRouter = express.Router();
@@ -17,7 +17,7 @@ userRouter.get(
 );
 
 userRouter.post(
-  '/signin',
+  "/signin",
   expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
@@ -35,6 +35,25 @@ userRouter.post(
     res
       .status(401)
       .send({ message: "ایمیل یا رمزعبور وارد شده صحیح نمی باشد." });
+  })
+);
+
+userRouter.post(
+  "/register",
+  expressAsyncHandler(async (req, res) => {
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 8),
+    });
+    const createdUser = await user.save();
+    res.send({
+      _id: createdUser._id,
+      name: createdUser.name,
+      email: createdUser.email,
+      isAdmin: createdUser.isAdmin,
+      token: generateToken(createdUser),
+    });
   })
 );
 
