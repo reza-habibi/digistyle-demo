@@ -31,7 +31,6 @@ export default function Header() {
   //@ts-ignore
   const { userInfo } = userSignin;
 
-  console.log(userInfo);
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -50,11 +49,6 @@ export default function Header() {
     navbarClasses.push("scrolled");
   }
 
-  const hideDropDown = () => {
-    // setTimeout(() => {
-    //   setDropDown(false);
-    // }, 5000);
-  };
 
   const ref = useRef(null);
   // close drawer on click outside
@@ -89,7 +83,7 @@ export default function Header() {
                     to="/cart"
                     className="relative"
                     onMouseOver={() => setDropDown(true)}
-                    onMouseOut={hideDropDown}
+                    
                   >
                     <ShoppingBagIcon
                       className="block h-10 w-10 text-black"

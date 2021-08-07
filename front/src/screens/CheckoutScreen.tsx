@@ -1,32 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import { TCartItem } from "../type.ds";
 import Humanize from "humanize-plus";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/Store/Store";
-function CheckoutScreen() {
+import { savePaymentMethod } from "../redux/actions/cartAction";
+import { createOrder } from "../redux/actions/orderAction";
+import { ORDER_CREATE_RESET } from "../redux/constants/orderConstants";
+function CheckoutScreen(props: any) {
   const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
+  const orderCreate = useSelector((state: RootState) => state.orderReducer);
+  const { loading, success, error, order } = orderCreate;
   //@ts-ignore
-  const { cartItems , shippingAddress} = cart;
-  const discount =
-    cartItems.length !== 0
-      ? cartItems
-          .filter((item: TCartItem) => item.discount)
-          .map(
-            (item: TCartItem) => (item.price * parseInt(item.discount)) / 100
-          )
-          .reduce((a: number, b: number) => a + b)
-      : 0;
+  cart.itemsPrice = cart.cartItems.reduce(
+    (a: number, c: { qty: number; price: number }) => a + c.qty * c.price,
+    0
+  );
+  //@ts-ignore
+  const { cartItems, shippingAddress } = cart;
+  cart.discount = cartItems
+    .filter((item: TCartItem) => item.discount)
+    .map((item: TCartItem) => (item.price * parseInt(item.discount)) / 100)
+    .reduce((a: number, b: number) => a + b);
+  cart.subPrice = cart.itemsPrice - cart.discount;
 
-  const subPrice =
-    cartItems.length !== 0
-      ? cartItems
-          .map((item: TCartItem) => item.price)
-          .reduce((a: number, b: number) => a + b)
-      : 0;
+  const [paymentMethod, setPaymentMethod] = useState("PayPal");
 
+  const submitHandler = () => {
+    dispatch(savePaymentMethod(paymentMethod));
+    dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
+  };
 
+  useEffect(() => {
+    if (success) {
+      props.history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [dispatch, order, props.history, success]);
 
   return (
     <div className="w-full space-y-10">
@@ -40,8 +53,8 @@ function CheckoutScreen() {
                 <p className="w-full h-auto text-justify p-2 leading-relaxed ">
                   این سفارش در بازه ساعت ۹ تا ۲۱ تاریخ چهار‌شنبه ۱۳ مرداد ۱۴۰۰
                   به &nbsp;
-                  {shippingAddress.name} به آدرس {shippingAddress.address} و شماره تماس{" "}
-                  {shippingAddress.mobile} تحویل می‌گردد.{" "}
+                  {shippingAddress.fullName} به آدرس {shippingAddress.address} و
+                  شماره تماس {shippingAddress.mobile} تحویل می‌گردد.{" "}
                 </p>
               </div>
 
@@ -86,7 +99,7 @@ function CheckoutScreen() {
                       مبلغ کل خرید
                     </span>
                     <span className="text-black font-bold text-base md:text-xl lg:text-2xl">
-                      {Humanize.intComma(subPrice)} تومان
+                      {Humanize.intComma(cart.itemsPrice)} تومان
                     </span>
                   </div>
                   <div className="w-full flex justify-between">
@@ -97,13 +110,13 @@ function CheckoutScreen() {
                       رایگان
                     </span>
                   </div>
-                  {discount ? (
+                  {cart.discount ? (
                     <div className="w-full flex justify-between ">
                       <span className="text-pink-500 font-bold text-base md:text-xl lg:text-2xl">
                         مجموع تخفیف‌ها
                       </span>
                       <span className="text-pink-500 font-bold text-base md:text-xl lg:text-2xl">
-                        {Humanize.intComma(discount)} تومان
+                        {Humanize.intComma(cart.discount)} تومان
                       </span>
                     </div>
                   ) : null}
@@ -113,7 +126,7 @@ function CheckoutScreen() {
                     قابل پرداخت
                   </span>
                   <span className="text-black font-bold text-base md:text-xl lg:text-2xl">
-                    {Humanize.intComma(subPrice - discount)} تومان
+                    {Humanize.intComma(cart.subPrice)} تومان
                   </span>
                 </div>
               </div>
@@ -128,8 +141,9 @@ function CheckoutScreen() {
                   <input
                     type="radio"
                     className="form-radio w-6 h-6"
-                    name="accountType"
-                    value="بلی"
+                    name="paymentMethod"
+                    value="PayPal"
+                    onChange={(e) => setPaymentMethod(e.target.value)}
                   />
                   <span className="mr-4">درگاه پرداخت اینترنتی </span>
                 </label>
@@ -137,8 +151,9 @@ function CheckoutScreen() {
                   <input
                     type="radio"
                     className="form-radio w-6 h-6"
-                    name="accountType"
-                    value="خیر"
+                    name="paymentMethod"
+                    value="stripe"
+                    onChange={(e) => setPaymentMethod(e.target.value)}
                   />
                   <span className="mr-4">پرداخت در محل </span>
                 </label>
@@ -173,12 +188,20 @@ function CheckoutScreen() {
               قوانین مربوط به ثبت و رویه‌های پردازش سفارشات دیجی‌استایل اعلام
               نموده‌اید.
             </span>
-            <Link
-              to="/shipping"
+            <button
+              onClick={submitHandler}
               className="text-center bg-pink-500 text-white text-2xl w-96 py-6"
             >
               پرداخت و تکمیل خرید
-            </Link>
+            </button>
+            {loading && (
+              <div className="flex justify-center items-center h-32">
+                <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
+                <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
+                <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
+              </div>
+            )}
+            {error && <span className="text-red-400 text-xl">{error}</span>}{" "}
           </div>
         </div>
 

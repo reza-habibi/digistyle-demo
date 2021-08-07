@@ -34,18 +34,27 @@ export type TPState = {
   error?: string;
 };
 
-
-
 export type TCartItem = {
-  name: string
-  image: string
-  price: number
-  discount: string
-  countInStock: number
-  product: string
-  brand:string
-  qty:number
+  name: string;
+  image: string;
+  price: number;
+  discount: string;
+  countInStock: number;
+  product: string;
+  brand: string;
+  qty: number;
 };
 
-export type TCartState={
-  cartItems:TCartItem[]}
+export type TCartState = {
+  cartItems: TCartItem[];
+  subPrice?: number;
+  discount?: number;
+  itemsPrice?: number;
+};
+
+export type TOrderState = {
+  order?: any;
+  loading?: Boolean;
+  error?: any;
+  success?: Boolean;
+};

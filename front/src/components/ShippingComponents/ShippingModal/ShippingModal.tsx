@@ -16,7 +16,7 @@ export default function ShippingModal({ open, setOpen}: any) {
   });
 
   const [address, setAddress] = useState({
-    name: "",
+    fullName: "",
     mobile: "",
     province: "",
     city: "",
@@ -109,8 +109,8 @@ export default function ShippingModal({ open, setOpen}: any) {
                       <div className="floating-input mb-5 relative ">
                         <input
                           type="text"
-                          id="name"
-                          name="name"
+                          id="fullName"
+                          name="fullName"
                           className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
                           placeholder=" "
                           autoComplete="off"
@@ -118,7 +118,7 @@ export default function ShippingModal({ open, setOpen}: any) {
                           onChange={getValue}
                         />
                         <label
-                          htmlFor="name"
+                          htmlFor="fullName"
                           className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
                         >
                           نام و نام خانوادگی تحویل گیرنده

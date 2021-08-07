@@ -29,7 +29,7 @@ function CartScreen() {
           .reduce((a: number, b: number) => a + b)
       : 0;
 
-
+ 
   return (
     <div className="mt-10 flex flex-col space-y-16">
       <ProgressBar />
