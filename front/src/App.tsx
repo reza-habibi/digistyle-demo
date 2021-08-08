@@ -14,6 +14,8 @@ import ShippingScreen from "./screens/ShippingScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
 import SigninScreen from "./screens/SigninScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 function App() {
   return (
     <Router>
@@ -44,6 +46,8 @@ function App() {
         <Route path="/checkout" exact component={CheckoutScreen} />
         <Route path="/signin" component={SigninScreen} />
         <Route path="/register" component={RegisterScreen} />
+        <Route path="/order/:id" component={OrderScreen} />
+        <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
       </Switch>
       <Footer />
       <DesktopFooter />

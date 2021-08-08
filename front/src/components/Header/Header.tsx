@@ -68,7 +68,7 @@ export default function Header() {
       className={`w-full hidden lg:block ${
         location.pathname === "/"
           ? "absolute top-0 z-10 bg-transparent"
-          : "relative bg-white z-50"
+          : "relative bg-white z-40"
       }  py-10 transition-all duration-500 ${
         scrolled ? "fixed top-0 motion-safe:animate-fade-in-down " : ""
       }`}

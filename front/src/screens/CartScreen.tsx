@@ -2,7 +2,7 @@ import React from "react";
 import Advantage from "../components/Advantage/Advantage";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import Humanize from "humanize-plus";
-import { TCartItem, TProducts } from "../type.ds";
+import { TCartItem } from "../type.ds";
 import { Link } from "react-router-dom";
 import { ImWarning } from "react-icons/im";
 import { useSelector } from "react-redux";

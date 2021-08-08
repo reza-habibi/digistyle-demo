@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { signout } from "../../../redux/actions/userAction";
+import { Link } from "react-router-dom";
 
 export default function UserDropDown() {
 
@@ -60,7 +61,7 @@ export default function UserDropDown() {
             <div className="px-1 py-2">
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <Link to="/orderhistory"
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-xl`}
@@ -77,7 +78,7 @@ export default function UserDropDown() {
                       />
                     )}
                     سفارش های من
-                  </button>
+                  </Link >
                 )}
               </Menu.Item>
             </div>

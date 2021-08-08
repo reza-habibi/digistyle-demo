@@ -35,7 +35,7 @@ function ShippingScreen() {
         </button>
       </div>
       <div className="lg:w-4/5 w-full mx-auto bg-white">
-        {shippingAddress.fullName !== "" ? (
+        {shippingAddress ? (
           <div className="md:grid md:grid-cols-6 flex flex-col  ">
             <span className="text-gray-900 border-b border-gray-300 lg:border-none text-2xl font-bold col-span-1 py-8 px-4">
               {shippingAddress.fullName}
