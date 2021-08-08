@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import ProductScreen from "./screens/ProductScreen";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/MobileFooter";
-import MobileHeader from "./components/Header/MobileHeader";
-import DesktopFooter from "./components/Footer/DesktopFooter";
-import CategoryScreen from "./screens/CategoryScreen";
 import { Categories } from "./data";
-import SubCategory from "./screens/SubCategoryScreen";
-import CartScreen from "./screens/CartScreen";
-import ShippingScreen from "./screens/ShippingScreen";
-import CheckoutScreen from "./screens/CheckoutScreen";
-import SigninScreen from "./screens/SigninScreen";
-import RegisterScreen from "./screens/RegisterScreen";
-import OrderScreen from "./screens/OrderScreen";
-import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+const ProductScreen = lazy(() => import("./screens/ProductScreen"));
+const Header = lazy(() => import("./components/Header/Header"));
+const Footer = lazy(() => import("./components/Footer/MobileFooter"));
+const MobileHeader = lazy(() => import("./components/Header/MobileHeader"));
+const DesktopFooter = lazy(() => import("./components/Footer/DesktopFooter"));
+const CategoryScreen = lazy(() => import("./screens/CategoryScreen"));
+const SubCategory = lazy(() => import("./screens/SubCategoryScreen"));
+const CartScreen = lazy(() => import("./screens/CartScreen"));
+const ShippingScreen = lazy(() => import("./screens/ShippingScreen"));
+const CheckoutScreen = lazy(() => import("./screens/CheckoutScreen"));
+const SigninScreen = lazy(() => import("./screens/SigninScreen"));
+const RegisterScreen = lazy(() => import("./screens/RegisterScreen"));
+const OrderScreen = lazy(() => import("./screens/OrderScreen"));
+const OrderHistoryScreen = lazy(() => import("./screens/OrderHistoryScreen"));
+const ProfileScreen = lazy(() => import("./screens/ProfileScreen"));
+const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 function App() {
   return (
     <Router>
@@ -48,6 +49,7 @@ function App() {
         <Route path="/register" component={RegisterScreen} />
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route path="/profile" component={ProfileScreen} />
       </Switch>
       <Footer />
       <DesktopFooter />
