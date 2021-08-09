@@ -122,25 +122,25 @@ body {
   padding-right: 10px;
 }
 
-#main.swiper-container {
+/* #main.swiper-container {
   width: 250px;
 }
 
 #main .swiper-slide {
   width: 250px !important;
-}
+} */
 
 @media screen and (max-width: 480px) {
-  #main.swiper-container {
+  /* #main.swiper-container {
     width: 100%;
-  }
+  } */
   #main > .swiper-button-next,
   #main > .swiper-button-prev {
     display: none;
   }
 }
 
-@media screen and (min-width: 640px) {
+/* @media screen and (min-width: 640px) {
   #main.swiper-container {
     width: 580px;
   }
@@ -162,7 +162,7 @@ body {
   #main.swiper-container {
     width: 1430px;
   }
-}
+} */
 
 .container {
   width: 85%;

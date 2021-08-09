@@ -39,7 +39,24 @@ export default function CardCarousel({ products }: any) {
           slidesPerView={"auto"}
           spaceBetween={30}
           navigation={true}
-          
+          breakpoints={{
+            "480": {
+              slidesPerView: 2,
+              spaceBetween: 10
+            },
+            "768": {
+              slidesPerView: 3,
+              spaceBetween: 40
+            },
+            "1024": {
+              slidesPerView: 4,
+              spaceBetween: 50
+            },
+            "1440": {
+              slidesPerView: 5,
+              spaceBetween: 50
+            }
+          }}
           className="mySwiper my-4"
         >
           {products.map((product: TProducts) => (

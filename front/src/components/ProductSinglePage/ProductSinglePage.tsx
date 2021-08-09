@@ -283,7 +283,7 @@ export default function DesktopSingleProduct({ product }: any) {
             </div>
 
             <div className="w-4/5 mx-auto bg-white mb-32 hidden lg:block">
-              <ProductFeatureTab />
+              <ProductFeatureTab product={product} />
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ function Product({ product }: any) {
                 <button className="flex justify-center items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-red-500">
                   <HeartIcon className="block h-8 w-8" aria-hidden="true" />
                 </button>
-                {product.countInStock && (
+                {product.countInStock>0 && (
                   <button
                     className="rounded-full flex justify-center	items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-yellow-500"
                     onClick={() => addToCartHandler(product._id)}

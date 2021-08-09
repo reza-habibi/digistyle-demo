@@ -18,7 +18,6 @@ function CheckoutScreen(props: any) {
     (a: number, c: { qty: number; price: number }) => a + c.qty * c.price,
     0
   );
-  //@ts-ignore
   const { cartItems, shippingAddress } = cart;
   cart.discount = cartItems
     .filter((item: TCartItem) => item.discount)
