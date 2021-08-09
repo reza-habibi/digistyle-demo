@@ -7,7 +7,7 @@ import { saveShippingAddress } from "../../../redux/actions/cartAction";
 
 const provinces = require("../../../json/provinces.json");
 const cities = require("../../../json/cities.json");
-export default function ShippingModal({ open, setOpen}: any) {
+export default function ShippingModal({ open, setOpen }: any) {
   const cancelButtonRef = useRef(null);
   const [province, setProvince] = useState({
     id: 0,
@@ -26,7 +26,7 @@ export default function ShippingModal({ open, setOpen}: any) {
     cityCode: "",
   });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleCities = (e: ChangeEvent<HTMLSelectElement>) => {
     setProvince(provinces.find((item: any) => item.name === e.target.value));
@@ -37,12 +37,12 @@ export default function ShippingModal({ open, setOpen}: any) {
   ) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
-  
+
   const handleAddress = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     address.province = province.name;
-    dispatch(saveShippingAddress(address))
-    setOpen(false)
+    dispatch(saveShippingAddress(address));
+    setOpen(false);
   };
 
   return (
@@ -237,6 +237,7 @@ export default function ShippingModal({ open, setOpen}: any) {
                             className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
                             placeholder=" "
                             autoComplete="off"
+                            onChange={getValue}
                           />
                           <label
                             htmlFor="telephone"

@@ -50,6 +50,7 @@ export type TCartState = {
   subPrice?: number;
   discount?: number;
   itemsPrice?: number;
+  shippingAddress?:any
 };
 
 export type TOrderState = {
@@ -57,4 +58,17 @@ export type TOrderState = {
   loading?: Boolean;
   error?: any;
   success?: Boolean;
+};
+
+export type TUserState = {
+  userInfo?: {
+    _id: any;
+    isAdmin: Boolean;
+    email: string;
+    password: string;
+    __v: number;
+    createdAt: Date;
+    updatedAt: Date;
+    fullName: string;
+  };
 };

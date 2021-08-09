@@ -96,6 +96,7 @@ export const listOrderMine = () => async (dispatch: (arg0: { type: string; paylo
       },
     });
     dispatch({ type: ORDER_MINE_LIST_SUCCESS, payload: data });
+    console.log(data)
   } catch (error) {
     const message =
       error.response && error.response.data.message

@@ -28,7 +28,6 @@ export default function Header() {
   const { cartItems } = cart;
 
   const userSignin = useSelector((state: RootState) => state.userSignin);
-  //@ts-ignore
   const { userInfo } = userSignin;
 
   const [scrolled, setScrolled] = useState(false);
@@ -103,7 +102,7 @@ export default function Header() {
                           to="/#"
                           className="text-black mr-5 text-2xl font-bold"
                         >
-                          {userInfo.name} عزیز
+                          {userInfo.fullName} عزیز
                         </Link>
                         <span className="text-2xl">، سلام</span>
                       </div>

@@ -24,7 +24,7 @@ export default function CartDrawerItems({ product }: any) {
   useEffect(() => {
     product.qty = newQty;
     dispatch(addToCart(product.product, newQty));
-  }, [newQty]);
+  }, [dispatch, newQty, product]);
 
   return (
     <div>

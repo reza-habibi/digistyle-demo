@@ -48,7 +48,7 @@ function App() {
         <Route path="/signin" component={SigninScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/order/:id" component={OrderScreen} />
-        <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route path="/orderhistory" component={OrderHistoryScreen}/>
         <Route path="/profile" component={ProfileScreen} />
       </Switch>
       <Footer />

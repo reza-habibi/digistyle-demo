@@ -1,3 +1,4 @@
+import { TUserState } from "../../type.ds";
 import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
@@ -8,8 +9,10 @@ import {
   USER_SIGNOUT,
 } from "../constants/userConstants";
 
+const initialState:TUserState={}
+
 export const userSigninReducer = (
-  state = {},
+  state = initialState,
   action: { type: any; payload: any }
 ) => {
   switch (action.type) {

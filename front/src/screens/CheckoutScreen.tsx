@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ProgressBar from "../components/CartComponents/ProgressBar/ProgressBar";
 import { TCartItem } from "../type.ds";
 import Humanize from "humanize-plus";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/Store/Store";
 import { savePaymentMethod } from "../redux/actions/cartAction";

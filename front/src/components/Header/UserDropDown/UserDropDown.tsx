@@ -43,7 +43,7 @@ export default function UserDropDown() {
             <div className="px-1 py-2 ">
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <Link to="/profile"
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-xl`}
@@ -54,7 +54,7 @@ export default function UserDropDown() {
                       <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
                     )}
                     حساب کاربری
-                  </button>
+                  </Link>
                 )}
               </Menu.Item>
             </div>
