@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Categories } from "./data";
 import { routes } from "./Routes/Routes";
 import { ToastContainer } from "react-toastify";
-import ChangeInfo from "./components/ProfileComponents/pages/user/ChangeInfo";
+import CustomRoute from "./Routes/CustomRoute";
 
 const Header = lazy(() => import("./components/Header/Header"));
 const Footer = lazy(() => import("./components/Footer/MobileFooter"));
@@ -20,11 +20,12 @@ function App() {
       <ToastContainer />
       <Switch>
         {routes.map((item: any, index: number) => (
-          <Route
+          <CustomRoute
             key={index}
             path={item.path}
             exact={item.exact}
-            render={(props) => <item.component {...props} />}
+            isLogin={item.isLogin}
+            Component={item.component}
           />
         ))}
         {Categories.map((category: any, index: number) => (
@@ -43,7 +44,6 @@ function App() {
             <Route key={index} path={category.url} component={SubCategory} />
           ))
         )}
-        <Route path="/change-info" component={ChangeInfo} />
       </Switch>
       <Footer />
       <DesktopFooter />

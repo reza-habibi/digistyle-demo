@@ -50,7 +50,7 @@ export type TCartState = {
   subPrice?: number;
   discount?: number;
   itemsPrice?: number;
-  shippingAddress?:any
+  shippingAddress?: any;
 };
 
 export type TOrderState = {
@@ -73,9 +73,15 @@ export type TUserState = {
   };
 };
 
+export type TUserDetails = {
+  loading: Boolean;
+  error?: any;
+  user?: any;
+};
 
-export type TUserDetails={
-  loading:Boolean;
-  error?:any;
-  user?:any;
-}
+export type TRoute = {
+  path: string;
+  exact: boolean;
+  Component: Function;
+  isLogin: boolean;
+};
