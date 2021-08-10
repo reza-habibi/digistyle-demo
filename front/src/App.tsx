@@ -2,6 +2,9 @@ import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Categories } from "./data";
 import { routes } from "./Routes/Routes";
+import { ToastContainer } from "react-toastify";
+import ChangeInfo from "./components/ProfileComponents/pages/user/ChangeInfo";
+
 const Header = lazy(() => import("./components/Header/Header"));
 const Footer = lazy(() => import("./components/Footer/MobileFooter"));
 const MobileHeader = lazy(() => import("./components/Header/MobileHeader"));
@@ -14,6 +17,7 @@ function App() {
     <Router>
       <Header />
       <MobileHeader />
+      <ToastContainer />
       <Switch>
         {routes.map((item: any, index: number) => (
           <Route
@@ -39,6 +43,7 @@ function App() {
             <Route key={index} path={category.url} component={SubCategory} />
           ))
         )}
+        <Route path="/change-info" component={ChangeInfo} />
       </Switch>
       <Footer />
       <DesktopFooter />

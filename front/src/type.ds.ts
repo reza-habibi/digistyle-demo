@@ -72,3 +72,10 @@ export type TUserState = {
     fullName: string;
   };
 };
+
+
+export type TUserDetails={
+  loading:Boolean;
+  error?:any;
+  user?:any;
+}

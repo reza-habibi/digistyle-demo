@@ -1,5 +1,5 @@
 
-import { ArchiveIcon , StarIcon , HomeIcon} from "@heroicons/react/outline";
+import { ArchiveIcon , StarIcon , HomeIcon , CogIcon} from "@heroicons/react/outline";
 
 const data = [
   {
@@ -18,6 +18,11 @@ const data = [
     title: "آدرس ها",
     icon: <HomeIcon className="block w-8 h-8" aria-hidden="true"/>,
     link: "/profile/address",
+  },
+  {
+    title: " تغییر اطلاعات  ",
+    icon: <CogIcon className="block w-8 h-8" aria-hidden="true"/>,
+    link: "/profile/change-info",
   },
 ];
 

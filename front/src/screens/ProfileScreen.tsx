@@ -1,21 +1,27 @@
-import { useSelector } from "react-redux";
+import { lazy } from "react";
 import { Switch, Route } from "react-router-dom";
-import DashboardLayout from "../components/ProfileComponents/dashboard/layout";
-import HomePage from "../components/ProfileComponents/pages";
-import Address from "../components/ProfileComponents/pages/user/Address";
-import ProfileOrders from "../components/ProfileComponents/pages/user/Orders";
-import { RootState } from "../redux/Store/Store";
+const DashboardLayout = lazy(
+  () => import("../components/ProfileComponents/dashboard/layout")
+);
+const HomePage = lazy(() => import("../components/ProfileComponents/pages"));
+const Address = lazy(
+  () => import("../components/ProfileComponents/pages/user/Address")
+);
+const ChangeInfo = lazy(
+  () => import("../components/ProfileComponents/pages/user/ChangeInfo")
+);
+const ProfileOrders = lazy(
+  () => import("../components/ProfileComponents/pages/user/Orders")
+);
 
-function ProfileScreen() {
-  const userSignin = useSelector((state: RootState) => state.userSignin);
-  const { userInfo } = userSignin;
-  document.title = `پروفایل - ${userInfo.fullName} | فروشگاه اینترنتی لباس دیجی ممد`;
+function ProfileScreen(props: any) {
   return (
     <DashboardLayout>
       <Switch>
         <Route exact path="/profile/" component={HomePage} />
         <Route exact path="/profile/orders" component={ProfileOrders} />
         <Route exact path="/profile/address" component={Address} />
+        <Route exact path="/profile/change-info" component={ChangeInfo} />
       </Switch>
     </DashboardLayout>
   );

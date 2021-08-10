@@ -194,7 +194,7 @@ export default function ShippingModal({ open, setOpen }: any) {
 
                       <div className="floating-input mb-5 relative">
                         <input
-                          type="address"
+                          type="text"
                           id="address"
                           name="address"
                           onChange={getValue}

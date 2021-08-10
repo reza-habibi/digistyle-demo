@@ -99,7 +99,7 @@ export default function Header() {
                       <UserDropDown />
                       <div>
                         <Link
-                          to="/#"
+                          to="/profile"
                           className="text-black mr-5 text-2xl font-bold"
                         >
                           {userInfo.fullName} عزیز
@@ -136,15 +136,15 @@ export default function Header() {
               <div className="nav w-full flex justify-center items-center mt-5">
                 <div className="flex space-x-4 ml-5 border-l border-black">
                   {navigation.map((item, index) => (
-                    <a
+                    <Link
                       key={index}
-                      href={item.href}
+                      to={item.href}
                       className={classNames(
                         "text-gray-900 hover:text-black font-bold px-5 py-2 rounded-md text-xl font-medium"
                       )}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div>
