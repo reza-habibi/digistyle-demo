@@ -9,10 +9,11 @@ export default function CustomRoute({
   exact,
   isLogin,
   Component,
+  isAdmin,
 }: TRoute) {
   const userSignin = useSelector((state: RootState) => state.userSignin);
   const { userInfo } = userSignin;
-  return isLogin ? (
+  return isLogin || isAdmin ? (
     userInfo ? (
       <Route
         path={path}

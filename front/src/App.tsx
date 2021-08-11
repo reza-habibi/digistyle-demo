@@ -26,6 +26,7 @@ function App() {
             exact={item.exact}
             isLogin={item.isLogin}
             Component={item.component}
+            isAdmin={item.isAdmin}
           />
         ))}
         {Categories.map((category: any, index: number) => (

@@ -42,20 +42,25 @@ export default function CardCarousel({ products }: any) {
           breakpoints={{
             "480": {
               slidesPerView: 2,
-              spaceBetween: 10
+              spaceBetween: 10,
             },
             "768": {
               slidesPerView: 3,
-              spaceBetween: 40
+              spaceBetween: 40,
             },
             "1024": {
-              slidesPerView: 4,
-              spaceBetween: 50
+              slidesPerView: 3,
+              spaceBetween: 50,
             },
-            "1440": {
+
+            "1324": {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+            "1640": {
               slidesPerView: 5,
-              spaceBetween: 50
-            }
+              spaceBetween: 50,
+            },
           }}
           className="mySwiper my-4"
         >

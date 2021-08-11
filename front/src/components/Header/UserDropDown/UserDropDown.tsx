@@ -8,11 +8,14 @@ import {
   LogoutIcon,
   UserIcon,
 } from "@heroicons/react/outline";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../../redux/actions/userAction";
 import { Link } from "react-router-dom";
+import { RootState } from "../../../redux/Store/Store";
 
 export default function UserDropDown() {
+  const userSignin = useSelector((state: RootState) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const dispatch = useDispatch();
   const signoutHandler = () => {
@@ -41,27 +44,49 @@ export default function UserDropDown() {
         >
           <Menu.Items className="absolute right-0 w-80 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-2 ">
-              <Menu.Item>
-                {({ active }) => (
-                  <Link to="/profile"
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-xl`}
-                  >
-                    {active ? (
-                      <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
-                    ) : (
-                      <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
-                    )}
-                    حساب کاربری
-                  </Link>
-                )}
-              </Menu.Item>
+              {userInfo && userInfo.isAdmin ? (
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/dashboard"
+                      className={`${
+                        active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-xl`}
+                    >
+                      {active ? (
+                        <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
+                      ) : (
+                        <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
+                      )}
+                      پنل ادمین
+                    </Link>
+                  )}
+                </Menu.Item>
+              ) : (
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/profile"
+                      className={`${
+                        active ? "bg-violet-500 text-white" : "text-gray-900"
+                      } group flex rounded-md items-center w-full px-2 py-2 text-xl`}
+                    >
+                      {active ? (
+                        <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
+                      ) : (
+                        <CogIcon className="w-8 h-8 mx-2" aria-hidden="true" />
+                      )}
+                      حساب کاربری
+                    </Link>
+                  )}
+                </Menu.Item>
+              )}
             </div>
             <div className="px-1 py-2">
               <Menu.Item>
                 {({ active }) => (
-                  <Link to="/orderhistory"
+                  <Link
+                    to="/orderhistory"
                     className={`${
                       active ? "bg-violet-500 text-white" : "text-gray-900"
                     } group flex rounded-md items-center w-full px-2 py-2 text-xl`}
@@ -78,7 +103,7 @@ export default function UserDropDown() {
                       />
                     )}
                     سفارش های من
-                  </Link >
+                  </Link>
                 )}
               </Menu.Item>
             </div>

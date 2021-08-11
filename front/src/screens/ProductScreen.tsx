@@ -11,6 +11,7 @@ export default function ProductScreen(props: any) {
   const productDetails = useSelector(
     (state: RootState) => state.productDetails
   );
+  //@ts-ignore
   const { product, loading, error } = productDetails;
   const dispatch = useDispatch();
   useEffect(() => {

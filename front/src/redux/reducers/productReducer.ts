@@ -1,4 +1,4 @@
-import { TPState } from "../../type.ds";
+import { TPDetailState, TProductCreate, TPState } from "../../type.ds";
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -6,11 +6,15 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  PRODUCT_CREATE_FAIL,
+  PRODUCT_CREATE_REQUEST,
+  PRODUCT_CREATE_RESET,
+  PRODUCT_CREATE_SUCCESS,
 } from "../constants/productConstants";
 
-const initialState: TPState = { loading: true, product: [] };
+const initialState: TPState = { loading: true, products:[] };
 
-function productListReducer(state = initialState, action: any) {
+export const productListReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
       return { loading: true };
@@ -21,9 +25,12 @@ function productListReducer(state = initialState, action: any) {
     default:
       return state;
   }
-}
+};
 
-export const productDetailsReducer = (state = initialState, action: any) => {
+const detailState: TPDetailState = { loading: true };
+
+
+export const productDetailsReducer = (state = detailState, action: any) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return { loading: true };
@@ -42,4 +49,20 @@ export const productDetailsReducer = (state = initialState, action: any) => {
   }
 };
 
-export { productListReducer };
+export const productCreateReducer = (
+  state:TProductCreate = {},
+  action: { type: any; payload: any }
+) => {
+  switch (action.type) {
+    case PRODUCT_CREATE_REQUEST:
+      return { loading: true };
+    case PRODUCT_CREATE_SUCCESS:
+      return { loading: false, success: true, product: action.payload };
+    case PRODUCT_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_CREATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};

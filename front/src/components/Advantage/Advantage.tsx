@@ -8,7 +8,7 @@ function Advantage() {
       <div className="flex flex-col justify-center items-center">
         <figure>
           <img
-            src="../images/svg/express.svg"
+            src="/images/svg/express.svg"
             alt="express shipment"
             className={`${location.pathname === "/" ? "md:w-32 md:h-32" : ""}`}
           />
@@ -26,7 +26,7 @@ function Advantage() {
       <div className="flex flex-col justify-center items-center">
         <figure>
           <img
-            src="../images/svg/guarantees.svg"
+            src="/images/svg/guarantees.svg"
             alt="guarantees"
             className={`${location.pathname === "/" ? "md:w-32 md:h-32" : ""}`}
           />
@@ -44,7 +44,7 @@ function Advantage() {
       <div className="flex flex-col justify-center items-center">
         <figure>
           <img
-            src="../images/svg/original.svg"
+            src="/images/svg/original.svg"
             alt="original products"
             className={`${location.pathname === "/" ? "md:w-32 md:h-32" : ""}`}
           />

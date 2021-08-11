@@ -29,8 +29,14 @@ export type TSub = {
 };
 
 export type TPState = {
-  loading: Boolean;
-  product: TProducts[];
+  loading: boolean;
+  products?:TProducts[]
+  error?: string;
+};
+
+export type TPDetailState = {
+  loading: boolean;
+  product?: TProducts;
   error?: string;
 };
 
@@ -84,4 +90,12 @@ export type TRoute = {
   exact: boolean;
   Component: Function;
   isLogin: boolean;
+  isAdmin: boolean;
+};
+
+export type TProductCreate = {
+  loading?: boolean;
+  error?: any;
+  success?: any;
+  product?: any;
 };
