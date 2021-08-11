@@ -31,15 +31,24 @@ export default function HomePage(props: { history: string[] }) {
     /// TODO: dispatch delete action
   };
 
+  const editHandler = (id: any) => {
+    props.history.push(`/products/${id}/edit`);
+  };
+
   const createHandler = () => {
     dispatch(createProduct());
   };
   return (
     <div>
-      <div className="row">
-        <h1>Products</h1>
-        <button type="button" className="primary" onClick={createHandler}>
-          Create Product
+      <div className="w-full space-y-10 mb-10">
+        <h1>محصولات</h1>
+
+        <button
+          type="button"
+          className=" bg-transparent hover:bg-black text-black font-semibold hover:text-white py-4 px-6 border border-black hover:border-transparent"
+          onClick={createHandler}
+        >
+          افزودن محصول
         </button>
       </div>
       {loadingCreate && (
@@ -107,49 +116,49 @@ export default function HomePage(props: { history: string[] }) {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {
-                        //@ts-ignore
-                        products.map((product: TProducts) => (
-                          <tr key={product._id} className="hover:bg-gray-200">
-                            <td className="px-6 py-4 text-xl whitespace-nowrap">
-                              {product._id}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-xl text-gray-900">
-                                {product.name}
-                              </div>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-xl text-gray-500">
-                                {Humanize.intComma(product.price)} تومان
-                              </div>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {product.category}
-                              </span>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {product.brand}
-                              </span>
-                            </td>
-                            <td className="px-12 py-8 whitespace-nowrap text-right text-xl font-medium">
-                              <div className="inline-flex">
-                                <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                                  ویرایش
-                                </button>
-                                <button
-                                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-                                  onClick={() => deleteHandler(product)}
-                                >
-                                  حذف
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))
-                      }
+                      {products.map((product: TProducts) => (
+                        <tr key={product._id} className="hover:bg-gray-200">
+                          <td className="px-6 py-4 text-xl whitespace-nowrap">
+                            {product._id}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-xl text-gray-900">
+                              {product.name}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-xl text-gray-500">
+                              {Humanize.intComma(product.price)} تومان
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                              {product.category}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                              {product.brand}
+                            </span>
+                          </td>
+                          <td className="px-12 py-8 whitespace-nowrap text-right text-xl font-medium">
+                            <div className="inline-flex">
+                              <button
+                                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+                                onClick={() => editHandler(product._id)}
+                              >
+                                ویرایش
+                              </button>
+                              <button
+                                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                                onClick={() => deleteHandler(product)}
+                              >
+                                حذف
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>

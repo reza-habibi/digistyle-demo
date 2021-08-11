@@ -2,7 +2,7 @@ import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import { data } from "../data.js";
 import Product from "../models/productModels.js";
-import { isAdmin, isAuth } from '../utils.js';
+import { isAdmin, isAuth } from "../utils.js";
 
 const productRouter = express.Router();
 
@@ -37,7 +37,7 @@ productRouter.get(
 );
 
 productRouter.post(
-  '/',
+  "/",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
@@ -60,7 +60,37 @@ productRouter.post(
       description: "توضیحات همینجوری",
     });
     const createdProduct = await product.save();
-    res.send({ message: 'محصول ساخته شد', product: createdProduct });
+    res.send({ message: "محصول ساخته شد", product: createdProduct });
+  })
+);
+
+productRouter.put(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+    if (product) {
+      product.name = req.body.name;
+      product.mainCategory = req.body.mainCategory;
+      product.mainCategoryEn = req.body.mainCategoryEn;
+      product.category = req.body.category;
+      product.categoryEn = req.body.categoryEn;
+      product.subCategory = req.body.subCategory;
+      product.subCategoryEn = req.body.subCategoryEn;
+      product.price = req.body.price;
+      product.image = req.body.image;
+      product.brandFa = req.body.brandFa;
+      product.brand = req.body.brand;
+      product.discount = req.body.discount;
+      product.countInStock = req.body.countInStock;
+      product.description = req.body.description;
+      const updatedProduct = await product.save();
+      res.send({ message: "Product Updated", product: updatedProduct });
+    } else {
+      res.status(404).send({ message: "Product Not Found" });
+    }
   })
 );
 

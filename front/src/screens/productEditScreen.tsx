@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading/Loading";
-import { detailsProduct } from "../redux/actions/productAction";
+import { detailsProduct, updateProduct } from "../redux/actions/productAction";
+import { PRODUCT_UPDATE_RESET } from "../redux/constants/productConstants";
 import { RootState } from "../redux/Store/Store";
 
 export default function ProductEditScreen(props: {
   match: { params: { id: any } };
+  history: string[];
 }) {
   const productId = props.match.params.id;
   const [name, setName] = useState("");
@@ -27,9 +29,21 @@ export default function ProductEditScreen(props: {
     (state: RootState) => state.productDetails
   );
   const { loading, error, product } = productDetails;
+
+  const productUpdate = useSelector((state: RootState) => state.productUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = productUpdate;
+
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!product || product._id !== productId) {
+    if (successUpdate) {
+      props.history.push("/dashboard");
+    }
+    if (!product || product._id !== productId || successUpdate) {
+      dispatch({ type: PRODUCT_UPDATE_RESET });
       dispatch(detailsProduct(productId));
     } else {
       setName(product.name);
@@ -47,10 +61,28 @@ export default function ProductEditScreen(props: {
       setDescription(product.description);
       setDiscount(product.discount);
     }
-  }, [product, dispatch, productId]);
+  }, [product, dispatch, productId, successUpdate, props.history]);
   const submitHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // TODO: dispatch update product
+    dispatch(
+      updateProduct({
+        _id: productId,
+        name,
+        mainCategory,
+        mainCategoryEn,
+        category,
+        categoryEn,
+        subCategory,
+        subCategoryEn,
+        price,
+        image,
+        brandFa,
+        brand,
+        discount,
+        countInStock,
+        description,
+      })
+    );
   };
   return (
     <div className="bg-white">
@@ -343,6 +375,27 @@ export default function ProductEditScreen(props: {
             </div>
           </>
         )}
+
+        <div className="w-1/2 mx-auto">
+          <button
+            className=" bg-transparent hover:bg-black text-black font-semibold hover:text-white py-4 px-6 border border-black hover:border-transparent"
+            type="submit"
+          >
+            به روز رسانی
+          </button>
+          {loadingUpdate && (
+            <div className="flex justify-center items-center h-32">
+              <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
+              <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
+              <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
+            </div>
+          )}
+          {errorUpdate && (
+            <span className="text-red-900 bg-red-400 px-10 py-4 rounded">
+              {errorUpdate}
+            </span>
+          )}
+        </div>
       </form>
     </div>
   );
