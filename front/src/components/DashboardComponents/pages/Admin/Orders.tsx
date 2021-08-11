@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Humanize from "humanize-plus";
-import { listOrderMine } from "../../../../redux/actions/orderAction";
+import { listOrders } from "../../../../redux/actions/orderAction";
 import { RootState } from "../../../../redux/Store/Store";
 import MessageBox from "../../../MessageBox/MessageBox";
 
 export default function ProfileOrders(props: any) {
-  const orderMineList = useSelector((state: RootState) => state.orderMineList);
-  const { loading, error, orders } = orderMineList;
+  const orderList = useSelector((state: RootState) => state.orderList);
+  const { loading, error, orders } = orderList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listOrderMine());
+    dispatch(listOrders());
   }, [dispatch]);
+  const deleteHandler = (order: any) => {
+    // TODO: delete handler
+  };
 
   console.log(orders);
   return (

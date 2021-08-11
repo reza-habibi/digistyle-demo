@@ -25,10 +25,10 @@ export default function SidenavItems() {
   return (
     <ul className="md:pl-6 divide-y divide-gray-200">
       <li>
-        <Link to="/profile">
+        <Link to="/dashboard">
           <span
             className={`${style.link} 
-               ${"/profile" === pathname ? style.active : style.inactive}`}
+               ${"/dashboard" === pathname ? style.active : style.inactive}`}
           >
             <span className="border border-gray-500 rounded-full p-2">
               <UserIcon

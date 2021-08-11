@@ -14,10 +14,12 @@ import {
   ORDER_MINE_LIST_FAIL,
   ORDER_MINE_LIST_REQUEST,
   ORDER_MINE_LIST_SUCCESS,
+  ORDER_LIST_FAIL,
+  ORDER_LIST_REQUEST,
+  ORDER_LIST_SUCCESS,
 } from "../constants/orderConstants";
 const initialState: TOrderState = {};
-const orderState: TOrderState = {loading:true};
-
+const orderState: TOrderState = { loading: true };
 
 export const orderCreateReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -47,7 +49,10 @@ export const orderDetailsReducer = (state = orderState, action: any) => {
   }
 };
 
-export const orderPayReducer = (state = initialState, action: { type: any; payload: any; }) => {
+export const orderPayReducer = (
+  state = initialState,
+  action: { type: any; payload: any }
+) => {
   switch (action.type) {
     case ORDER_PAY_REQUEST:
       return { loading: true };
@@ -62,15 +67,34 @@ export const orderPayReducer = (state = initialState, action: { type: any; paylo
   }
 };
 
-const orderListState:any = { orders: [] }
+const orderListState: any = { orders: [] };
 
-export const orderMineListReducer = (state = orderListState, action: { type: any; payload: any; }) => {
+export const orderMineListReducer = (
+  state = orderListState,
+  action: { type: any; payload: any }
+) => {
   switch (action.type) {
     case ORDER_MINE_LIST_REQUEST:
       return { loading: true };
     case ORDER_MINE_LIST_SUCCESS:
       return { loading: false, orders: action.payload };
     case ORDER_MINE_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const orderListReducer = (
+  state = orderListState,
+  action: { type: any; payload: any }
+) => {
+  switch (action.type) {
+    case ORDER_LIST_REQUEST:
+      return { loading: true };
+    case ORDER_LIST_SUCCESS:
+      return { loading: false, orders: action.payload };
+    case ORDER_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
