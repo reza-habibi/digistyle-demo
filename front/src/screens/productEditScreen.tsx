@@ -1,10 +1,11 @@
+import { CloudUploadIcon } from "@heroicons/react/solid";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading/Loading";
 import { detailsProduct, updateProduct } from "../redux/actions/productAction";
 import { PRODUCT_UPDATE_RESET } from "../redux/constants/productConstants";
 import { RootState } from "../redux/Store/Store";
-
 export default function ProductEditScreen(props: {
   match: { params: { id: any } };
   history: string[];
@@ -24,6 +25,31 @@ export default function ProductEditScreen(props: {
   const [brandFa, setBrandFa] = useState("");
   const [discount, setDiscount] = useState("");
   const [description, setDescription] = useState("");
+
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState("");
+
+  const userSignin = useSelector((state: RootState) => state.userSignin);
+  const { userInfo } = userSignin;
+  const uploadFileHandler = async (e: any) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await axios.post("/api/uploads", bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setImage(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+  };
 
   const productDetails = useSelector(
     (state: RootState) => state.productDetails
@@ -144,23 +170,19 @@ export default function ProductEditScreen(props: {
             </div>
 
             <div className="floating-input w-1/2 mb-5 relative mx-auto">
-              <input
-                type="text"
-                id="image"
-                name="image"
-                dir="ltr"
-                className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16 text-left"
-                placeholder=" "
-                autoComplete="off"
-                required
-                onChange={(e) => setImage(e.target.value)}
-                value={image}
-              />
-              <label
-                htmlFor="image"
-                className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
-              >
-                تصویر محصول
+              <label className="group w-64 flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-purple-600 hover:text-white text-purple-600 ease-linear transition-all duration-150">
+                <CloudUploadIcon
+                  className="Block w-10 h-10 text-purple-600 group-hover:text-white"
+                  aria-hidden="true"
+                />
+                <span className="mt-2 text-base leading-normal">
+                  افزودن تصویر
+                </span>
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={uploadFileHandler}
+                />
               </label>
             </div>
 
