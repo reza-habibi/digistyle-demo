@@ -2,13 +2,17 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createProduct,
+  deleteProduct,
   listProducts,
 } from "../../../redux/actions/productAction";
 import { RootState } from "../../../redux/Store/Store";
 import { TProducts } from "../../../type.ds";
 import MessageBox from "../../MessageBox/MessageBox";
 import Humanize from "humanize-plus";
-import { PRODUCT_CREATE_RESET } from "../../../redux/constants/productConstants";
+import {
+  PRODUCT_CREATE_RESET,
+  PRODUCT_DELETE_RESET,
+} from "../../../redux/constants/productConstants";
 export default function HomePage(props: { history: string[] }) {
   const productList = useSelector((state: RootState) => state.productList);
   const { loading, error, products } = productList;
@@ -20,15 +24,27 @@ export default function HomePage(props: { history: string[] }) {
     success: successCreate,
     product: createdProduct,
   } = productCreate;
+
+  const productDelete = useSelector((state: RootState) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push(`/products/${createdProduct._id}/edit`);
     }
+    if (successDelete) {
+      dispatch({ type: PRODUCT_DELETE_RESET });
+    }
     dispatch(listProducts());
-  }, [createdProduct, dispatch, props.history, successCreate]);
+  }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
   const deleteHandler = (product: any) => {
-    /// TODO: dispatch delete action
+    if (window.confirm("Are you sure to delete?")) {
+      dispatch(deleteProduct(product._id));
+    }
   };
 
   const editHandler = (id: any) => {
