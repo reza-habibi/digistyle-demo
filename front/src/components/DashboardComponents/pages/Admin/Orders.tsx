@@ -1,25 +1,42 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Humanize from "humanize-plus";
-import { listOrders } from "../../../../redux/actions/orderAction";
+import { deleteOrder, listOrders } from "../../../../redux/actions/orderAction";
 import { RootState } from "../../../../redux/Store/Store";
 import MessageBox from "../../../MessageBox/MessageBox";
+import { ORDER_DELETE_RESET } from "../../../../redux/constants/orderConstants";
 
 export default function ProfileOrders(props: any) {
   const orderList = useSelector((state: RootState) => state.orderList);
   const { loading, error, orders } = orderList;
   const dispatch = useDispatch();
+  const orderDelete = useSelector((state: RootState) => state.orderDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = orderDelete;
+
   useEffect(() => {
+    dispatch({ type: ORDER_DELETE_RESET });
     dispatch(listOrders());
-  }, [dispatch]);
+  }, [dispatch, successDelete]);
+
   const deleteHandler = (order: any) => {
-    // TODO: delete handler
+    if (window.confirm("Are you sure to delete?")) {
+      dispatch(deleteOrder(order._id));
+    }
   };
 
   console.log(orders);
   return (
     <div>
       <h1 className="w-5/6 mx-auto text-gray-900 my-5">سفارش های من</h1>
+      {errorDelete && (
+        <span className="text-red-900 bg-red-400 px-10 py-4 rounded">
+          {errorDelete}
+        </span>
+      )}
       {loading ? (
         <div className="flex justify-center items-center h-32">
           <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
@@ -110,15 +127,25 @@ export default function ProfileOrders(props: any) {
                               </span>
                             )}
                           </td>
-                          <td className="px-12 py-8 whitespace-nowrap text-right text-xl font-medium">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                props.history.push(`/order/${order._id}`);
-                              }}
-                            >
-                              جزئیات
-                            </button>
+                          <td className="px-12 py-8 whitespace-nowrap text-right text-xl font-medium flex flex-col">
+                            <div className="inline-flex">
+                              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+                                ویرایش
+                              </button>
+                              <button
+                                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                                onClick={() => deleteHandler(order)}
+                              >
+                                حذف
+                              </button>
+                            </div>
+                            {loadingDelete && (
+                              <div className="flex justify-center items-center h-32">
+                                <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
+                                <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
+                                <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
+                              </div>
+                            )}
                           </td>
                         </tr>
                       ))}

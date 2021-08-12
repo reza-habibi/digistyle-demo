@@ -17,7 +17,7 @@ function CartScreen() {
       ? cartItems
           .filter((item: TCartItem) => item.discount)
           .map(
-            (item: TCartItem) => (item.price * parseInt(item.discount)) / 100
+            (item: TCartItem) => ((item.price * parseInt(item.discount)) / 100*item.qty)
           )
           .reduce((a: number, b: number) => a + b)
       : 0;
@@ -25,7 +25,7 @@ function CartScreen() {
   const subPrice =
     cartItems.length !== 0
       ? cartItems
-          .map((item: TCartItem) => item.price)
+          .map((item: TCartItem) => item.price*item.qty)
           .reduce((a: number, b: number) => a + b)
       : 0;
 

@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import AdminDashboardScreen from "../screens/AdminDashboardScreen";
-import ProductEditScreen from "../screens/productEditScreen";
+import ProductEditScreen from "../screens/ProductEditScreen";
 const ProductScreen = lazy(() => import("../screens/ProductScreen"));
 
 const CartScreen = lazy(() => import("../screens/CartScreen"));
@@ -83,6 +83,9 @@ export const routes = [
     isLogin: true,
     isAdmin: false,
   },
+];
+
+export const PVRoute = [
   {
     path: "/profile",
     exact: false,

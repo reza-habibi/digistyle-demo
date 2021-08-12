@@ -184,6 +184,19 @@ export default function ProductEditScreen(props: {
                   onChange={uploadFileHandler}
                 />
               </label>
+              {loadingUpload && (
+                <div className="flex justify-center items-center h-32">
+                  <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
+                  <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
+                  <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
+                </div>
+              )}
+
+              {errorUpload && (
+                <span className="text-red-900 bg-red-400 px-10 py-4 rounded">
+                  {errorUpload}
+                </span>
+              )}
             </div>
 
             <div className="floating-input w-1/2 mb-5 relative mx-auto">

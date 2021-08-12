@@ -21,7 +21,7 @@ function CheckoutScreen(props: any) {
   const { cartItems, shippingAddress } = cart;
   cart.discount = cartItems
     .filter((item: TCartItem) => item.discount)
-    .map((item: TCartItem) => (item.price * parseInt(item.discount)) / 100)
+    .map((item: TCartItem) => ((item.price * parseInt(item.discount)) / 100)*item.qty)
     .reduce((a: number, b: number) => a + b);
   cart.subPrice = cart.itemsPrice - cart.discount;
 

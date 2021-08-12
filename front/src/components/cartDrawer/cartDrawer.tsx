@@ -86,8 +86,8 @@ export const CartDrawer = () => {
             </div>
           ) : (
             <div className="w-full px-4 flex flex-col divide-y divide-gray-500 space-y-5">
-              {cartItems.map((item: TCartItem , index:number) => (
-                  <CartDrawerItems key={index} product={item} />
+              {cartItems.map((item: TCartItem, index: number) => (
+                <CartDrawerItems key={index} product={item} />
               ))}
             </div>
           )}

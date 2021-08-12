@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Categories } from "./data";
-import { routes } from "./Routes/Routes";
+import { routes, PVRoute } from "./Routes/Routes";
 import { ToastContainer } from "react-toastify";
 import CustomRoute from "./Routes/CustomRoute";
 
@@ -15,9 +15,23 @@ const SubCategory = lazy(() => import("./screens/SubCategoryScreen"));
 function App() {
   return (
     <Router>
+      <ToastContainer />
       <Header />
       <MobileHeader />
-      <ToastContainer />
+
+      <Switch>
+        {PVRoute.map((item: any, index: number) => (
+          <CustomRoute
+            key={index}
+            path={item.path}
+            exact={item.exact}
+            isLogin={item.isLogin}
+            Component={item.component}
+            isAdmin={item.isAdmin}
+          />
+        ))}
+      </Switch>
+
       <Switch>
         {routes.map((item: any, index: number) => (
           <CustomRoute
@@ -45,9 +59,9 @@ function App() {
             <Route key={index} path={category.url} component={SubCategory} />
           ))
         )}
+        <Footer />
+        <DesktopFooter />
       </Switch>
-      <Footer />
-      <DesktopFooter />
     </Router>
   );
 }
