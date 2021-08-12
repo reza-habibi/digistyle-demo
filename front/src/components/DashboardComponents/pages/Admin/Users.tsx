@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../redux/Store/Store";
 import MessageBox from "../../../MessageBox/MessageBox";
 import { deleteUser, listUsers } from "../../../../redux/actions/userAction";
+import { USER_DETAILS_RESET } from "../../../../redux/constants/userConstants";
 
 export default function DashboardUsers(props: any) {
   const userList = useSelector((state: RootState) => state.userList);
@@ -16,6 +17,9 @@ export default function DashboardUsers(props: any) {
   } = userDelete;
   useEffect(() => {
     dispatch(listUsers());
+    dispatch({
+      type: USER_DETAILS_RESET,
+    });
   }, [dispatch, successDelete]);
 
   const deleteHandler = (user: any) => {
@@ -24,9 +28,11 @@ export default function DashboardUsers(props: any) {
     }
   };
 
+  
+
   return (
     <div>
-      <h1 className="w-5/6 mx-auto text-gray-900 my-5">سفارش های من</h1>
+      <h1 className="w-5/6 mx-auto text-gray-900 my-5">لیست کاربران</h1>
       {loading ? (
         <div className="flex justify-center items-center h-32">
           <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
@@ -105,6 +111,11 @@ export default function DashboardUsers(props: any) {
                             <div className="inline-flex">
                               <button
                                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+                                onClick={() =>
+                                  props.history.push(
+                                    `/dashboard/${user._id}/edit`
+                                  )
+                                }
                               >
                                 ویرایش
                               </button>

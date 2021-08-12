@@ -3,7 +3,7 @@ import { data } from "../data.js";
 import bcrypt from "bcryptjs";
 import User from "../models/userModels.js";
 import expressAsyncHandler from "express-async-handler";
-import { generateToken, isAdmin, isAuth } from '../utils.js';
+import { generateToken, isAdmin, isAuth } from "../utils.js";
 
 data;
 const userRouter = express.Router();
@@ -67,13 +67,13 @@ userRouter.get(
       res.status(404).send({ message: "کاربر یافت نشد" });
     }
   })
-  );
-  
-  userRouter.put(
-    "/profile",
-    isAuth,
-    expressAsyncHandler(async (req, res) => {      
-      const user = await User.findById(req.user._id);
+);
+
+userRouter.put(
+  "/profile",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id);
     if (user) {
       user.fullName = req.body.fullName || user.fullName;
       user.email = req.body.email || user.email;
@@ -82,7 +82,7 @@ userRouter.get(
       }
       const updatedUser = await user.save();
       res.send({
-        _id:updatedUser._id,
+        _id: updatedUser._id,
         fullName: updatedUser.fullName,
         email: updatedUser.email,
         isAdmin: updatedUser.isAdmin,
@@ -93,7 +93,7 @@ userRouter.get(
 );
 
 userRouter.get(
-  '/',
+  "/",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
@@ -103,21 +103,40 @@ userRouter.get(
 );
 
 userRouter.delete(
-  '/:id',
+  "/:id",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
-      if (user.email === 'admin@example.com') {
-        res.status(400).send({ message: 'Can Not Delete Admin User' });
+      if (user.email === "admin@example.com") {
+        res.status(400).send({ message: "Can Not Delete Admin User" });
         return;
       }
       const deleteUser = await user.remove();
-      res.send({ message: 'User Deleted', user: deleteUser });
+      res.send({ message: "User Deleted", user: deleteUser });
     } else {
-      res.status(404).send({ message: 'User Not Found' });
+      res.status(404).send({ message: "User Not Found" });
     }
   })
 );
+
+userRouter.put(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      user.fullName = req.body.fullName || user.fullName;
+      user.email = req.body.email || user.email;
+      user.isAdmin = req.body.isAdmin;
+      const updatedUser = await user.save();
+      res.send({ message: "User Updated", user: updatedUser });
+    } else {
+      res.status(404).send({ message: "User Not Found" });
+    }
+  })
+);
+
 export default userRouter;

@@ -7,8 +7,8 @@ const HomePage = lazy(() => import("../components/DashboardComponents/pages"));
 const DashboardUsers = lazy(
   () => import("../components/DashboardComponents/pages/Admin/Users")
 );
-const ChangeInfo = lazy(
-  () => import("../components/DashboardComponents/pages/Admin/ChangeInfo")
+const UserUpdate = lazy(
+  () => import("../components/DashboardComponents/pages/Admin/UpdateUser")
 );
 const ProfileOrders = lazy(
   () => import("../components/DashboardComponents/pages/Admin/Orders")
@@ -21,7 +21,7 @@ function AdminDashboardScreen(props: any) {
         <Route exact path="/dashboard/" component={HomePage} />
         <Route exact path="/dashboard/orders" component={ProfileOrders} />
         <Route exact path="/dashboard/users" component={DashboardUsers} />
-        <Route exact path="/dashboard/change-info" component={ChangeInfo} />
+        <Route exact path="/dashboard/:id/edit" component={UserUpdate} />
       </Switch>
     </DashboardLayout>
   );

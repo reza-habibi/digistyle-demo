@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { detailsUser } from "../../../../redux/actions/userAction";
-import { USER_UPDATE_RESET } from "../../../../redux/constants/userConstants";
 import { RootState } from "../../../../redux/Store/Store";
 import MessageBox from "../../../MessageBox/MessageBox";
 import { updateUserProfile } from "../../../../redux/actions/userAction";
+import { USER_UPDATE_PROFILE_RESET } from "../../../../redux/constants/userConstants";
 
 export default function ChangeInfo(props: any) {
   const userDetails = useSelector((state: RootState) => state.userDetails);
@@ -29,7 +29,7 @@ export default function ChangeInfo(props: any) {
   } = userUpdateProfile;
   useEffect(() => {
     if (!user) {
-      dispatch({ type: USER_UPDATE_RESET });
+      dispatch({ type: USER_UPDATE_PROFILE_RESET });
       dispatch(detailsUser(userInfo._id));
     } else {
       setFullName(user.fullName);

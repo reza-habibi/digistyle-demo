@@ -5,10 +5,14 @@ import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { DesktopSearchDrawer } from "../SearchDrawer/DesktopSearchDrawer";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/Store/Store";
 import CartDropDown from "./CartDropDown/CartDropDown";
 import UserDropDown from "./UserDropDown/UserDropDown";
+import {
+  USER_DETAILS_RESET,
+  USER_SIGNIN_SUCCESS,
+} from "../../redux/constants/userConstants";
 
 const navigation: TNavigation = [
   { name: "زنانه", href: "/category/women" },
@@ -24,6 +28,7 @@ function classNames(...classes: string[]) {
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
   const { cartItems } = cart;
 
@@ -40,6 +45,7 @@ export default function Header() {
     }
   };
 
+
   useEffect(() => {
     handleScroll();
   });
@@ -47,7 +53,6 @@ export default function Header() {
   if (scrolled) {
     navbarClasses.push("scrolled");
   }
-
 
   const ref = useRef(null);
   // close drawer on click outside
@@ -82,7 +87,6 @@ export default function Header() {
                     to="/cart"
                     className="relative"
                     onMouseOver={() => setDropDown(true)}
-                    
                   >
                     <ShoppingBagIcon
                       className="block h-10 w-10 text-black"

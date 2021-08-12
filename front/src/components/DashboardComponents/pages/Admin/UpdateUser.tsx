@@ -1,53 +1,53 @@
-import React, { FormEvent, useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { detailsUser } from "../../../../redux/actions/userAction";
+import { detailsUser, updateUser } from "../../../../redux/actions/userAction";
 import { USER_UPDATE_RESET } from "../../../../redux/constants/userConstants";
 import { RootState } from "../../../../redux/Store/Store";
 import MessageBox from "../../../MessageBox/MessageBox";
-import { updateUserProfile } from "../../../../redux/actions/userAction";
 
-export default function ChangeInfo(props: any) {
-  const userDetails = useSelector((state: RootState) => state.userDetails);
-  const { loading, error, user } = userDetails;
+export default function UserUpdate(props: {
+  match: { params: { id: any } };
+  history: string[];
+}) {
+  const userId = props.match.params.id;
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const userSignin = useSelector((state: RootState) => state.userSignin);
-  const { userInfo } = userSignin;
-  const dispatch = useDispatch();
-  const userUpdateProfile = useSelector(
-    (state: RootState) => state.userUpdateProfile
-  );
+  const userDetails = useSelector((state: RootState) => state.userDetails);
+  const { loading, error, user } = userDetails;
+
+  const userUpdate = useSelector((state: RootState) => state.userUpdate);
   const {
-    success: successUpdate,
-    error: errorUpdate,
     loading: loadingUpdate,
-  } = userUpdateProfile;
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate;
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    if (!user) {
+    if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET });
-      dispatch(detailsUser(userInfo._id));
+      props.history.push("/dashboard/users");
+    }
+    if (!user) {
+      dispatch(detailsUser(userId));
     } else {
       setFullName(user.fullName);
       setEmail(user.email);
+      setIsAdmin(user.isAdmin);
     }
-  }, [dispatch, user, userInfo._id]);
+  }, [dispatch, props.history, successUpdate, user, userId]);
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("رمز عبور و تکرار آن بایستی یکسان باشند");
-    } else {
-      dispatch(
-        updateUserProfile({ userId: user._id, fullName, email, password })
-      );
-    }
-
+    // dispatch update user
+    dispatch(updateUser({ _id: userId, fullName, email, isAdmin }));
+    console.log(fullName, email, isAdmin)
   };
+
   return (
     <div className="w-full">
       <h2 className="text-gray-900 mb-10">تغییر اطلاعت حساب کاربری</h2>
@@ -99,40 +99,16 @@ export default function ChangeInfo(props: any) {
               ایمیل
             </label>
           </div>
-          <div className="floating-input mb-5 relative ">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
-              placeholder=" "
-              autoComplete="off"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <label
-              htmlFor="password"
-              className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
-            >
-              رمز عبور
-            </label>
-          </div>
-          <div className="floating-input mb-5 relative ">
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              className=" border-b border-gray-300 focus:border-gray-900  outline-none focus:border-gray-300 focus:shadow-sm w-full p-3 h-16"
-              placeholder=" "
-              autoComplete="off"
-              required
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <label
-              htmlFor="confirmPassword"
-              className="absolute top-0 right-0 py-5 h-full pointer-events-none transform origin-right transition-all duration-100 ease-in-out "
-            >
-              تکرار رمز عبور
+          <div>
+            <label htmlFor="isAdmin" className="inline-flex items-center mt-3">
+              <input
+                id="isAdmin"
+                type="checkbox"
+                className="form-checkbox h-8 w-8 text-pink-500 rounded"
+                checked={isAdmin}
+                onChange={(e) => setIsAdmin(e.target.checked)}
+              />
+              <span className="mr-2 text-gray-700 ">ادمین ؟</span>
             </label>
           </div>
           <button

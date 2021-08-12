@@ -10,19 +10,9 @@ const data = [
     link: "/dashboard/orders/",
   },
   {
-    title: "کالاهای مورد علاقه",
-    icon: <StarIcon className="block w-8 h-8" aria-hidden="true"/>,
-    link: "/dashboard/next-purchase/",
-  },
-  {
     title: "کاربران",
     icon: <UserGroupIcon className="block w-8 h-8" aria-hidden="true"/>,
     link: "/dashboard/users",
-  },
-  {
-    title: " تغییر اطلاعات  ",
-    icon: <CogIcon className="block w-8 h-8" aria-hidden="true"/>,
-    link: "/dashboard/change-info",
   },
 ];
 
