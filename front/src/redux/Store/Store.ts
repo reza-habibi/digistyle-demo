@@ -5,6 +5,7 @@ import { drawerReducer } from "../reducers/drawerReducer";
 import {
   orderCreateReducer,
   orderDeleteReducer,
+  orderDeliverReducer,
   orderDetailsReducer,
   orderListReducer,
   orderMineListReducer,
@@ -18,7 +19,9 @@ import {
   productUpdateReducer,
 } from "../reducers/productReducer";
 import {
+  userDeleteReducer,
   userDetailsReducer,
+  userListReducer,
   userRegisterReducer,
   userSigninReducer,
   userUpdateProfileReducer,
@@ -58,7 +61,9 @@ const reducer = combineReducers({
   productDelete: productDeleteReducer,
   orderList: orderListReducer,
   orderDelete: orderDeleteReducer,
-
+  orderDeliver: orderDeliverReducer,
+  userList: userListReducer,
+  userDelete:userDeleteReducer,
 });
 //@ts-ignore
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

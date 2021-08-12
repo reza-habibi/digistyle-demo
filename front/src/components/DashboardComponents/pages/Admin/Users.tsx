@@ -1,55 +1,32 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Humanize from "humanize-plus";
-import {
-  deleteOrder,
-  deliverOrder,
-  listOrders,
-} from "../../../../redux/actions/orderAction";
 import { RootState } from "../../../../redux/Store/Store";
 import MessageBox from "../../../MessageBox/MessageBox";
-import { ORDER_DELETE_RESET } from "../../../../redux/constants/orderConstants";
+import { deleteUser, listUsers } from "../../../../redux/actions/userAction";
 
-export default function ProfileOrders(props: any) {
-  const orderList = useSelector((state: RootState) => state.orderList);
-  const { loading, error, orders } = orderList;
+export default function DashboardUsers(props: any) {
+  const userList = useSelector((state: RootState) => state.userList);
+  const { loading, error, users } = userList;
   const dispatch = useDispatch();
-  const orderDelete = useSelector((state: RootState) => state.orderDelete);
+  const userDelete = useSelector((state: RootState) => state.userDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
-  } = orderDelete;
-  const orderDeliver = useSelector((state: RootState) => state.orderDeliver);
-  const {
-    loading: loadingDeliver,
-    error: errorDeliver,
-    success: successDeliver,
-  } = orderDeliver;
+  } = userDelete;
   useEffect(() => {
-    dispatch({ type: ORDER_DELETE_RESET });
-    dispatch(listOrders());
-  }, [dispatch, successDelete, successDeliver]);
+    dispatch(listUsers());
+  }, [dispatch, successDelete]);
 
-  const deleteHandler = (order: any) => {
-    if (window.confirm("Are you sure to delete?")) {
-      dispatch(deleteOrder(order._id));
+  const deleteHandler = (user: any) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteUser(user._id));
     }
   };
 
-  const deliverHandler = (order: { _id: any }) => {
-    dispatch(deliverOrder(order._id));
-  };
-
-  console.log(orders);
   return (
     <div>
       <h1 className="w-5/6 mx-auto text-gray-900 my-5">سفارش های من</h1>
-      {errorDelete && (
-        <span className="text-red-900 bg-red-400 px-10 py-4 rounded">
-          {errorDelete}
-        </span>
-      )}
       {loading ? (
         <div className="flex justify-center items-center h-32">
           <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
@@ -71,57 +48,52 @@ export default function ProfileOrders(props: any) {
                           scope="col"
                           className="px-6 py-3 text-right text-xl font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          شماره سفارش
+                          شناسه
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-right text-xl font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          تاریخ ثبت سفارش
+                          نام
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-right text-xl font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          مبلغ
+                          پست الکترونیک
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-right text-xl font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          پرداخت شده
+                          ادمین
                         </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-right text-xl font-medium text-gray-500 uppercase tracking-wider"
-                        >
-                          ارسال شده
-                        </th>
+
                         <th scope="col" className="relative px-6 py-3">
                           <span className="sr-only">Edit</span>
                         </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {orders.map((order: any) => (
-                        <tr key={order._id}>
+                      {users.map((user: any) => (
+                        <tr key={user._id}>
                           <td className="px-6 py-4 text-xl whitespace-nowrap">
-                            {order._id}
+                            {user._id}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-xl text-gray-900">
-                              {order.createdAt.substring(0, 10)}
+                              {user.fullName}
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-xl text-gray-500">
-                              {Humanize.intComma(order.subPrice)} تومان
+                              {user.email}
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {order.isPaid ? (
+                            {user.isAdmin ? (
                               <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {order.paidAt.substring(0, 10)}
+                                بلی
                               </span>
                             ) : (
                               <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-red-100 text-red-800">
@@ -129,40 +101,21 @@ export default function ProfileOrders(props: any) {
                               </span>
                             )}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {order.isDelivered ? (
-                              <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {order.deliveredAt.substring(0, 10)}
-                              </span>
-                            ) : (
-                              <span className="px-6 py-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                خیر
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-12 py-8 whitespace-nowrap text-right text-xl font-medium flex flex-col">
+                          <td className="flex flex-col px-12 py-8 whitespace-nowrap text-right text-xl font-medium">
                             <div className="inline-flex">
                               <button
                                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
-                                onClick={() => deliverHandler(order)}
                               >
-                                ارسال
+                                ویرایش
                               </button>
                               <button
                                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-                                onClick={() => deleteHandler(order)}
+                                onClick={() => deleteHandler(user)}
                               >
                                 حذف
                               </button>
                             </div>
                             {loadingDelete && (
-                              <div className="flex justify-center items-center h-32">
-                                <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
-                                <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
-                                <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
-                              </div>
-                            )}
-                            {loadingDeliver && (
                               <div className="flex justify-center items-center h-32">
                                 <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
                                 <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>

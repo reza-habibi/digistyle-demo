@@ -1,5 +1,5 @@
 
-import { ArchiveIcon , StarIcon , HomeIcon , CogIcon} from "@heroicons/react/outline";
+import { ArchiveIcon , StarIcon , UserGroupIcon , CogIcon} from "@heroicons/react/outline";
 
 const data = [
   {
@@ -15,9 +15,9 @@ const data = [
     link: "/dashboard/next-purchase/",
   },
   {
-    title: "آدرس ها",
-    icon: <HomeIcon className="block w-8 h-8" aria-hidden="true"/>,
-    link: "/dashboard/address",
+    title: "کاربران",
+    icon: <UserGroupIcon className="block w-8 h-8" aria-hidden="true"/>,
+    link: "/dashboard/users",
   },
   {
     title: " تغییر اطلاعات  ",
