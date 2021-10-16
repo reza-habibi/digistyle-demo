@@ -59,9 +59,9 @@ function App() {
             <Route key={index} path={category.url} component={SubCategory} />
           ))
         )}
+      </Switch>
         <Footer />
         <DesktopFooter />
-      </Switch>
     </Router>
   );
 }
