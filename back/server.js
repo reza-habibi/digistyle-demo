@@ -30,11 +30,12 @@ app.use("/api/orders", orderRouter);
 app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
+const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/front/build")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "front", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "front/build/index.html"));
   });
 } else {
   app.get("/", (req, res) => [res.send("Api running")]);
