@@ -55,7 +55,7 @@ function CartScreen() {
               <div className="w-full flex flex-col justify-between  h-full py-5">
                 <div className="w-full flex justify-between">
                   <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
-                    جمع کل سفارش
+                    جمع کل سفارش :
                   </span>
                   <span className="text-gray-400 text-base md:text-xl lg:text-2xl">
                     {Humanize.intComma(subPrice)} تومان
@@ -64,7 +64,7 @@ function CartScreen() {
                 {discount ? (
                   <div className="w-full flex justify-between ">
                     <span className="text-red-400 text-base md:text-xl lg:text-2xl">
-                      تخفیف شگفت آویز
+                      تخفیف شگفت آویز :
                     </span>
                     <span className="text-red-400 text-base md:text-xl lg:text-2xl">
                       {Humanize.intComma(discount)} تومان
@@ -74,7 +74,7 @@ function CartScreen() {
               </div>
               <div className="w-full flex justify-between pt-5">
                 <span className="text-black text-base md:text-xl lg:text-2xl text-bold">
-                  قیمت نهایی
+                  قیمت نهایی :
                 </span>
                 <span className="text-black text-base md:text-xl lg:text-2xl">
                   {Humanize.intComma(subPrice - discount)} تومان
