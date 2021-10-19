@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch back --exec node --experimental-modules back/server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix front && npm run build --prefix front"
+    "heroku-postbuild": "cd front && yarn && yarn run build"
   },
   "author": "",
   "license": "ISC",
