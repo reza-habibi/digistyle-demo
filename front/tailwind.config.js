@@ -518,7 +518,6 @@ module.exports = {
   },
   plugins: [
     require("daisyui"),
-    require("tailwindcss-rtl"),
     require("@tailwindcss/forms")({
       strategy: "class",
     }),
