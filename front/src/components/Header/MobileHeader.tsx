@@ -1,6 +1,6 @@
 import { DrawerPage } from "./Drawer";
 import { SearchDrawer } from "../SearchDrawer/SearchDrawer";
-import { CartDrawer } from "../CartDrawer/CartDrawerComponent";
+import { CartDrawer } from "../CartDrawerComponents/CartDrawerComponent";
 import { Link } from "react-router-dom";
 function MobileHeader() {
   return (
