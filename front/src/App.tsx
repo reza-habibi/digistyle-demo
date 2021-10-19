@@ -2,7 +2,6 @@ import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Categories } from "./data";
 import { routes, PVRoute } from "./Routes/Routes";
-import { ToastContainer } from "react-toastify";
 import CustomRoute from "./Routes/CustomRoute";
 
 const Header = lazy(() => import("./components/Header/Header"));
@@ -15,7 +14,6 @@ const SubCategory = lazy(() => import("./screens/SubCategoryScreen"));
 function App() {
   return (
     <Router>
-      <ToastContainer />
       <Header />
       <MobileHeader />
 

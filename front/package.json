@@ -35,7 +35,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-tabs": "^3.2.2",
-    "react-toastify": "^7.0.4",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
     "swiper": "^6.8.0",
