@@ -45,7 +45,7 @@ export default function ProductEditScreen(props: {
       });
       setImage(data);
       setLoadingUpload(false);
-    } catch (error) {
+    } catch (error:any) {
       setErrorUpload(error.message);
       setLoadingUpload(false);
     }
