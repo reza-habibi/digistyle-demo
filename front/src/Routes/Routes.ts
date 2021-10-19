@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import AdminDashboardScreen from "../screens/AdminDashboardScreen";
-const ProductEditScreen = lazy(()=> import("../screens/ProductEditScreen"))
+const ProductEditScreen = lazy(()=> import("../screens/ProductEditPage"))
 const ProductScreen = lazy(() => import("../screens/ProductScreen"));
 const CartScreen = lazy(() => import("../screens/CartScreen"));
 const ShippingScreen = lazy(() => import("../screens/ShippingScreen"));
