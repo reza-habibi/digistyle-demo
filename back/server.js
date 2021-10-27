@@ -13,8 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb+srv://digisyle-admin:BigReZ72@digistyle.pvprh.mongodb.net/digistyle?retryWrites=true&w=majority",
+  process.env.MONGODB_URI ,
   {
     useNewUrlParser: true,
     useFindAndModify: true,
