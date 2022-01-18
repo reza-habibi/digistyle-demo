@@ -5,16 +5,20 @@ import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { DesktopSearchDrawer } from "../SearchDrawer/DesktopSearchDrawer";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/Store/Store";
 import CartDropDown from "./CartDropDown/CartDropDown";
 import UserDropDown from "./UserDropDown/UserDropDown";
+import {
+  USER_DETAILS_RESET,
+  USER_SIGNIN_SUCCESS,
+} from "../../redux/constants/userConstants";
 
 const navigation: TNavigation = [
   { name: "زنانه", href: "/category/women" },
   { name: "مردانه", href: "/category/men" },
   { name: "بچگانه", href: "/category/kids" },
-  { name: "زیبایی و سلامت", href: "/category/beauty" },
+  { name: "زیبایی و سلامت", href: "/category/personal-appliance-shop" },
 ];
 
 function classNames(...classes: string[]) {
@@ -24,6 +28,7 @@ function classNames(...classes: string[]) {
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
   const { cartItems } = cart;
 

@@ -42,11 +42,11 @@ export default function DesktopSingleProduct({ product }: any) {
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts({ name: "", mainCategoryEn: "" }));
     if (product.countInStock > 0) {
       setQty(1);
-    }else{
-      setQty(0)
+    } else {
+      setQty(0);
     }
   }, [dispatch, product.countInStock, setQty]);
 
@@ -204,7 +204,11 @@ export default function DesktopSingleProduct({ product }: any) {
                         </span>
                       </button>
                     </div>
-                  ):<span className="text-red-500 text-3xl">محصول در انبار موجود نمی باشد .</span>}
+                  ) : (
+                    <span className="text-red-500 text-3xl">
+                      محصول در انبار موجود نمی باشد .
+                    </span>
+                  )}
                   <div className="w-full hidden lg:block">
                     <Advantage />
                   </div>

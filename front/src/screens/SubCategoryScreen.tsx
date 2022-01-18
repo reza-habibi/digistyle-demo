@@ -1,23 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Product from "../components/Product/Product";
-import { Categories } from "../data";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../redux/actions/productAction";
 import Loading from "../components/Loading/Loading";
 import MessageBox from "../components/MessageBox/MessageBox";
-function SubCategory() {
-  //@ts-ignore
-  const productList = useSelector((state) => state.productList);
+import { RootState } from "../redux/Store/Store";
+import MultiRangeSlider from "../components/RangeSlider/RangeSlider";
+import { StarIcon } from "@heroicons/react/solid";
+
+function SubCategory(props: any) {
+  const productList = useSelector((state: RootState) => state.productList);
   const { products, loading, error } = productList;
+  const [order, setOrder] = useState("newest");
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(0);
+  const [rate, setRate] = useState(0);
+
+  const [range, setRange] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(
+      listProducts({
+        name: "",
+        mainCategoryEn: location.pathname.split("/")[2],
+        categoryEn: location.pathname.split("/")[3],
+        subCategoryEn: location.pathname.split("/")[4]
+          ? location.pathname.split("/")[4]
+          : "",
+        min: min,
+        max: max,
+        rating: rate,
+        order: order,
+      })
+    );
+  }, [dispatch, order, range]);
   const location = useLocation();
-  const currentCategory = Categories.map((item: any) =>
-    item.subCategory.find((item: any) => item.url === location.pathname)
-  ).find((item: any) => item.url === location.pathname);
   return (
     <div>
       {loading ? (
@@ -25,12 +43,176 @@ function SubCategory() {
       ) : error ? (
         <MessageBox error={error} />
       ) : (
-        <div className="grid 2xs:grid-cols-1 lg:grid-cols-4 md:grid-cols-3 xs:grid-cols-2  gap-4 mt-10 mx-16">
-          {products
-            .filter((item: any) => item.categoryEn === currentCategory.nameEn)
-            .map((product: any, index: number) => (
-              <Product key={index} product={product} />
-            ))}
+        <div className="w-full flex flex-col lg:flex-row mt-10 ">
+          <div className="lg:w-1/5 mr-5 p-5 flex flex-col  justify-start items-center h-full bg-white rounded-xl">
+            <div className="w-full mt-10 ">
+              <span className="text-gray-900 text-2xl ">
+                فیلتر بر اساس محدوده قیمت :
+              </span>
+              <MultiRangeSlider
+                min={0}
+                max={2000000}
+                onChange={({ min, max }) => {
+                  setMin(min);
+                  setMax(max);
+                }}
+              />
+
+              <div className="mt-32 flex flex-col">
+                <span className="text-gray-900 text-2xl ">
+                  فیلتر بر اساس نمرات کاربران :
+                </span>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio w-6 h-6"
+                    name="rating"
+                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    value={1}
+                  />
+                  <span className="mr-4">
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio w-6 h-6"
+                    name="rating"
+                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    value={2}
+                  />
+                  <span className="mr-4 flex">
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio w-6 h-6"
+                    name="rating"
+                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    value={3}
+                  />
+                  <span className="mr-4 flex">
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />{" "}
+                  </span>
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio w-6 h-6"
+                    name="rating"
+                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    value={4}
+                  />
+                  <span className="mr-4 flex">
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />{" "}
+                  </span>
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio w-6 h-6"
+                    name="rating"
+                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    value={5}
+                  />
+                  <span className="mr-4 flex">
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />
+                    <StarIcon
+                      className="block w-8 h-8 text-yellow-500"
+                      aria-hidden="true"
+                    />{" "}
+                  </span>
+                </label>
+              </div>
+              <button
+                className=" bg-transparent hover:bg-black text-black font-semibold hover:text-white py-4 px-6 border border-black hover:border-transparent mt-20"
+                onClick={() => setRange(!range)}
+              >
+                اعمال فیلتر
+              </button>
+            </div>
+          </div>
+          <div className="lg:w-4/5 flex flex-col">
+            <div className="text-xl mr-10">
+              مرتب سازی بر اساس :
+              <select
+                className="bg-white text-gray-400 appearance-none border-none inline-block py-3 pl-3 pr-8 mr-3 rounded leading-tight"
+                value={order}
+                onChange={(e) => {
+                  setOrder(e.target.value);
+                }}
+              >
+                <option value="newest">جدید ترین ها</option>
+                <option value="highest">
+                  قیمت : از گران ترین به ارزان ترین
+                </option>
+                <option value="lowest">
+                  قیمت : از ارزان ترین به گران ترین
+                </option>
+                <option value="toprated">میانگین نمرات کاربران</option>
+              </select>
+            </div>
+
+            <div className="grid 2xs:grid-cols-1 lg:grid-cols-4 md:grid-cols-3 xs:grid-cols-2  gap-4 mt-10 mx-16">
+              {products.map((product: any, index: number) => (
+                <Product key={index} product={product} />
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

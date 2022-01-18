@@ -8,7 +8,7 @@ export const generateToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
     },
-    process.env.JWT_SECRET || "gorebabalong",
+    process.env.JWT_SECRET || "kosenanelongia",
     {
       expiresIn: "30d",
     }
@@ -21,7 +21,7 @@ export const isAuth = (req, res, next) => {
     const token = authorization.slice(7, authorization.length);
     jwt.verify(
       token,
-      process.env.JWT_SECRET || "gorebabalong",
+      process.env.JWT_SECRET || "kosenanelongia",
       (err, decode) => {
         if (err) {
           res.status(401).send({ message: "Invalid token" });

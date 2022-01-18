@@ -1,7 +1,11 @@
 import React from "react";
 
-export default function Rating(props: { rating: number; numReviews: number; }) {
-  const { rating, numReviews } = props;
+export default function Rating(props: {
+  rating: number;
+  numReviews: number;
+  caption: string;
+}) {
+  const { rating, numReviews, caption } = props;
   return (
     <div className="rating flex items-center mt-3">
       <div className="stars">
@@ -62,7 +66,11 @@ export default function Rating(props: { rating: number; numReviews: number; }) {
           ></i>
         </span>
       </div>
-      <span className="mr-3 text-xl text-gray-500">{numReviews + "نظر"}</span>
+      {caption ? (
+        <span className="mr-3 text-xl text-gray-500">{caption}</span>
+      ) : (
+        <span className="mr-3 text-xl text-gray-500">{numReviews + "نظر"}</span>
+      )}
     </div>
   );
 }

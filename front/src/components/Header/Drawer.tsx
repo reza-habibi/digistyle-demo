@@ -3,11 +3,16 @@ import Portal from "@reach/portal";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { mobileCategory } from "../../data";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/Store/Store";
 export const DrawerPage = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const userSignin = useSelector((state: RootState) => state.userSignin);
+  const { userInfo } = userSignin;
   return (
     <div className="m-8">
       <MenuIcon
@@ -25,9 +30,24 @@ export const DrawerPage = () => {
               aria-hidden="true"
             />
           </h4>
-          <button className="bg-transparent text-gray-700 font-semibold py-2 px-4 border border-gray-500  rounded">
-            ورود و ثبت نام
-          </button>
+          {userInfo ? (
+            userInfo.isAdmin ? (
+              <span>
+                <Link to="/dashboard">پنل ادمین</Link>
+              </span>
+            ) : (
+              <span>
+                <Link to="/profile">حساب کاربری</Link>
+              </span>
+            )
+          ) : (
+            <Link
+              to="/signin"
+              className="bg-transparent text-gray-700 font-semibold py-2 px-4 border border-gray-500  rounded"
+            >
+              ورود و ثبت نام
+            </Link>
+          )}
         </DrawerHeader>
         <DrawerBody>
           <div className="w-full border-b border-black mb-5">
@@ -80,7 +100,6 @@ export const DrawerPage = () => {
             </div>
           </div>
         </DrawerBody>
-        
       </Drawer>
     </div>
   );

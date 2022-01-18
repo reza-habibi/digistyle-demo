@@ -39,7 +39,7 @@ export default function HomePage(props: { history: string[] }) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
+    dispatch(listProducts({ name: "", mainCategoryEn: "" }));
   }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
   const deleteHandler = (product: any) => {
     if (window.confirm("Are you sure to delete?")) {

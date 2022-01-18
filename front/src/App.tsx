@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Categories } from "./data";
 import { routes, PVRoute } from "./Routes/Routes";
+import { ToastContainer } from "react-toastify";
 import CustomRoute from "./Routes/CustomRoute";
 
 const Header = lazy(() => import("./components/Header/Header"));
@@ -14,6 +15,7 @@ const SubCategory = lazy(() => import("./screens/SubCategoryScreen"));
 function App() {
   return (
     <Router>
+      <ToastContainer />
       <Header />
       <MobileHeader />
 
@@ -28,17 +30,12 @@ function App() {
             isAdmin={item.isAdmin}
           />
         ))}
-      </Switch>
-
-      <Switch>
         {routes.map((item: any, index: number) => (
-          <CustomRoute
+          <Route
             key={index}
             path={item.path}
             exact={item.exact}
-            isLogin={item.isLogin}
-            Component={item.component}
-            isAdmin={item.isAdmin}
+            render={(props) => <item.component {...props} />}
           />
         ))}
         {Categories.map((category: any, index: number) => (
@@ -58,8 +55,8 @@ function App() {
           ))
         )}
       </Switch>
-        <Footer />
-        <DesktopFooter />
+      <Footer />
+      <DesktopFooter />
     </Router>
   );
 }

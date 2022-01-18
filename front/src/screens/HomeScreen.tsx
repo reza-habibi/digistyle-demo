@@ -21,7 +21,7 @@ export default function HomeScreen() {
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts({name:'' , mainCategoryEn:''}));
   }, [dispatch]);
 
   return (

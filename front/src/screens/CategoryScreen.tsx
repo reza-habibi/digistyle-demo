@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CategoryAdvantage from "../components/CategoryComponents/CategoryAdvantage/CategoryAdvantage";
 import CategoryBanner from "../components/CategoryComponents/CategoryBanner/CategoryBanner";
 import CategoryDesktopBannerCarousel from "../components/CategoryComponents/MainCarousel/CategoryBannerCarousel";
@@ -15,12 +15,18 @@ function CategoryScreen({ filter }: any) {
   const currentCategory = Categories.find(
     (item: any) => item.nameEn === filter
   );
-
+  const location = useLocation();
   const productList = useSelector((state: RootState) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(
+      listProducts({
+        name: "",
+        mainCategoryEn: location.pathname.split("/")[2],
+
+      })
+    );
   }, [dispatch]);
   return (
     <div>
@@ -44,7 +50,7 @@ function CategoryScreen({ filter }: any) {
                         alt=""
                       />
                     </figure>
-                    <div className="w-full text-white group-hover:text-black group-hover:bg-white group-hover:bg-opacity-90 transition duration-500 bg-black bg-opacity-50 text-center text-3xl py-5 absolute bottom-0">
+                    <div className="w-full text-white group-hover:text-black group-hover:bg-white group-hover:bg-opacity-90 transition duration-500 bg-black bg-opacity-50 text-center text-2xl py-5 absolute bottom-0">
                       {item.name}
                     </div>
                   </div>
@@ -81,7 +87,7 @@ function CategoryScreen({ filter }: any) {
               </span>
             </div>
             <div className="w-full px-16">
-              <CardCarousel products={products}/>
+              <CardCarousel products={products} />
             </div>
 
             <button className="w-64 h-20 mx-auto bg-transparent hover:bg-black text-gray-900 font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent ">

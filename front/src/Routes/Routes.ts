@@ -1,7 +1,8 @@
 import { lazy } from "react";
 import AdminDashboardScreen from "../screens/AdminDashboardScreen";
-const ProductEditScreen = lazy(()=> import("../screens/ProductEditPage"))
+import ProductEditScreen from "../screens/ProductEditScreen";
 const ProductScreen = lazy(() => import("../screens/ProductScreen"));
+
 const CartScreen = lazy(() => import("../screens/CartScreen"));
 const ShippingScreen = lazy(() => import("../screens/ShippingScreen"));
 const CheckoutScreen = lazy(() => import("../screens/CheckoutScreen"));
@@ -16,15 +17,11 @@ export const routes = [
     path: "/",
     exact: true,
     component: HomeScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/products/:id",
     exact: true,
     component: ProductScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/products/:id/edit",
@@ -37,50 +34,31 @@ export const routes = [
     path: "/cart",
     exact: false,
     component: CartScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/shipping",
     exact: false,
     component: ShippingScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/checkout",
     exact: false,
     component: CheckoutScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/signin",
     exact: false,
     component: SigninScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/register",
     exact: false,
     component: RegisterScreen,
-    isLogin: false,
-    isAdmin: false,
   },
   {
     path: "/order/:id",
     exact: false,
     component: OrderScreen,
-    isLogin: false,
-    isAdmin: false,
-  },
-  {
-    path: "/orderhistory",
-    exact: false,
-    component: OrderHistoryScreen,
-    isLogin: true,
-    isAdmin: false,
   },
 ];
 
@@ -98,5 +76,12 @@ export const PVRoute = [
     component: AdminDashboardScreen,
     isLogin: true,
     isAdmin: true,
+  },
+  {
+    path: "/orderhistory",
+    exact: false,
+    component: OrderHistoryScreen,
+    isLogin: true,
+    isAdmin: false,
   },
 ];

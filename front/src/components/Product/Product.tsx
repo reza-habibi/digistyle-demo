@@ -59,7 +59,7 @@ function Product({ product }: any) {
                 {" "}
                 {Humanize.intComma(product.price)} تومان
               </div>
-              <div className="card-actions flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-24 left-5 lg:hidden lg:top-24 top-5 animate-fade-in-right">
+              <div className="card-actions flex-col bg-white lg:rounded-lg rounded-xl  items-center justify-center shadow-2xl absolute lg:left-10 left-2 lg:hidden lg:top-24 top-5 animate-fade-in-right">
                 <button className="flex justify-center items-center text-black focus:outline-none p-4 mr-auto transition duration-300 hover:text-red-500">
                   <HeartIcon className="block h-8 w-8" aria-hidden="true" />
                 </button>

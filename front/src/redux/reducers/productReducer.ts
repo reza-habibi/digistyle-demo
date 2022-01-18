@@ -18,6 +18,10 @@ import {
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_RESET,
   PRODUCT_DELETE_SUCCESS,
+  PRODUCT_REVIEW_CREATE_FAIL,
+  PRODUCT_REVIEW_CREATE_REQUEST,
+  PRODUCT_REVIEW_CREATE_RESET,
+  PRODUCT_REVIEW_CREATE_SUCCESS,
 } from "../constants/productConstants";
 
 const initialState: TPState = { loading: true, products: [] };
@@ -93,7 +97,7 @@ export const productUpdateReducer = (
 };
 
 export const productDeleteReducer = (
-  state:any = {},
+  state: any = {},
   action: { type: any; payload: any }
 ) => {
   switch (action.type) {
@@ -104,6 +108,24 @@ export const productDeleteReducer = (
     case PRODUCT_DELETE_FAIL:
       return { loading: false, error: action.payload };
     case PRODUCT_DELETE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const productReviewCreateReducer = (
+  state: any = {},
+  action: { type: any; payload: any }
+) => {
+  switch (action.type) {
+    case PRODUCT_REVIEW_CREATE_REQUEST:
+      return { loading: true };
+    case PRODUCT_REVIEW_CREATE_SUCCESS:
+      return { loading: false, success: true, reviews: action.payload };
+    case PRODUCT_REVIEW_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_REVIEW_CREATE_RESET:
       return {};
     default:
       return state;

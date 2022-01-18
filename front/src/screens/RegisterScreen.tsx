@@ -44,7 +44,7 @@ export default function RegisterScreen(props: any) {
                   دیجی ممد
                 </h1>
                 <p className="leading-relaxed mt-4 lg:text-3xl text-2xl lg:max-w-xl font-medium  text-black text-center md:text-right ">
-                  با دیجی ممد جوری تیپ بزنید که مخ همه دافا محل رو بزنید
+                با دیجی ممد همیشه شیک پوش باشید .
                 </p>
               </div>
               <form
