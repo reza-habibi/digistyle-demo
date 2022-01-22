@@ -69,7 +69,7 @@ export const createOrder =
       dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order });
       dispatch({ type: CART_EMPTY });
       localStorage.removeItem("cartItems");
-    } catch (error) {
+    } catch (error:any) {
       dispatch({
         type: ORDER_CREATE_FAIL,
         payload:
@@ -95,7 +95,7 @@ export const detailsOrder =
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
-    } catch (error) {
+    } catch (error:any) {
       const message =
         error.response && error.response.data.message
           ? error.response.data.message
@@ -124,7 +124,7 @@ export const payOrder =
         }
       );
       dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
-    } catch (error) {
+    } catch (error:any) {
       const message =
         error.response && error.response.data.message
           ? error.response.data.message
@@ -151,7 +151,7 @@ export const listOrderMine =
       });
       dispatch({ type: ORDER_MINE_LIST_SUCCESS, payload: data });
       console.log(data);
-    } catch (error) {
+    } catch (error:any) {
       const message =
         error.response && error.response.data.message
           ? error.response.data.message
@@ -176,7 +176,7 @@ export const listOrders =
       });
       console.log(data);
       dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
-    } catch (error) {
+    } catch (error:any) {
       const message =
         error.response && error.response.data.message
           ? error.response.data.message
@@ -200,7 +200,7 @@ export const deleteOrder =
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: ORDER_DELETE_SUCCESS, payload: data });
-    } catch (error) {
+    } catch (error:any) {
       const message =
         error.response && error.response.data.message
           ? error.response.data.message
@@ -228,7 +228,7 @@ export const deliverOrder =
         }
       );
       dispatch({ type: ORDER_DELIVER_SUCCESS, payload: data });
-    } catch (error) {
+    } catch (error:any) {
       const message =
         error.response && error.response.data.message
           ? error.response.data.message

@@ -35,16 +35,7 @@ export const routes = [
     exact: false,
     component: CartScreen,
   },
-  {
-    path: "/shipping",
-    exact: false,
-    component: ShippingScreen,
-  },
-  {
-    path: "/checkout",
-    exact: false,
-    component: CheckoutScreen,
-  },
+
   {
     path: "/signin",
     exact: false,
@@ -54,11 +45,6 @@ export const routes = [
     path: "/register",
     exact: false,
     component: RegisterScreen,
-  },
-  {
-    path: "/order/:id",
-    exact: false,
-    component: OrderScreen,
   },
 ];
 
@@ -81,6 +67,27 @@ export const PVRoute = [
     path: "/orderhistory",
     exact: false,
     component: OrderHistoryScreen,
+    isLogin: true,
+    isAdmin: false,
+  },
+  {
+    path: "/shipping",
+    exact: false,
+    component: ShippingScreen,
+    isLogin: true,
+    isAdmin: false,
+  },
+  {
+    path: "/checkout",
+    exact: false,
+    component: CheckoutScreen,
+    isLogin: true,
+    isAdmin: false,
+  },
+  {
+    path: "/order/:id",
+    exact: false,
+    component: OrderScreen,
     isLogin: true,
     isAdmin: false,
   },

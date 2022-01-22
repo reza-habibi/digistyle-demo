@@ -17,14 +17,11 @@ export default function CartDrawerItems({ product }: any) {
 
   const decreaseQuantity = () => {
     setNewQty((prevState: number) => prevState - 1);
-    
   };
 
-
   useEffect(() => {
-    product.qty = newQty;
     dispatch(addToCart(product.product, newQty));
-  }, [ newQty]);
+  }, [newQty]);
 
   return (
     <div>
@@ -41,24 +38,24 @@ export default function CartDrawerItems({ product }: any) {
             <button
               onClick={increaseQuantity}
               className={`${
-                product.qty === product.countInStock
+                newQty === product.countInStock
                   ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
                   : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded cursor-pointer"
               }`}
-              disabled={product.qty === product.countInStock ? true : false}
+              disabled={newQty === product.countInStock ? true : false}
             >
               <PlusIcon className="block w-8 h-8 mx-auto" aria-hidden={true} />
             </button>
             <span className="m-5" x-text="count">
-              {product.qty}
+              {newQty}
             </span>
             <button
               className={`${
-                product.qty === 1
+                newQty === 1
                   ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
                   : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
               }`}
-              disabled={product.qty === 1 ? true : false}
+              disabled={newQty === 1 ? true : false}
               onClick={decreaseQuantity}
             >
               <MinusIcon className="block w-8 h-8 mx-auto" aria-hidden={true} />
@@ -77,7 +74,7 @@ export default function CartDrawerItems({ product }: any) {
                 {Humanize.intComma(product.price)}
               </span>
               <span className="text-gray-400 text-xl">x</span>
-              <span className="text-gray-900 text-2xl">{product.qty}</span>
+              <span className="text-gray-900 text-2xl">{newQty}</span>
             </div>
 
             {product.discount !== "0" && (

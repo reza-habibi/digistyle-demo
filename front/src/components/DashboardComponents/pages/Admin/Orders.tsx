@@ -155,20 +155,6 @@ export default function ProfileOrders(props: any) {
                                 حذف
                               </button>
                             </div>
-                            {loadingDelete && (
-                              <div className="flex justify-center items-center h-32">
-                                <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
-                                <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
-                                <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
-                              </div>
-                            )}
-                            {loadingDeliver && (
-                              <div className="flex justify-center items-center h-32">
-                                <div className="bg-red-600 p-2 w-4 h-4 rounded-full animate-bounce400 green-circle mr-1"></div>
-                                <div className="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce200 red-circle mr-1"></div>
-                                <div className="bg-blue-600 p-2 w-4 h-4 rounded-full animate-bounce blue-circle mr-1"></div>
-                              </div>
-                            )}
                           </td>
                         </tr>
                       ))}

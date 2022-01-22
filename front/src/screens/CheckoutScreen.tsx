@@ -7,6 +7,7 @@ import { RootState } from "../redux/Store/Store";
 import { savePaymentMethod } from "../redux/actions/cartAction";
 import { createOrder } from "../redux/actions/orderAction";
 import { ORDER_CREATE_RESET } from "../redux/constants/orderConstants";
+import { updateStock } from "../redux/actions/productAction";
 function CheckoutScreen(props: any) {
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function CheckoutScreen(props: any) {
   const submitHandler = () => {
     dispatch(savePaymentMethod(paymentMethod));
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
+    cartItems.map((item:TCartItem)=>dispatch(updateStock(item.product , item.qty)))
   };
 
   useEffect(() => {

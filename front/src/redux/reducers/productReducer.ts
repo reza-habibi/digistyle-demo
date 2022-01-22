@@ -1,5 +1,8 @@
 import { TPDetailState, TProductCreate, TPState } from "../../type.ds";
 import {
+  PRODUCT_UPDATE_STOCK_REQUEST,
+  PRODUCT_UPDATE_STOCK_SUCCESS,
+  PRODUCT_UPDATE_STOCK_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_FAIL,
@@ -91,6 +94,22 @@ export const productUpdateReducer = (
       return { loading: false, error: action.payload };
     case PRODUCT_UPDATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const stockUpdateReducer = (
+  state:TProductCreate= {},
+  action: { type: any; payload: any }
+) => {
+  switch (action.type) {
+    case PRODUCT_UPDATE_STOCK_REQUEST:
+      return { loading: true };
+    case PRODUCT_UPDATE_STOCK_SUCCESS:
+      return { loading: false, success: true };
+    case PRODUCT_UPDATE_STOCK_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
