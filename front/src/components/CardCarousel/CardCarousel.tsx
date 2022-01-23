@@ -80,7 +80,7 @@ export default function CardCarousel({ products }: any) {
                       />
                     </Link>
                   </figure>
-                  <span className="brands absolute top-0 bg-white right-0 text-gray-500 bg-gray-200 px-5 py-2 text-lg rounded-tr-lg">
+                  <span className="brands absolute top-0 right-0 text-gray-500 bg-gray-200 px-5 py-2 text-lg rounded-tr-lg">
                     {product.brandFa}
                   </span>
                   <div className="rounded-lg p-2 bg-white flex flex-col mb-3">

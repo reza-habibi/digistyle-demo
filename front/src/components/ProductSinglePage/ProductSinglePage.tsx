@@ -19,6 +19,7 @@ import { addToCart } from "../../redux/actions/cartAction";
 import { RootState } from "../../redux/Store/Store";
 import { Link, useHistory } from "react-router-dom";
 import { showDrawer } from "../../redux/actions/drawerAction";
+import { TProducts } from "../../type.ds";
 export default function DesktopSingleProduct({ product }: any) {
   const [scrolled, setScrolled] = useState(false);
   const [qty, setQty] = useState(1);
@@ -282,7 +283,12 @@ export default function DesktopSingleProduct({ product }: any) {
                 </span>
               </div>
               <div className="w-full">
-                <CardCarousel products={products} />
+                <CardCarousel
+                  products={products.filter(
+                    (item: TProducts) =>
+                      item.category === product.category && item._id !== product._id
+                  )}
+                />
               </div>
             </div>
 

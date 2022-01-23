@@ -16,12 +16,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { listProducts } from "../redux/actions/productAction";
 import { RootState } from "../redux/Store/Store";
+import { TProducts } from "../type.ds";
 export default function HomeScreen() {
-  const productList = useSelector((state:RootState) => state.productList);
+  const productList = useSelector((state: RootState) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listProducts({name:'' , mainCategoryEn:''}));
+    dispatch(listProducts({ name: "", mainCategoryEn: "" }));
   }, [dispatch]);
 
   return (
@@ -57,7 +58,11 @@ export default function HomeScreen() {
               </button>
             </div>
             <div className="md:col-span-9 w-full">
-              <CardCarousel products={products} />
+              <CardCarousel
+                products={products.filter(
+                  (product: TProducts) => product.discount !== "0"
+                )}
+              />
             </div>
           </div>
 
@@ -126,8 +131,16 @@ export default function HomeScreen() {
                 <FaArrowLeft className="text-gray-700 mr-3" />
               </span>
             </div>
-            <DesktopBrands brandFilter={"adidas"} direction={"right"} products={products} />
-            <DesktopBrands brandFilter={"nike"} direction={"left"}  products={products}/>
+            <DesktopBrands
+              brandFilter={"adidas"}
+              direction={"right"}
+              products={products}
+            />
+            <DesktopBrands
+              brandFilter={"nike"}
+              direction={"left"}
+              products={products}
+            />
           </div>
 
           <div className="w-full lg:hidden bg-white md:rounded-lg flex flex-wrap ">

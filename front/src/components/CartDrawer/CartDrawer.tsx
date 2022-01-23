@@ -94,7 +94,7 @@ export const CartDrawer = () => {
         </DrawerBody>
         {cartItems.length !== 0 ? (
           <DrawerFooter>
-            <div className="w-full px-6 flex flex-col">
+            <div className="w-full px-6 flex flex-col mb-32 md:mb-0">
               <div className="w-full flex justify-between items-center">
                 <div className="flex flex-col justify-between w-full h-full divide-y divide-gray-300">
                   <div className="w-full flex flex-col justify-between  h-full py-5">
@@ -140,7 +140,7 @@ const style = {
     right: "animate-drawer-right",
   },
   orientation: {
-    right: `flex drawer-scrollbar overflow-y-scroll h-full w-full md:w-1/3 lg:w-1/3 h-full right-0 mx-0 my-0 absolute focus:outline-none z-50`,
+    right: `flex drawer-scrollbar overflow-y-scroll h-full w-full md:w-2/5 lg:w-1/3 h-full right-0 mx-0 my-0 absolute focus:outline-none z-50`,
   },
   body: `flex-shrink flex-grow p-4 bg-white overflow-scroll drawer-scrollbar`,
   content: `relative w-full h-full flex flex-col bg-white pointer-events-auto  `,
