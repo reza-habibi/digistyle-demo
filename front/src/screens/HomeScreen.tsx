@@ -66,7 +66,7 @@ export default function HomeScreen() {
             </div>
           </div>
 
-          <div className="w-full lg:w-11/12 bg-white rounded-lg sm:px-10 flex flex-wrap items-start pt-6 ">
+          <div className="w-full xl:w-9/12 lg:w-11/12 bg-white rounded-lg sm:px-10 flex flex-wrap items-start pt-6 ">
             <ProductCategoryCard />
             <MobileCategoryHomeSection />
           </div>

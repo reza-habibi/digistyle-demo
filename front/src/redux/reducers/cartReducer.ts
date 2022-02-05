@@ -1,10 +1,12 @@
-import { TCartState } from "../../type.ds";
+import { TCartItem, TCartState } from "../../type.ds";
 import {
   CART_ADD_ITEM,
   CART_EMPTY,
   CART_REMOVE_ITEM,
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_ADDRESS,
+  CART_INCREASE_QTY,
+  CART_DECREASE_QTY,
 } from "../constants/cartConstants";
 
 const initialState: TCartState = { cartItems: [] };
@@ -26,7 +28,29 @@ export const cartReducer = (state = initialState, action: any) => {
       }
     case CART_REMOVE_ITEM:
       return {
-        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+        cartItems: state.cartItems.filter(
+          (x) => x.product !== action.payload
+        ),
+      };
+
+    case CART_INCREASE_QTY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          action.payload === item.product
+            ? { ...item, qty: item.qty + 1 }
+            : item
+        ),
+      };
+
+    case CART_DECREASE_QTY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          action.payload === item.product
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        ),
       };
 
     case CART_SAVE_SHIPPING_ADDRESS:
@@ -41,10 +65,10 @@ export const cartReducer = (state = initialState, action: any) => {
         paymentMethod: action.payload,
       };
 
-      case CART_EMPTY:
+    case CART_EMPTY:
       return {
         ...state,
-        cartItems:[],
+        cartItems: [],
       };
 
     default:

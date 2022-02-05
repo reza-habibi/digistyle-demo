@@ -88,17 +88,23 @@ export default function DesktopSingleProduct({ product }: any) {
             <HeartIcon className="block w-12 h-12" aria-hidden="true" />
           </div>
           <div className="space-y-20">
-            <div className="product lg:w-4/5 bg-white flex flex-col lg:mt-5 mx-auto">
+            <div className="product xl:w-3/5 lg:w-4/5 bg-white flex flex-col lg:mt-5 mx-auto">
               <div className="w-full lg:grid lg:grid-cols-2 flex flex-col space-y-3 divide-y divide-gray-400 divide-opacity-50 lg:divide-y-0">
                 <div className="w-full flex justify-center">
                   <figure>
-                    <img src={product.image} alt={product.name} />
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-1/2 mx-auto"
+                    />
                   </figure>
                 </div>
 
-                <div className="full flex flex-col px-6 space-y-8">
-                  <span className="text-black font-bold text-4xl mt-3">
-                    {product.brandFa}
+                <div className="w-full flex flex-col px-6 space-y-8">
+                  <span>
+                    <strong className="text-black font-bold text-3xl mt-3 bg-gray-200 rounded-xl px-4 py-2 inline-block text-center">
+                      {product.brandFa}
+                    </strong>
                   </span>
                   <span className="text-black text-3xl mt-3">
                     {product.name}
@@ -286,13 +292,14 @@ export default function DesktopSingleProduct({ product }: any) {
                 <CardCarousel
                   products={products.filter(
                     (item: TProducts) =>
-                      item.category === product.category && item._id !== product._id
+                      item.category === product.category &&
+                      item._id !== product._id
                   )}
                 />
               </div>
             </div>
 
-            <div className="w-4/5 mx-auto bg-white mb-32 hidden lg:block">
+            <div className="w-4/5 mx-auto  mb-32 hidden lg:block">
               <ProductFeatureTab product={product} />
             </div>
           </div>

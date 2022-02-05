@@ -13,7 +13,7 @@ export const CartDrawer = () => {
   const cart = useSelector((state: RootState) => state.cart);
   const drawerState = useSelector((state: RootState) => state.drawer);
   const { drawer } = drawerState;
-  const { cartItems } = cart;
+  const { cartItems }:any = cart;
   const [isOpen, setIsOpen] = useState<Boolean>(drawer);
   const toggle = () => {
     if (isOpen === true) {

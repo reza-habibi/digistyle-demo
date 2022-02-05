@@ -2,26 +2,19 @@ import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
 import Humanize from "humanize-plus";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/actions/cartAction";
+import {
+  addToCart,
+  decreaseQty,
+  increaseQty,
+  removeFromCart,
+} from "../../redux/actions/cartAction";
+import { TCartItem } from "../../type.ds";
 
-export default function CartDrawerItems({ product }: any) {
+export default function CartDrawerItems({ product }: { product: TCartItem }) {
   const dispatch = useDispatch();
-  const [newQty, setNewQty] = useState(product.qty);
   const removeFromCartHandler = (productId: string) => {
     dispatch(removeFromCart(productId));
   };
-
-  const increaseQuantity = () => {
-    setNewQty((prevState: number) => prevState + 1);
-  };
-
-  const decreaseQuantity = () => {
-    setNewQty((prevState: number) => prevState - 1);
-  };
-
-  useEffect(() => {
-    dispatch(addToCart(product.product, newQty));
-  }, [newQty]);
 
   return (
     <div>
@@ -36,27 +29,27 @@ export default function CartDrawerItems({ product }: any) {
           <div className="w-full py-2 flex items-center ">
             <span className="text-2xl text-gray-900 ml-5">تعداد : </span>
             <button
-              onClick={increaseQuantity}
+              onClick={() => dispatch(increaseQty(product.product))}
               className={`${
-                newQty === product.countInStock
+                product.qty === product.countInStock
                   ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
                   : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded cursor-pointer"
               }`}
-              disabled={newQty === product.countInStock ? true : false}
+              disabled={product.qty === product.countInStock ? true : false}
             >
               <PlusIcon className="block w-8 h-8 mx-auto" aria-hidden={true} />
             </button>
             <span className="m-5" x-text="count">
-              {newQty}
+              {product.qty}
             </span>
             <button
               className={`${
-                newQty === 1
+                product.qty === 1
                   ? "cursor-not-allowed	w-12 h-12 text-white bg-indigo-500  opacity-50 rounded"
                   : "opacity-100 text-white bg-indigo-500 w-12 h-12 rounded"
               }`}
-              disabled={newQty === 1 ? true : false}
-              onClick={decreaseQuantity}
+              disabled={product.qty === 1 ? true : false}
+              onClick={() => dispatch(decreaseQty(product.product))}
             >
               <MinusIcon className="block w-8 h-8 mx-auto" aria-hidden={true} />
             </button>
@@ -65,7 +58,7 @@ export default function CartDrawerItems({ product }: any) {
             <XIcon
               className="block h-8 w-8"
               aria-hidden={true}
-              onClick={() => removeFromCartHandler(product.product)}
+              onClick={() => dispatch(removeFromCart(product.product))}
             />
           </span>
           <div className="w-full flex justify-between items-center">
@@ -74,7 +67,7 @@ export default function CartDrawerItems({ product }: any) {
                 {Humanize.intComma(product.price)}
               </span>
               <span className="text-gray-400 text-xl">x</span>
-              <span className="text-gray-900 text-2xl">{newQty}</span>
+              <span className="text-gray-900 text-2xl">{product.qty}</span>
             </div>
 
             {product.discount !== "0" && (
