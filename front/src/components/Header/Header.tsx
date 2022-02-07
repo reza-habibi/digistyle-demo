@@ -45,7 +45,6 @@ export default function Header() {
     }
   };
 
-
   useEffect(() => {
     handleScroll();
   });
@@ -103,7 +102,7 @@ export default function Header() {
                       <UserDropDown />
                       <div>
                         <Link
-                          to="/profile"
+                          to={userInfo.isAdmin ? "/dashboard" : "/profile"}
                           className="text-black mr-5 text-2xl font-bold"
                         >
                           {userInfo.fullName} عزیز

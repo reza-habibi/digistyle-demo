@@ -8,7 +8,9 @@ import { hideDrawer, showDrawer } from "../../redux/actions/drawerAction";
 import { TCartItem } from "../../type.ds";
 import Humanize from "humanize-plus";
 import CartDrawerItems from "./CartDrawerItems";
+import { useHistory } from 'react-router-dom';
 export const CartDrawer = () => {
+  const history = useHistory()
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
   const drawerState = useSelector((state: RootState) => state.drawer);
@@ -79,9 +81,6 @@ export const CartDrawer = () => {
               <span className="text-gray-900 text-3xl mt-20">
                 سبد خرید شما خالی است.
               </span>
-              <button className="bg-transparent -64 hover:bg-gray-500 text-gray-700 font-bold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent my-20">
-                صفحه اصلی
-              </button>
               <Advantage />
             </div>
           ) : (

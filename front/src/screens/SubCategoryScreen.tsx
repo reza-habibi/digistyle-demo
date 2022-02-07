@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import Product from "../components/Product/Product";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../redux/actions/productAction";
@@ -8,8 +8,11 @@ import MessageBox from "../components/MessageBox/MessageBox";
 import { RootState } from "../redux/Store/Store";
 import MultiRangeSlider from "../components/RangeSlider/RangeSlider";
 import { StarIcon } from "@heroicons/react/solid";
+import BrandFilter from "./../components/Filters/BrandFilter";
+import RangeFilter from "./../components/Filters/RangeFilter";
 
 function SubCategory(props: any) {
+  const history = useHistory();
   const productList = useSelector((state: RootState) => state.productList);
   const { products, loading, error } = productList;
   const [order, setOrder] = useState("newest");
@@ -35,6 +38,7 @@ function SubCategory(props: any) {
       })
     );
   }, [dispatch, order, range]);
+
   const location = useLocation();
   return (
     <div>
@@ -43,20 +47,9 @@ function SubCategory(props: any) {
       ) : error ? (
         <MessageBox error={error} />
       ) : (
-        <div className="w-full flex flex-col lg:flex-row mt-10 ">
+        <div className="w-full lg:w-10/12 mx-auto flex flex-col lg:flex-row mt-10 ">
           <div className="lg:w-1/5 mr-5 p-5 flex flex-col  justify-start items-center h-full bg-white rounded-xl">
             <div className="w-full mt-10 ">
-              <span className="text-gray-900 text-2xl ">
-                فیلتر بر اساس محدوده قیمت :
-              </span>
-              <MultiRangeSlider
-                min={0}
-                max={2000000}
-                onChange={({ min, max }) => {
-                  setMin(min);
-                  setMax(max);
-                }}
-              />
 
               <div className="mt-32 flex flex-col">
                 <span className="text-gray-900 text-2xl ">
@@ -67,7 +60,7 @@ function SubCategory(props: any) {
                     type="radio"
                     className="form-radio w-6 h-6"
                     name="rating"
-                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    onChange={(e) => setRate(parseInt(e.target.value))}
                     value={1}
                   />
                   <span className="mr-4">
@@ -82,7 +75,7 @@ function SubCategory(props: any) {
                     type="radio"
                     className="form-radio w-6 h-6"
                     name="rating"
-                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    onChange={(e) => setRate(parseInt(e.target.value))}
                     value={2}
                   />
                   <span className="mr-4 flex">
@@ -101,7 +94,7 @@ function SubCategory(props: any) {
                     type="radio"
                     className="form-radio w-6 h-6"
                     name="rating"
-                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    onChange={(e) => setRate(parseInt(e.target.value))}
                     value={3}
                   />
                   <span className="mr-4 flex">
@@ -124,7 +117,7 @@ function SubCategory(props: any) {
                     type="radio"
                     className="form-radio w-6 h-6"
                     name="rating"
-                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    onChange={(e) => setRate(parseInt(e.target.value))}
                     value={4}
                   />
                   <span className="mr-4 flex">
@@ -151,7 +144,7 @@ function SubCategory(props: any) {
                     type="radio"
                     className="form-radio w-6 h-6"
                     name="rating"
-                    onChange={(e)=>setRate(parseInt(e.target.value))}
+                    onChange={(e) => setRate(parseInt(e.target.value))}
                     value={5}
                   />
                   <span className="mr-4 flex">
@@ -187,24 +180,30 @@ function SubCategory(props: any) {
             </div>
           </div>
           <div className="lg:w-4/5 flex flex-col">
-            <div className="text-xl mr-10">
-              مرتب سازی بر اساس :
-              <select
-                className="bg-white text-gray-400 appearance-none border-none inline-block py-3 pl-3 pr-8 mr-3 rounded leading-tight"
-                value={order}
-                onChange={(e) => {
-                  setOrder(e.target.value);
-                }}
-              >
-                <option value="newest">جدید ترین ها</option>
-                <option value="highest">
-                  قیمت : از گران ترین به ارزان ترین
-                </option>
-                <option value="lowest">
-                  قیمت : از ارزان ترین به گران ترین
-                </option>
-                <option value="toprated">میانگین نمرات کاربران</option>
-              </select>
+            <div className="w-full flex justify-between items-center">
+              <div className="flex">
+                <BrandFilter products={products} />
+                <RangeFilter products={products} />
+              </div>
+              <div className="text-xl mr-10">
+                مرتب سازی بر اساس :
+                <select
+                  className="bg-white text-gray-400 appearance-none border-none inline-block py-3 pl-3 pr-8 mr-3 rounded leading-tight"
+                  value={order}
+                  onChange={(e) => {
+                    setOrder(e.target.value);
+                  }}
+                >
+                  <option value="newest">جدید ترین ها</option>
+                  <option value="highest">
+                    قیمت : از گران ترین به ارزان ترین
+                  </option>
+                  <option value="lowest">
+                    قیمت : از ارزان ترین به گران ترین
+                  </option>
+                  <option value="toprated">میانگین نمرات کاربران</option>
+                </select>
+              </div>
             </div>
 
             <div className="grid 2xs:grid-cols-1 lg:grid-cols-4 md:grid-cols-3 xs:grid-cols-2  gap-4 mt-10 mx-16">

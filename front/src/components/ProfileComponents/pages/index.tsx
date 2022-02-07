@@ -32,8 +32,8 @@ console.log(userInfo)
           <div className="bg-wild-sand-600 p-4">
             <span className="text-2xl text-gray-900">شماره تلفن ثابت :</span>
             <span className="text-2xl text-gray-600 mr-2">
-              {shippingAddress.telephone.slice(5)}*****{" "}
-              {shippingAddress.cityCode}{" "}
+              {shippingAddress?.telephone.slice(5)}*****{" "}
+              {shippingAddress?.cityCode}{" "}
             </span>
           </div>
 
@@ -41,7 +41,7 @@ console.log(userInfo)
             <span className="text-2xl text-gray-900">شماره تلفن همراه :</span>
             <span className="text-2xl text-gray-600 mr-2">
               {" "}
-              {shippingAddress.mobile}{" "}
+              {shippingAddress?.mobile}{" "}
             </span>
           </div>
         </div>
@@ -58,7 +58,7 @@ console.log(userInfo)
             <span className="text-2xl text-gray-900">محل سکونت :</span>
             <span className="text-2xl text-gray-600 mr-2">
               {" "}
-              {shippingAddress.province} ، {shippingAddress.city}{" "}
+              {shippingAddress?.province} ، {shippingAddress?.city}{" "}
             </span>
           </div>
           <div className="bg-wild-sand-600 p-4">
