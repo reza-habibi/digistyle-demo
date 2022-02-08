@@ -7,6 +7,7 @@
       "esnext"
     ],
     "strictNullChecks": false,
+    "downlevelIteration": false,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

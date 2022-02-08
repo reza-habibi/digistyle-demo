@@ -11,6 +11,7 @@ productRouter.get(
   expressAsyncHandler(async (req, res) => {
     const name = req.query.name || "";
     const mainCategoryEn = req.query.mainCategoryEn || "";
+    const brand = req.query.brand || "";
     const categoryEn = req.query.categoryEn || "";
     const subCategoryEn = req.query.subCategoryEn || "";
     const order = req.query.order || "";
@@ -23,6 +24,7 @@ productRouter.get(
         ? Number(req.query.rating)
         : 0;
     const mainCategoryEnFilter = mainCategoryEn ? { mainCategoryEn } : {};
+    const brandFilter = brand ? { brand } : {};
     const categoryEnFilter = categoryEn ? { categoryEn } : {};
     const subCategoryEnFilter = subCategoryEn ? { subCategoryEn } : {};
     const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {};
@@ -43,6 +45,7 @@ productRouter.get(
       ...subCategoryEnFilter,
       ...priceFilter,
       ...ratingFilter,
+      ...brandFilter,
     }).sort(sortOrder);
     res.send(products);
   })

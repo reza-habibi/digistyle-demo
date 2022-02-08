@@ -5,20 +5,35 @@ import { TProducts } from "../../type.ds";
 import { SearchIcon, ReplyIcon } from "@heroicons/react/outline";
 
 export default function BrandFilter({ products }: { products: TProducts[] }) {
-  const brands: {
+  const arr: {
     brandFa: string;
     brand: string;
     id: string;
     checked: boolean;
   }[] = [];
+  const [brands, setBrands] = useState<
+    {
+      brandFa: string;
+      brand: string;
+      id: string;
+      checked: boolean;
+    }[]
+  >([]);
+
+  const [selectedBrand, setSelectedBrand] = useState([]);
+
   products.map((product: TProducts) =>
-    brands.push({
+    arr.push({
       brandFa: product.brandFa,
       brand: product.brand,
       id: product._id,
       checked: false,
     })
   );
+
+  useEffect(() => {
+    setBrands(arr);
+  }, []);
 
   const uniq = new Set();
   const filteredBrand = brands.filter((el) => {
@@ -27,11 +42,36 @@ export default function BrandFilter({ products }: { products: TProducts[] }) {
     return !duplicate;
   });
 
+  const handleSelectAll = () => {
+    setBrands(
+      brands.map((item) => item && { ...item, checked: (item.checked = true) })
+    );
+    setSelectedBrand(filteredBrand);
+  };
 
+  const handleUnSelectAll = () => {
+    setBrands(
+      brands.map((item) => item && { ...item, checked: (item.checked = false) })
+    );
 
-  
-  const selectedBrand = [];
+    setSelectedBrand([]);
+  };
 
+  const handleSingleSelect = (id: string) => {
+    setBrands(
+      brands.map((item) =>
+        id === item.id
+          ? { ...item, checked: (item.checked = !item.checked) }
+          : item
+      )
+    );
+
+    setSelectedBrand(filteredBrand.filter((item) => item.checked === true));
+  };
+
+  const submitBrands = () => {
+    console.log(selectedBrand.map((item) => item.brand));
+  };
 
   return (
     <div className="w-full max-w-sm px-4 ">
@@ -86,6 +126,7 @@ export default function BrandFilter({ products }: { products: TProducts[] }) {
                           className="form-checkbox h-5 w-5 text-pink-600  rounded-md"
                           value={item.brand}
                           checked={item.checked}
+                          onChange={() => handleSingleSelect(item.id)}
                         />
                         <div className="flex justify-between w-full items-center">
                           <span className="mr-2 text-gray-800 text-xl">
@@ -99,11 +140,17 @@ export default function BrandFilter({ products }: { products: TProducts[] }) {
                     ))}
                   </div>
                   <div className="bg-white flex w-full items-center justify-between py-4 px-4">
-                    <div className="text-blue-400 text-xl cursor-pointer">
+                    <div
+                      className="text-blue-400 text-xl cursor-pointer"
+                      onClick={handleSelectAll}
+                    >
                       انتخاب همه
                     </div>
                     <div className="flex">
-                      <div className="border border-black p-4 cursor-pointer ml-2 hover:bg-black hover:text-white text-black transition-all delay-100">
+                      <div
+                        className="border border-black p-4 cursor-pointer ml-2 hover:bg-black hover:text-white text-black transition-all delay-100"
+                        onClick={handleUnSelectAll}
+                      >
                         <ReplyIcon
                           className="block h-8 w-8 "
                           aria-hidden="true"
@@ -113,6 +160,7 @@ export default function BrandFilter({ products }: { products: TProducts[] }) {
                         <button
                           type="button"
                           className="bg-white hover:bg-black border border-black disabled:bg-gray-400 disabled:cursor-not-allowed px-4 py-2 text-2xl hover:text-white transition-all delay-100"
+                          onClick={submitBrands}
                         >
                           اعمال
                         </button>
